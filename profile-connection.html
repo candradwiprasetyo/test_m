@@ -1,0 +1,74 @@
+<div class="cm-profile">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left" ui-sref="menu"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title">{{vm.search.user_display_name_parent}} <ciayo translate="$profile">Profile</ciayo></div>
+        </div>
+        <!--.cm-profile-content//-->
+        <div class="cm-profile-content -editable">
+          <div class="_profile-wrp"><img src="assets/img/profile/ava.png" class="_avatar"/><img src="assets/img/profile/banner-profile.png" class="_banner"/>
+          </div>
+          <div class="_profile-name-wrp">
+            <div class="_username">{{vm.search.user_display_name_parent}}</div>
+            <div class="_title">the vampire slayer</div>
+            <div class="_cme"><i class="ci-c-button -s30"></i>
+            </div>
+            <div class="_c-button">
+              <div class="_button"><img src="assets/img/profile/check.png"/><span>check me</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/add.png"/><span>add friend</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/follow.png"/><span>follow</span>
+              </div>
+              <div class="_close"><i class="ci-delete-2 -s10"></i>
+              </div>
+            </div>
+            <div class="_edit"><i class="ci-edit -s16"></i>
+            </div>
+          </div>
+          <div class="_profile-menu">
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-overview-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-overview-activ.png" class="_active"/><span><ciayo translate="$overview">overview</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-timeline-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-timeline-activ.png" class="_active"/><span><ciayo translate="$timeline">timeline</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu -active">
+              <div class="_wrapper"><img src="assets/img/profile/profile-connection-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-connection-activ.png" class="_active"/><span><ciayo translate="$connection">connection</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-achievement-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-achievement-activ.png" class="_active"/><span><ciayo translate="$achievement">achievement</ciayo></span>
+              </div>
+            </div>
+          </div>
+          <div class="_profile-connection">
+            <div class="_title">
+               <div class="_tab" ng-click="vm.search.redirect_page('friend')" ng-class="(vm.search.tab_active=='friend')?'_active':''"><ciayo translate="$all.friends">ALL FRIENDS</ciayo> ({{vm.search.count_friend_list}})</div>
+               <div class="_tab" ng-click="vm.search.redirect_page('mutual')" ng-class="(vm.search.tab_active=='mutual')?'_active':''" ng-show="vm.search.myprofile==false"><ciayo translate="$mutual">MUTUAL</ciayo> ({{vm.search.count_mutual_list}}) </div>
+              <div class="_edit">
+              </div>
+            </div>
+
+            <div class="_content" ng-if="vm.search.tab_active=='friend'">
+              <c-friend-connection user = "user" ng-repeat="user in vm.search.user_list" type="vm.search.type"></c-friend-connection>
+              <div class="view-more" ng-show="vm.search.load_more">
+              <div class="loader" ng-show="vm.search.loading"></div>
+                  <div class="button" ng-click="vm.search.getFriendList()" ng-hide="vm.search.loading"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+            </div>
+
+            <div class="_content" ng-if="vm.search.tab_active=='mutual'">
+             <c-friend-connection user = "user" ng-repeat="user in vm.search.mutual_list" type="vm.search.type"></c-friend-connection>
+              <div class="view-more" ng-show="vm.search.load_more_mutual">
+                  <div class="loader" ng-show="vm.search.loading_mutual"></div>
+                  <div class="button" ng-click="vm.search.getMutualList()" ng-hide="vm.search.loading_mutual"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+            </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>

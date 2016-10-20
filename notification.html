@@ -1,0 +1,123 @@
+<c-navbar active="notification"></c-navbar>
+      <div class="cm-notification">
+        <div class="notification" lazy-load ="vm.notification.getNotificationList()">
+          <div class="title"><ciayo translate="$notifications">Notifications</ciayo></div>
+            <div class="empty" ng-if="vm.notification.notification_list==0&&vm.notification.notification_start==true">
+              <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+              <div class="desc"><ciayo translate="$you.have.no.notification">You have no any notifications</ciayo></div>
+            </div>
+            <div class="empty" ng-if="vm.notification.notification_list==0&&vm.notification.notification_start==false">
+              <div class="loader"></div>
+            </div>
+             <!--  <div class="list active-update" ng-if="vm.notification.notification_list!=0&& vm.notification.notification_start==true" ui-sref="update">
+                <div class="photo-profile">
+                  <img ng-src="assets/img/fav-72.png">
+                </div>
+                <div class="name-profile">
+                  <div class="display-name"><b>CIAYO Update</b> <i class="ci-notif-star"></i><br>
+                  <div class="activity-name">Ada yang baru nih di CIAYO. Lihat yuk!</div></div>
+
+                </div>
+                <div class="config-profile">
+                  <div class="item">
+                    <div class="view_info">View info</div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="list" ng-class="(notification.read_at==null)?'active':''" ng-repeat="notification in vm.notification.notification_list | orderBy:'-created_at'" ng-click="vm.notification.view_notification(notification)">
+                <div class="photo-profile" style="background: {{notification.from_user_avatar.background_avatar}}">
+                <img ng-src="{{notification.from_user_avatar.avatar_crop}}"></div>
+                <div class="name-profile">
+                  <div class="display-name"><span ng-show="notification.type!='comment'&&notification.type!='like'">{{notification.from_user_display_name}}</span>
+                  <span class="activity-name" ng-bind-html="notification.title"></span>
+
+                  <span ng-switch="notification.type">
+                    <span ng-switch-when="comment">
+                      <span class="activity-name"> "{{notification.activity_name}}"</span>
+                    </span>
+                    <span ng-switch-when="like">
+                        <span class="activity-name"> "{{notification.activity_name}}"</span>
+                    </span>
+                    <span ng-switch-when="tag">
+                        <span class="activity-name"> "{{notification.activity_name}}"</span>
+                    </span>
+                  </span>
+
+                  </div>
+                  <div class="date">
+
+                      <span ng-switch="notification.type">
+                        <span ng-switch-when="like"><img src="../assets/svg/notif-like.svg"></span>
+                        <span ng-switch-when="comment"><img src="../assets/svg/notif-comment.svg"></span>
+                        <span ng-switch-when="tag"><img src="../assets/svg/notif-tag.svg"></span>
+                        <span ng-switch-when="follow_request"><img src="../assets/svg/notif-follow-request.svg"></span>
+                        <span ng-switch-when="friend_request"><img src="../assets/svg/notif-friends-request.svg"></span>
+                        <span ng-switch-when="special_event"><img src="../assets/svg/notif-special-event.svg"></span>
+                        <span ng-switch-when="added_friend"><img src="../assets/svg/notif-friends-request.svg"></span>
+                        <span ng-switch-when="ask_with"><img src="../assets/svg/notif-comment.svg"></span>
+                        <span ng-switch-when="ask_place"><img src="../assets/svg/notif-comment.svg"></span>
+                        <span ng-switch-when="response_with"><img src="../assets/svg/notif-comment.svg"></span>
+                        <span ng-switch-when="response_place"><img src="../assets/svg/notif-comment.svg"></span>
+                        <span ng-switch-when="rate">
+                          <span ng-switch="notification.type_rate">
+                             <span ng-switch-when="angry"><img src="../assets/svg/notif-cimotion-angry.svg"></span>
+                             <span ng-switch-when="ciayo"><img src="../assets/svg/notif-cimotion-ciayo.svg"></span>
+                             <span ng-switch-when="happy"><img src="../assets/svg/notif-cimotion-happy.svg"></span>
+                             <span ng-switch-when="love"><img src="../assets/svg/notif-cimotion-love.svg"></span>
+                             <span ng-switch-when="sad"><img src="../assets/svg/notif-cimotion-sad.svg"></span>
+                             <span ng-switch-when="wow"><img src="../assets/svg/notif-cimotion-wow.svg"></span>
+                          </span>
+                        </span>
+                      </span>
+
+                  {{notification.created_at | formatdate}}
+                  </div>
+                </div>
+                <div class="config-profile">
+                  <div class="item">
+                    
+                    <span ng-switch="notification.type">
+                      <span ng-switch-when="like">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="comment">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="tag">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="rate">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="ask_with">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="ask_place">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="response_with">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                      <span ng-switch-when="response_place">
+                        <div class="activity_img"><img ng-src="{{notification.activity_image}}"/>
+                        </div>
+                      </span>
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+              <div class="view-more" ng-show="vm.notification.load_more">
+                  <div class="loader" ng-show="vm.notification.loading"></div>
+                  <div class="button" ng-click="vm.notification.getNotificationList()" ng-hide="vm.notification.loading"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+        </div>
+      </div>
+

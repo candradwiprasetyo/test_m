@@ -1,0 +1,249 @@
+<div class="cm-friend-connection">
+
+	<div class="list" ng-class="user.frame==true?'open':''" ng-if="type=='user'||type=='friend'">
+		
+	    <div class="photo-profile" style="background: {{user.user_avatar_detail.background_avatar}}"><img ng-src="{{user.user_avatar_cropped.avatar}}" ui-sref="profile({username: user.username })" ng-click="user.setState()"></div>
+		    <div class="name-profile">
+		      <div class="display-name" ui-sref="profile({username: user.username })" ng-click="user.setState()">{{user.user_display_name}}</div>
+		      <div class="full-name">{{user.user_full_name.replace('-',' ')}}<span ng-show="user.user_full_name.replace(' ','').length>1"><i class="ci-currency-cans -s6"></i>&nbsp;</span> {{user.gender_name}}
+		      </div>
+		      <div class="mutual-friend" ng-show="user.button_self==false">
+		      
+		      <span ng-if="user.total_mutual_friend>0" ng-click="user.getMutualFriend(user.user_id, user.username)">{{user.total_mutual_friend + ' mutual friends'}}</span>
+		      <span ng-if="user.total_mutual_friend==0"><ciayo translate="$you.dont.have">You dont have mutual friend</ciayo></span>
+		      </div>
+		    </div>
+	    <div class="config-profile">
+	      <div class="icon"><i class="ci-c-button -s30" ng-click="user.showFrame()" ng-show="user.button_self==false"></i>
+	      </div>
+	    </div>
+
+	    <div class="action"> 
+			<div class="icon-group-frame">
+				<div class="icon-group">
+				  	<div class="icon" ui-sref="profile({'username':user.username})"><img src="assets/img/search/i_check_me.png"></div>
+				  	<div class="name" ui-sref="profile({'username':user.username})"><ciayo translate="$view.profile">view profile</ciayo></div>
+				</div>
+				<div class="icon-group" ng-class="(user.icon_self==1) ? '':'tengah'">
+					<div class="icon-response" ng-show="user.icon_action_response" click-outside="user.closeActionResponse(user);">
+						<div class="item-frame">
+					        <div class="item" ng-click="user.action_response_accept(user)">
+					          <md-icon class="material-icons md-light md-8 icon"></md-icon>
+					        </div>
+					         <div class="item" ng-click="user.action_response_accept(user)">
+					          <i class="ci-check-1"></i>
+					        </div>
+					        <div class="item" ng-click="user.action_response_delete(user)">
+					          <i class="ci-delete-3"></i>
+					        </div>
+					    </div>
+					</div>
+				  	<div class="icon_action" ng-hide="user.icon_addfriend" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''">
+				  		<i class="ci-check-3" id="ci-sent" ng-show="user.ci_check&&user.status.friend.approve==false"></i>
+	                    <i class="ci-notif-star" id="ci-sent" ng-show="user.status.friend.approve==false"></i>
+
+				  		<img src="../assets/svg/c-button-friend.svg" ng-if="user.status.friend.approve==true" >
+	                    <img src="../assets/svg/c-button_addfriends-noactiv.svg" ng-if="user.status.friend.approve==false" >
+	                </div>
+
+	                <div class="icon active" ng-show="user.icon_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)">
+	                    <i class="ci-notif-star" id="ci-sent" ng-show="user.ci_star"></i>
+	                    <img src="../assets/svg/c-button_addfriends-activ.svg">
+	                </div>
+
+				  	<div class="name_action" ng-hide="user.name_addfriend" >
+	                    <div class="title1" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)"></div> 
+	                    <div class="title2" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)" ng-hide="user.hide_approve==true"></div>  
+	                </div>
+
+	                <div class="name active" ng-show="user.name_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)" ng-bind="user.icon_self==0? ('$add.friend'|translate) : ('$response'|translate)">
+	                </div>
+
+				</div>
+				
+				<div class="icon-group tengah_follow">
+	                <div class="icon_action" ng-hide="user.icon_follow" ng-click="user.action_unfollow(user)"> 
+	                    <i class="ci-check-3" id="ci-sent"></i>
+	                    <i class="ci-notif-star" id="ci-sent"></i>
+	                    <img src="../assets/svg/c-button_follow-noactiv.svg">
+	                </div>
+	                <div class="icon active" ng-show="user.icon_follow" ng-click="user.action_follow(user)"> 
+	                    <img src="../assets/svg/c-button_follow-activ.svg">
+	                </div>
+	                <div class="name_action" ng-hide="user.name_follow" ng-click="user.action_unfollow(user)">
+	                  	<div class="title1"><ciayo translate="$following">Following</ciayo></div>
+	                    <div class="title2"><ciayo translate="$unfollow">Unfollow</ciayo></div>
+	                </div>
+	                <div class="name active" ng-show="user.name_follow" ng-click="user.action_follow(user)">
+	                  	<ciayo translate="$follow">Follow</ciayo>
+	                </div>
+	            </div>
+
+				<div class="close-button" ng-click="user.closeFrame()"><i class="ci-delete-2 -s10" ></i>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	<div ng-if="type=='trending'">
+		<div class="list-trending" ng-class="user.frame==true?'open':''">
+            <div class="photo-profile" style="background: {{user.user_avatar.background_avatar}}" ui-sref="profile({'username':user.username})"><img ng-src="{{user.user_avatar.avatar}}"></div>
+            <div class="name-profile">
+              <div class="display-name" ui-sref="profile({'username':user.username})">{{user.user_display_name}}</div>
+              <div class="full-name">{{user.user_full_name.replace('-',' ')}}<span ng-show="user.user_full_name.replace(' ','').length>1"><i class="ci-currency-cans -s6"></i>&nbsp;</span> {{(user.user_gender==1)?('$male'|translate):('$female'|translate)}}
+              </div>
+              <div class="follower"> 
+                <div class="title"><ciayo translate="$followers">followers</ciayo></div>
+                <div class="value">+{{user.followers}}</div>
+              </div>
+              <div class="post"> 
+                <div class="title"><ciayo translate="$posts">posts</ciayo></div>
+                <div class="value">+{{user.posts}}</div>
+              </div>
+            </div>
+            <div class="config-profile">
+              <div class="icon" ng-click="user.showFrame()" ng-show="user.button_self==false"><i class="ci-c-button -s30"></i>
+              </div>
+            </div>
+            <div class="ribbon">{{user.trending_people_number}}</div>
+
+
+            <div class="action"> 
+				<div class="icon-group-frame trending-frame">
+					<div class="icon-group">
+					  	<div class="icon" ui-sref="profile({'username':user.username})"><img src="assets/img/search/i_check_me.png"></div>
+					  	<div class="name" ui-sref="profile({'username':user.username})"><ciayo translate="$view.profile">view profile</ciayo></div>
+					</div>
+					<div class="icon-group" ng-class="(user.icon_self==1) ? '':'tengah'">
+						<div class="icon-response" ng-show="user.icon_action_response" click-outside="user.closeActionResponse(user);">
+							<div class="item-frame">
+						        <div class="item" ng-click="user.action_response_accept(user)">
+						          <md-icon class="material-icons md-light md-8 icon"></md-icon>
+						        </div>
+						         <div class="item" ng-click="user.action_response_accept(user)">
+						          <i class="ci-check-1"></i>
+						        </div>
+						        <div class="item" ng-click="user.action_response_delete(user)">
+						          <i class="ci-delete-3"></i>
+						        </div>
+						    </div>
+						</div>
+					  	<div class="icon_action" ng-hide="user.icon_addfriend" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''">
+					  		<i class="ci-check-3" id="ci-sent" ng-show="user.ci_check&&user.status.friend.approve==false"></i>
+		                    <i class="ci-notif-star" id="ci-sent" ng-show="user.status.friend.approve==false"></i>
+
+					  		<img src="../assets/svg/c-button-friend.svg" ng-if="user.status.friend.approve==true" >
+		                    <img src="../assets/svg/c-button_addfriends-noactiv.svg" ng-if="user.status.friend.approve==false" >
+		                </div>
+
+		                <div class="icon active" ng-show="user.icon_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)">
+		                    <i class="ci-notif-star" id="ci-sent" ng-show="user.ci_star"></i>
+		                    <img src="../assets/svg/c-button_addfriends-activ.svg">
+		                </div>
+
+					  	<div class="name_action" ng-hide="user.name_addfriend" >
+		                    <div class="title1" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)"></div> 
+		                    <div class="title2" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)" ng-hide="user.hide_approve==true"></div>  
+		                </div>
+
+		                <div class="name active" ng-show="user.name_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)" ng-bind="user.icon_self==0? ('$add.friend'|translate) : ('$response'|translate)">
+		                </div>
+
+					</div>
+					
+					<div class="icon-group tengah_follow">
+		                <div class="icon_action" ng-hide="user.icon_follow" ng-click="user.action_unfollow(user)"> 
+		                    <i class="ci-check-3" id="ci-sent"></i>
+		                    <i class="ci-notif-star" id="ci-sent"></i>
+		                    <img src="../assets/svg/c-button_follow-noactiv.svg">
+		                </div>
+		                <div class="icon active" ng-show="user.icon_follow" ng-click="user.action_follow(user)"> 
+		                    <img src="../assets/svg/c-button_follow-activ.svg">
+		                </div>
+		                <div class="name_action" ng-hide="user.name_follow" ng-click="user.action_unfollow(user)">
+		                  	<div class="title1"><ciayo translate="$following">Following</ciayo></div>
+		                    <div class="title2"><ciayo translate="$unfollow">Unfollow</ciayo></div>
+		                </div>
+		                <div class="name active" ng-show="user.name_follow" ng-click="user.action_follow(user)">
+		                  	<ciayo translate="$follow">Follow</ciayo>
+		                </div>
+		            </div>
+
+					<div class="close-button" ng-click="user.closeFrame()"><i class="ci-delete-2 -s10" ></i>
+					</div>
+				</div>
+		    </div>
+
+
+        </div>
+	</div>
+
+
+	<div ng-if="type=='timeline'">
+		<div class="action"> 
+			<div class="icon-group-frame">
+				<div class="icon-group">
+				  	<div class="icon" ui-sref="profile({'username':user.username})"><img src="assets/img/search/i_check_me.png"></div>
+				  	<div class="name" ui-sref="profile({'username':user.username})"><ciayo translate="$view.profile">view profile</ciayo></div>
+				</div>
+				<div class="icon-group" ng-class="(user.icon_self==1) ? '':'tengah'">
+					<div class="icon-response" ng-show="user.icon_action_response" click-outside="user.closeActionResponse(user);">
+						<div class="item-frame">
+					        <div class="item" ng-click="user.action_response_accept(user)">
+					          <md-icon class="material-icons md-light md-8 icon"></md-icon>
+					        </div>
+					         <div class="item" ng-click="user.action_response_accept(user)">
+					          <i class="ci-check-1"></i>
+					        </div>
+					        <div class="item" ng-click="user.action_response_delete(user)">
+					          <i class="ci-delete-3"></i>
+					        </div>
+					    </div>
+					</div>
+				  	<div class="icon_action" ng-hide="user.icon_addfriend" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''">
+				  		<i class="ci-check-3" id="ci-sent" ng-show="user.ci_check&&user.status.friend.approve==false"></i>test
+	                    <i class="ci-notif-star" id="ci-sent" ng-show="user.status.friend.approve==false"></i>
+
+				  		<img src="../assets/svg/c-button-friend.svg" ng-if="user.status.friend.approve==true" >
+	                    <img src="../assets/svg/c-button_addfriends-noactiv.svg" ng-if="user.status.friend.approve==false" >
+	                </div>
+
+	                <div class="icon active" ng-show="user.icon_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)">
+	                    <i class="ci-notif-star" id="ci-sent" ng-show="user.ci_star"></i>
+	                    <img src="../assets/svg/c-button_addfriends-activ.svg">
+	                </div>
+
+				  	<div class="name_action" ng-hide="user.name_addfriend" >
+	                    <div class="title1" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)"></div> 
+	                    <div class="title2" ng-click="user.checklist_addfriend==true?user.cancel_friend_request(user):''" ng-bind="user.checklist_addfriend==true?('$cancel'|translate):('$friend'|translate)" ng-hide="user.hide_approve==true"></div>  
+	                </div>
+
+	                <div class="name active" ng-show="user.name_addfriend" ng-click="user.icon_self==0?user.action_addfriend(user):user.action_response(user)" ng-bind="user.icon_self==0? ('$add.friend'|translate) : ('$response'|translate)">
+	                </div>
+
+				</div>
+				
+				<div class="icon-group tengah_follow">
+	                <div class="icon_action" ng-hide="user.icon_follow" ng-click="user.action_unfollow(user)"> 
+	                    <i class="ci-check-3" id="ci-sent"></i>
+	                    <i class="ci-notif-star" id="ci-sent"></i>
+	                    <img src="../assets/svg/c-button_follow-noactiv.svg">
+	                </div>
+	                <div class="icon active" ng-show="user.icon_follow" ng-click="user.action_follow(user)"> 
+	                    <img src="../assets/svg/c-button_follow-activ.svg">
+	                </div>
+	                <div class="name_action" ng-hide="user.name_follow" ng-click="user.action_unfollow(user)">
+	                  	<div class="title1"><ciayo translate="$following">Following</ciayo></div>
+	                    <div class="title2"><ciayo translate="$unfollow">Unfollow</ciayo></div>
+	                </div>
+	                <div class="name active" ng-show="user.name_follow" ng-click="user.action_follow(user)">
+	                  	<ciayo translate="$follow">Follow</ciayo>
+	                </div>
+	            </div>
+
+				
+			</div>
+	    </div>
+	</div>
+
+</div>

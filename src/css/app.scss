@@ -1,0 +1,52 @@
+// variable
+$blue : #59BAE7;
+$dark-blue : #026797;
+$pink: #EE4481;
+$border-color: #e6e6e6;
+
+// reusable component
+@import "components/base.scss";
+@import "components/keyframes.scss";
+@import "components/ciayo.scss";
+@import "components/ciayofonts.scss";
+@import "components/card.scss";
+@import "components/navbar.scss";
+@import "components/panel.scss";
+@import "components/modal.scss";
+@import "components/pikaday.scss";
+@import "components/parallax.scss";
+@import "components/sticker.scss";
+@import "components/swiper.scss";
+@import "components/banner.scss";
+@import "components/owl.carousel.min.scss";
+@import "components/owl.theme.default.min.scss";
+
+// page specific styling
+@import "pages/wellcome.scss";
+@import "pages/wizzard.scss";
+@import "pages/timeline.scss";
+@import "pages/other-menu.scss";
+@import "pages/setting.scss";
+@import "pages/friend-request.scss";
+@import "pages/notification.scss";
+@import "pages/search.scss";
+@import "pages/trending.scss";
+@import "pages/achievement.scss";
+@import "pages/profile.scss";
+@import "pages/mutual-friend.scss";
+@import "pages/store_old.scss";
+@import "pages/store.scss";
+@import "pages/inventory.scss";
+@import "pages/friend-connection.scss";
+@import "pages/about.scss";
+@import "pages/error.scss";
+@import "pages/new-landing-page.scss";
+@import "pages/updates.scss";
+
+%clear{
+	&:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+}

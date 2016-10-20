@@ -1,0 +1,9 @@
+<div class="_field">
+	<input type="text" placeholder="{{'$add.a.caption'|translate}}..." class="_input" ng-model="vm.drawer.data.caption" limit-to="50">
+	<div class="_counter" ng-bind="vm.drawer.data.caption.length"></div>
+</div>
+<div class="_caption-box">
+	<c-card-parallax parallax="vm.drawer.data.parallax"></c-card-parallax>
+	<img src="assets/img/timeline/card-template.png" style="width:100%;display:block;visibility:hidden;">
+	<div class="_caption" ng-bind="vm.drawer.data.caption" ng-if="vm.drawer.data.caption"></div>
+</div>

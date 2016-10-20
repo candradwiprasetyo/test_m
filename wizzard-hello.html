@@ -1,0 +1,15 @@
+<div class="cm-sticky cm-wizzard -hello">
+	<div class="cm-wrapper">
+		<div class="_head"><img src="assets/img/logo.png" class="_logo"/><img src="assets/img/wizzard/hello.png" class="_banner"/>
+			<div class="_paragraph">
+				<ciayo translate="$ciayo.friends.welcome">CIAYO Friends,	<br>welcome to the CIAYO World!</ciayo> 
+			</div>
+		</div>
+		<div class="cm-alert" ng-hide="!vm.errMsg"><i class="ci-warning -s16"></i>{{vm.errMsg}}
+		</div>
+		<div class="_hi">
+			<input type="text" placeholder="{{'$type.your.username'|translate}} .." class="_input" ng-model="vm.username">
+		</div>
+	</div>
+	<div class="_sticky"><button class="cm-button -block -primary" ng-click="vm.saveUsername()" ng-disabled="vm.isLoading">{{vm.isLoading?'Loading...':('$next'|translate)}}</button></div>
+</div>

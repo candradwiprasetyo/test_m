@@ -1,0 +1,45 @@
+include _mixins
++layout()
+	.cm-setting.-account-verification
+		.cm-wrapper
+			._verify-later
+				a(href='').cm-link Verify later 
+				+icon("skip", 10)
+			._paragraph To verify your account, please enter the One-Time PIN received via SMS on your registered mobile number : XXXXXXXX0966
+			._code
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+			._resend: a(href='').cm-button.-primary.-small Resend (3)
+			._change
+				a(href='#').cm-link change mobile number
+			._change-content
+				._text Change Phone Number
+				._content-wrp
+					._select-wrp
+						select
+							option ID +62
+							option ID +63
+							option ID +64
+						+icon("dropdown", 10)
+					._input-wrp
+						input(type="number" value="81791776279")
+						+icon("delete-2", 10)
+					button.cm-button.-primary.-small Save
+	.cm-modal.-setting-mobile-number-changed
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._paragraph Your mobile number has been changed from <b>+62 8179170966</b> to <b>+62 81791776279</b>
+	script.
+		$(".-account-verification ._change").on("click", function(){
+			$(".-account-verification ._change-content").addClass("-active");
+		})
+		$(".-account-verification ._content-wrp .cm-button").on("click", function(){
+			$(".-setting-mobile-number-changed").addClass("-open");
+		})
+		// close setting-deactive-account
+		$(".-setting-mobile-number-changed [toggle-close]").on("click", function(){
+			$(".-setting-mobile-number-changed").removeClass("-open");
+		})

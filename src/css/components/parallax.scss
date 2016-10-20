@@ -1,0 +1,38 @@
+.parallax-dummy{
+  width:100%;
+  visibility: hidden;
+  display: block;
+}
+.parallax {
+  -moz-perspective: 890px;
+  -ms-perspective: 890px;
+  -o-perspective: 890px;
+  -webkit-perspective: 890px;
+  overflow: hidden;
+  display: block;
+  width:100%;
+}
+
+.parallax-wrapper {
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.parallax-wrapper > div:last-child{
+  display: none;
+}
+
+.parallax-layer {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.01);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  width:120%;height:120%;
+  pointer-events: none;
+  word-break: break-all;
+  // background-size: 512px 375px;
+}

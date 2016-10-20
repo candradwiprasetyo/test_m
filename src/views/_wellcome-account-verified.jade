@@ -1,0 +1,10 @@
+include _mixins
++layout()
+	.cm-wellcome.-verified
+		.cm-wrapper
+			._head
+				+img("logo.png", {class: "_head-logo"})
+				+img("wellcome/success.png", {class: "_success"})
+				._head-text Congratulations!
+				._paragraph Your account has been verified. Let’s enter the CIAYO World!
+				._submit: a(href='').cm-button.-primary Go to Timeline

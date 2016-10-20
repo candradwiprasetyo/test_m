@@ -1,0 +1,33 @@
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$most.popular.contributor'|translate),5)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$most.popular.contributor">Most Popular Contributor</ciayo>
+		</div>
+	</div>
+	<div class="cm-store-slide owl-carousel">
+		<div ng-repeat="item in vm.st.listBannerContributor" ng-click="vm.st.viewDetail(item.product_id)"><img ng-src="{{item.image.mobile}}"></div>
+	</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$contributor.stickers'|translate),3)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$contributor.stickers">Contributor Stickers</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listContributor" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+			<!--<span ng-bind="item.price_1" class="_price" style="background-image: url(assets/img/store/currency-cans.png)"></span>-->
+			<span ng-bind="item.price_1" class="_price" style="background-image: url(assets/img/store/non-currency-caps.png)"></span>
+		</div>
+		<p ng-hide="vm.st.listFree.length">No Data</p>
+	</div>
+</div>

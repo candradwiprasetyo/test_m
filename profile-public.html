@@ -1,0 +1,363 @@
+<div class="cm-profile">
+    <div class="cm-topbar">
+        <div class="cm-topbar-item-public" ng-click="vm.pr.goto_back()"><div class="logo"><img ng-src="assets/img/fav-48.png"></div></div>
+        <div class="cm-topbar-item-public -right" ng-click="vm.pr.login_public()">
+        	<div class="button">Register</div>
+        	<div class="button">Login</div>
+        </div>
+        </div>
+   
+        <!--.cm-profile-content//-->
+        <div class="loader-profile">
+          <div class="loader" ng-hide="vm.pr.load_info"></div>
+        </div>
+        <div class="cm-profile-content -editable">
+          <div class="_profile-wrp" style="background-image: url('assets/img/profile/banner-profile.png');background-position: center bottom;background-repeat: no-repeat;background-size: cover;')">
+          <img ng-src="{{vm.pr.profile_avatar}}" class="_avatar"/>
+          <a class="_download" ui-sref="download-avatar" ng-show="!vm.pr.username&&vm.pr.load_info">download avatar</a>
+
+            
+            <!--<div class="c-banner">
+              <ul class='c-banner-viewport'>
+                <li ng-repeat='images in vm.pr.banner' class='layer' data-depth='{{0.1+(0.20*(4-images.speed))}}'>
+                  <img ng-src="{{images.image}}" style="height:195px;display:block">
+                </li>
+              </ul>
+            </div>-->
+          </div>
+          <div class="_profile-name-wrp">
+            <div class="_username"><span ng-bind="vm.pr.profile_name"></span></div>
+            <div class="_title" ng-bind="vm.pr.title_name"></div>
+         
+            
+            <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16"></i>
+            </div>
+          </div>
+          <div class="_profile-menu">
+            <div class="_menu -active" ng-click="vm.pr.profileContent(1)">
+              <div class="_wrapper"><img src="assets/img/profile/profile-overview-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-overview-activ.png" class="_active"/><span><ciayo translate="$overview">overview</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu" ng-click="vm.pr.profileContent(2)">
+              <div class="_wrapper"><img src="assets/img/profile/profile-timeline-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-timeline-activ.png" class="_active"/><span><ciayo translate="$timeline">timeline</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu" ng-click="vm.pr.profileContent(3)">
+              <div class="_wrapper"><img src="assets/img/profile/profile-connection-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-connection-activ.png" class="_active"/><span><ciayo translate="$connection">connection</ciayo></span>
+              </div>
+            </div>
+            <div class="_menu" ng-click="vm.pr.profileContent(4)">
+              <div class="_wrapper"><img src="assets/img/profile/profile-achievement-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-achievement-activ.png" class="_active"/><span><ciayo translate="$achievement">achievement</ciayo></span>
+              </div>
+            </div>
+          </div>
+          <div class="_profile-inner-content" ng-show="vm.pr.state==1">
+
+            <div class="_profile-overview">
+              <div class="_about-me">
+                <div class="_title">
+                   
+                  about me
+                  <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16"></i>
+                  </div>
+                </div>
+                <div class="_content">
+                  <div class="_list"><i class="ci-fullname -s16"></i>
+                    <div class="_text"><ciayo translate="$full.name">full name</ciayo></div>
+                    <div class="_value"><span ng-bind="vm.pr.first_name.replace('-','')+' '+vm.pr.middle_name.replace('-','')+' '+vm.pr.last_name.replace('-','')"></span></div>
+                  </div>
+                  <div class="_list"><i class="ci-birthday -s16"></i>
+                    <div class="_text"><ciayo translate="$place,.date.of">place, date of birth</ciayo></div>
+                    <div class="_value"><span ng-bind="vm.pr.place_of_birth"> </span>
+                    <span ng-bind="vm.pr.date_of_birth"></span></div>
+                  </div>
+                  <div class="_list"><i class="ci-nationality -s16"></i>
+                    <div class="_text"><ciayo translate="$nationality">nationality</ciayo></div>
+                    
+                     
+                        <div class="text" ng-bind="vm.pr.country_name">
+                        </div>
+                      
+                    
+                  </div>
+                  <div class="_list" ng-show="vm.pr.email">
+                    <i class="ci-email -s16"></i>
+                    <div class="_text">Email</div>
+                    <div class="text" ng-bind="vm.pr.email" style="text-transform:lowercase"></div>
+                  </div>
+                  <div class="_list" ng-show="vm.pr.phone">
+                    <i class="ci-phone -s16"></i>
+                    <div class="_text">Phone</div>
+                    <div class="text" ng-bind="vm.pr.phone"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="_badge">
+                <div class="_title">badges
+                  <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16" ng-click="vm.pr.listBadge()"></i>
+                  </div>
+                </div>
+                <p style="text-align:center" ng-show="!vm.pr.data_choice_badge.length"><ciayo translate="$no.badge.collections">No Badge Collections</ciayo></p>
+                <div class="_content">
+                  <div class="_item" ng-repeat="item in vm.pr.data_choice_badge" ng-if="item.order<=6">
+                    <div class="_img-wrp" ng-init="vm.pr.slot2[item.order]=item.id;vm.pr.choice_badge[item.order]=item.image;vm.pr.pick_badge[item.id]=item.id">
+                     <img ng-src="{{item.image}}"/>
+                    </div><span ng-bind="item.name"></span>
+                  </div>
+                </div>
+                <div class="_action">
+                  <div class="_page">
+                    <!-- <div class="_number -active">1</div> -->
+                   <!--  <div class="_number">1</div> -->
+                  </div>
+                  <div class="_see-all"><a href="" class="cm-link" ng-show="vm.pr.data_choice_badge.length>4"><ciayo translate="$see.all">see all</ciayo></a></div>
+                  <div class="cm-clearfix"></div>
+                </div>
+              </div>
+              <div class="_achievement">
+                <div class="_title">achievements
+                  <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16" ng-click="vm.pr.listAchievement()"></i>
+                  </div>
+                </div>
+                <p style="text-align:center" ng-show="!vm.pr.data_choice_achievement.length"><ciayo translate="$no.achievement.collections">No Achievement Collections</ciayo></p>
+                <div class="_content" id="content_achievement">
+                  <div class="_item" ng-repeat="item in vm.pr.data_choice_achievement | orderBy:order" ng-if="item.order<=6">
+                    <div class="_img-wrp" ng-init="vm.pr.slot1[item.order]=item.id;vm.pr.choice_achievement[item.order]=item.image;vm.pr.pick_achievement[item.id]=item.id">
+                    <img ng-src="{{item.image}}"/>
+                    </div><span ng-bind="item.name"><ciayo translate="$welcome.to.ciayo">Welcome to CIAYO</ciayo></span>
+                  </div>
+                </div>
+                <div class="_action">
+                  <div class="_page" ng-hide="vm.pr.seeall||!vm.pr.data_choice_achievement.length">
+                      <div ng-repeat="tab in vm.pr.choice_achievement_tab" class="_number" ng-class="vm.pr.select_tab==tab.no?'-active':''" ng-bind="tab.no" ng-click="vm.pr.gotoTab(tab.no)"></div>
+                  </div>
+                  <!-- <div class="_see-all" ng-hide="vm.pr.seeall"><a href="" class="cm-link" ng-show="vm.pr.data_choice_achievement.length>4" ng-click="vm.pr.seeAllAchievement()">see all</a></div> -->
+                  <div class="cm-clearfix"></div>
+                </div>
+              </div>
+              <div class="_website">
+                <div class="_title"><ciayo translate="$website">website</ciayo>
+                  <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16"></i>
+                  </div>
+                </div>
+                <div ng-if="!vm.pr.website||vm.pr.website==' '" style="text-align:center"><ciayo translate="$no.website">No Website Added</ciayo></div>
+                <div class="_content" ng-if="vm.pr.list_website">
+                  <div ng-repeat="list in vm.pr.list_website"><a ng-href="http://{{list.name}}" target="_blank" class="cm-link" ng-bind="list.name"></a></div>
+                </div>
+              </div>
+              <div class="_social-media">
+                <div class="_title"><ciayo translate="$my.social.media">my social media</ciayo>
+                  <div class="_edit" ng-show="!vm.pr.username&&vm.pr.load_info"><i class="ci-edit -s16"></i>
+                  </div>
+                </div>
+                <div class="_content">
+                  <div ng-if="!vm.pr.facebook&&!vm.pr.twitter&&!vm.pr.instagram&&!vm.pr.pinterest&&!vm.pr.path"><ciayo translate="$no.social.network">No Social Network Added</ciayo></div>
+                  <a href="{{vm.pr.facebook}}" target="_blank" ng-if="vm.pr.facebook"><img src="assets/img/profile/facebook.png"/></a>
+                  <a href="{{vm.pr.twitter}}" target="_blank" ng-if="vm.pr.twitter"> <img src="assets/img/profile/twitter.png"/></a>
+                  <a href="{{vm.pr.instagram}}" target="_blank" ng-if="vm.pr.instagram"><img src="assets/img/profile/instagram.png"/></a>
+                  <a href="{{vm.pr.pinterest}}" target="_blank" ng-if="vm.pr.pinterest"><img src="assets/img/profile/pinterest.png"/></a>
+                  <a href="{{vm.pr.path}}" target="_blank" ng-if="vm.pr.path"><img src="assets/img/profile/path.png"/></a>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="_profile-timeline">timeline</div>
+            <div class="_profile-connection">connection</div>
+            <div class="_profile-achievement">achievement</div> -->
+          </div>
+
+          <div class="cm-timeline" ng-show="vm.pr.state==2">
+          
+        	<div class="_profile-overview">
+              	<div class="_about-me">
+	                <div class="_title">
+	                   
+	                  Timeline
+	                 
+	                </div>
+	                <div class="_content_public">
+	                	<center>You have to login first to view timeline </center><br>
+	                	<div class="button" ng-click="vm.pr.login_public()">Login</div>
+	                </div>
+            	</div>
+            </div>
+
+          
+          </div>
+
+
+          <!-- start profile-connection -->
+
+          <div class="_profile-connection" ng-show="vm.pr.state==3">
+          
+          	<div class="_profile-overview">
+              	<div class="_about-me">
+	                <div class="_title">
+	                   
+	                  Friends
+	                 
+	                </div>
+	                <div class="_content_public">
+	                	<center>You have to login first to view friends </center><br>
+	                	<div class="button" ng-click="vm.pr.login_public()">Login</div>
+	                </div>
+            	</div>
+            </div>
+
+          </div>
+
+          <!-- end profile connection-->
+
+          <!-- start profile achievement -->
+
+          <div class="_profile-connection" ng-show="vm.pr.state==4">
+           
+          	<div class="_profile-overview">
+              	<div class="_about-me">
+	                <div class="_title">
+	                   
+	                  Achivement
+	                 
+	                </div>
+	                <div class="_content_public">
+	                	<center>You have to login first to view achievement </center><br>
+	                	<div class="button" ng-click="vm.pr.login_public()">Login</div>
+	                </div>
+            	</div>
+            </div>
+
+          
+          </div>
+
+          <!-- end profile achievement -->
+
+        </div>
+      </div>
+      
+     
+     
+     
+     
+      
+        
+      
+      <script>
+        // menu profile //
+        $(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+          $(this).siblings().removeClass("-active")
+          $(this).addClass("-active")
+        })
+        
+        // c button //
+        $(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+          $(this).parent().addClass("-active")
+        })
+        $(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+          $(this).parent().parent().removeClass("-active")
+        })
+        
+        // edit profile //
+        $("._profile-name-wrp ._edit").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile").addClass("-open")
+        })
+        $(".-edit-profile .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile").removeClass("-open")
+        })
+        
+        // edit about me //
+        $("._about-me ._title ._edit").on("click", function(){
+
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-aboutme").addClass("-open")
+        })
+        $(".-edit-profile-aboutme .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-aboutme").removeClass("-open")
+        })
+        $(".-edit-profile-aboutme .cm-panel-content ._content-wrp ._list-edit ._date").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-date-picker").addClass("-open")
+        })
+        $(".-edit-profile-date-picker .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-date-picker").removeClass("-open")
+        })
+        
+        // date picker //
+        var year = new Date();
+        year = year.getFullYear() - 13;
+
+        var picker = new Pikaday(
+        {
+            field: document.getElementById('inputDate'),
+            firstDay: 1,
+            format: 'DD/MM/YYYY',
+            yearRange: [1900,year],
+            bound: false,
+            container: document.getElementById('asd'),
+            onSelect: function() {
+              $(".cm").removeClass("-locked");
+              $(".-edit-profile-date-picker").removeClass("-open");
+              var unixTimestamp = this.getMoment().unix();
+              $('#timestamp').val(unixTimestamp);
+            }
+        });
+        
+        // edit badge and achievement //
+        $("._badge ._title ._edit").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+        })
+        $(".-edit-profile-badge-achievement .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-badge-achievement").removeClass("-open")
+        })
+        $("._achievement ._title ._edit").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+        })
+        // search achievements //
+        $("._container .cm-button._add").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-search-achievement").addClass("-open")
+        })
+        $(".-edit-profile-search-achievement .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-search-achievement").removeClass("-open")
+        })
+        
+        // edit website //
+        $("._website ._title ._edit").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-website").addClass("-open")
+        })
+        $(".-edit-profile-website .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-website").removeClass("-open")
+        })
+        $(".-edit-profile-website .cm-panel-content ._add").on("click", function(){
+          $(this).siblings("._input").addClass("-active")
+        })
+        
+        // edit social media //
+        $("._social-media ._title ._edit").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-profile-social-media").addClass("-open")
+        })
+        $(".-edit-profile-social-media .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-profile-social-media").removeClass("-open")
+        })
+        $(".-edit-profile-social-media .cm-panel-content ._social-media").on("click", function(){
+          $(this).siblings().removeClass("-active")
+          $(this).siblings().removeClass("-add")
+          $(this).addClass("-add")
+        })
+        $(".-edit-profile-social-media .cm-panel-content ._add").on("click", function(){
+          $(this).siblings().removeClass("-active")
+          $(this).siblings().removeClass("-add")
+          $(this).addClass("-active")
+        })
+        
+      </script>

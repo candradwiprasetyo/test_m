@@ -1,0 +1,635 @@
+.cm-setting-menu {
+	._list-menu {
+		padding: 22px 12px;
+		color: #666;
+		background: #fff;
+		border-bottom: 1px solid #ddd;
+		> i {
+			margin-right: 10px;
+		}
+	}
+}
+.cm-panel.-edit-account {
+	.cm-panel-content {
+		color: #666;
+		._email {
+			padding: 16px 12px;
+			border-bottom: 1px solid #eee;
+			._email-label {
+				font-weight: bold;
+			}
+			._email-input {
+				margin-top: 10px;
+				margin-bottom: 8px;
+				background: #f6f6f6;
+			}
+			._email-verify {
+				font-size: 12px;
+				font-weight: bold;
+				color: #02679E;
+				text-align: right;
+			}
+		}
+		._phone {
+			padding: 16px 12px;
+			border-bottom: 1px solid #eee;
+			._phone-label {
+				font-weight: bold;
+			}
+			._phone-number {
+				margin-top: 10px;
+				margin-bottom: 8px;
+				._phone-code {
+					position: relative;
+					float: left;
+					height: 40px;
+					width: 30%;
+					margin-right: 8px;
+					padding: 8px 10px;
+					background: #fff;
+					border: 1px solid #e6e6e6;
+					border-radius: 4px;
+					> select {
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 100%;
+						outline: none;
+						opacity: 0;
+						z-index: 1;
+					}
+					> i {
+						position: absolute;
+						top: 11px;
+						right: 12px;
+					}
+				}
+				._phone-input {
+					width: calc(70% - 8px);
+					background: #f6f6f6;
+				}
+			}
+			._phone-verify {
+				font-size: 12px;
+				font-weight: bold;
+				color: #02679E;
+				text-align: right;
+			}
+		}
+		._login-notif {
+			position: relative;
+			padding: 16px 104px 16px 12px;
+			border-bottom: 1px solid #eee;
+			._login-notif-label {
+				font-weight: bold;
+			}
+			._login-notif-text {
+				margin-top: 8px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+			._login-notif-radio {
+				position: absolute;
+				top: 16px;
+				right: 12px;
+			}
+		}
+		._deactive-account {
+			position: relative;
+			padding: 16px 148px 16px 12px;
+			border-bottom: 1px solid #eee;
+			._deactive-account-label {
+				font-weight: bold;
+			}
+			._deactive-account-text {
+				margin-top: 8px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+			._deactive-account-button {
+				position: absolute;
+				top: 16px;
+				right: 12px;
+				> button {
+					padding: 0;
+					width: 120px;
+					height: 30px;
+				}
+			}
+		}
+		._delete-account {
+			position: relative;
+			padding: 16px 148px 16px 12px;
+			border-bottom: 1px solid #eee;
+			._delete-account-label {
+				font-weight: bold;
+			}
+			._delete-account-text {
+				margin-top: 8px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+			._delete-account-button {
+				position: absolute;
+				top: 16px;
+				right: 12px;
+				> button {
+					padding: 0;
+					width: 120px;
+					height: 30px;
+				}
+			}
+		}
+		._save-account {
+			position: relative;
+			padding: 16px 148px 16px 12px;
+			._save-account-label {
+				font-weight: bold;
+			}
+			._save-account-text {
+				margin-top: 8px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+			._save-account-button {
+				position: absolute;
+				top: 16px;
+				right: 12px;
+				> button {
+					padding: 0;
+					width: 120px;
+					height: 30px;
+				}
+			}
+		}
+	}
+}
+.cm-modal.-setting-account-deactivate,.cm-modal.-setting-account-delete,.cm-modal.-setting-account-logout,.-info {
+	.cm-modal-content {
+		._horizontal-line {
+			margin: 8px -12px;
+			height: 1px;
+			background: #eee;
+		}
+		.cm-button {
+			margin: 0 4px;
+		}
+	}
+}
+
+.cm-panel.-change-password {
+	.cm-panel-content {
+		._old-password,
+		._new-password,
+		._new-password-confirm {
+			padding: 16px 12px;
+			border-bottom: 1px solid #eee;
+			._label {
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+			._input-wrp {
+				position: relative; 
+				> input._input {
+					background: #f2f2f2;
+				}
+				> i {
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					color: #999;
+				}
+			}
+		}
+		._new-password-confirm {
+			border-bottom: none;
+			._error {
+				display: none;
+				margin-top: 5px;
+				font-size: 12px;
+				color: #DB2A40;
+				&.active {
+					display: block;
+				}
+			}
+		}
+		._button {
+			text-align: right;
+			padding-right: 12px;
+			> button {
+				padding: 0;
+				width: 60px;
+				height: 30px;
+			}
+		}
+	}
+}
+.cm-panel.-privacy-settings {
+	.cm-panel-content {
+		._list-privacy {
+			padding: 16px 12px;
+			border-bottom: 1px solid #eee;
+			._label {
+				color: #666;
+				margin-bottom: 5px;
+			}
+			._option {
+				position: relative;
+				width: 100%;
+				height: 34px;
+				padding: 5px 34px;
+				color: #808080;
+				border: 1px solid #e1e1e1;
+				border-radius: 4px;
+				> select {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					outline: none;
+					opacity: 0;
+					z-index: 1;
+				}
+				> i {
+					position: absolute;
+					top: 5px;
+				}
+				> i:first-child {
+					left: 10px;
+				}
+				> i:last-child {
+					right: 10px;
+					top: 9px;
+				}
+				&.-active {
+					border-color: #59BAE7;
+					> i:last-child {
+						color: #02679E;
+					}
+				}
+			}
+		}
+		._list-privacy:last-child {
+			border-bottom: none;
+		}
+	}
+}
+.cm-panel.-general-settings {
+	.cm-panel-content {
+		._card-settings,
+		._notification-settings,
+		._language-settings,
+		._email-notifications {
+			color: #666;
+			padding: 16px 12px;
+			border-bottom: 1px solid #eee;
+			._label {
+				font-weight: bold;
+				margin-bottom: 15px;
+			}
+			._text {
+				position: relative;
+				._option {
+					position: absolute;
+					top: 0;
+					right: 4px;
+				}
+			}
+			._text-additional {
+				font-size: 12px;
+			}
+			._loader-language {
+				    width: 100%;
+				    height: 100%;
+				    margin-top: -5px;
+				    padding: 6px 8px;
+				    color: #808080;
+				    border: 1px solid #e1e1e1;
+				    background: transparent;
+				    outline: none;
+				.loader {
+				    position: absolute;
+				    right: 7px;
+					height: 20px;
+					width: 20px;
+				}
+			}
+		}
+		._card-settings {
+			._text,
+			._text-additional {
+				padding-right: 90px;
+			}
+			._text {
+				margin-bottom: 8px;
+			}
+			._text-additional {
+				line-height: 14px;
+			}
+		}
+		._notification-settings {
+			._text {
+				margin-bottom: 16px;
+			}
+			._text:last-child {
+				margin-bottom: 0;
+			}
+		}
+		._notification-settings,
+		._language-settings {
+			._option._select {
+				position: absolute;
+				width: 150px;
+				height: 34px;
+				> i {
+				    height: 30px;
+				    width: 30px;
+				    position: absolute;
+				    text-align: center;
+				    padding-top: 5px;
+				    top: 0;
+				    right: 0;
+				}
+			}
+			._option > select {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin-top: -5px;
+				padding: 6px 8px;
+				color: #808080;
+				border: 1px solid #e1e1e1;
+				background: transparent;
+				outline: none;
+				z-index: 1;
+			}
+		}
+		._email-notifications {
+			border-bottom: none;
+		}
+		._notification-settings,
+		._language-settings,
+		._email-notifications {
+			._text {
+				padding-right: 161px;
+			}
+		}
+	}
+}
+
+.cm-setting.-account-deactivate {
+	.cm-wrapper {
+		text-align: center;
+		> img {
+			margin-top: 30px;
+			margin-bottom: 24px;
+			width: 140px;
+			height: 140px;
+		}
+		._head {
+			padding: 0 18px;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		._paragraph {
+			padding: 0 18px;
+			color: #666;
+			line-height: 18px;
+		}
+		._reactive,
+		._login {
+			.cm-button {
+				width: 296px;
+				margin-top: 10px;
+			}
+		}
+		._login {
+			.cm-button {
+				border-color: #026797;
+				color: #026797;
+			}
+		}
+	}
+}
+
+.cm-setting.-account-verification{
+	.cm-wrapper {
+		text-align: center;
+		._verify-later {
+			margin-top: 17px;
+			text-align: right;
+			a {
+				font-weight: normal;
+			}
+			> i {
+				margin-top: -5px;
+				margin-left: 6px;
+			}
+		}
+		._paragraph {
+			margin-top: 50px;
+			padding: 0 30px;
+			color: #666;
+		}
+		._code {
+			margin-top: 24px;
+			margin-bottom: 60px;
+			> input {
+				margin-left: 4px;
+				margin-right: 4px;
+				width: 54px;
+				height: 54px;
+				font-size: 30px;
+				text-align: center;
+				border: 1px solid #e6e6e6;
+				border-radius: 4px;
+				outline: none;
+				&:focus {
+					border-color: $blue;
+				}
+				&::placeholder {
+					color: #999;
+				}
+			}
+		}
+		._change {
+			margin-top: 8px;
+		}
+		._change-content {
+			display: none;
+			margin-top: 36px;
+			&.-active {
+				display: block;
+			}
+		}
+		._text {
+			margin-left: -150px;
+			text-align: center;
+			font-weight: bold;
+		}
+		._content-wrp {
+			margin-top: 8px;
+			._select-wrp {
+				position: relative;
+				display: inline-block;
+				margin-right: 8px; 
+				width: 82px;
+				height: 30px;
+				top: -4px;
+				border: 1px solid #e6e6e6;
+				background: #fff;
+			    border-radius: 4px;
+			    outline: none;
+				> select {
+					position: absolute;
+				    top: 0;
+				    left: 0;
+				    height: 100%;
+				    width: 100%;
+				    outline: none;
+				    opacity: 0;
+				    z-index: 1;
+				}
+				> i {
+					position: absolute;
+					top: 6px;
+					right: 10px;
+				}
+			}
+			._input-wrp {
+				position: relative;
+				display: inline-block;
+				margin-right: 8px;
+				width: 128px;
+				height: 30px;
+				> input {
+					width: 100%;
+					height: 100%;
+					padding-left: 10px;
+					padding-right: 25px;
+					border: 1px solid #e6e6e6;
+					border-radius: 4px;
+					outline: none;
+				}
+				> i {
+					position: absolute;
+					top: 7px;
+					right: 10px;
+				}
+				&.-email {
+					width: 227px;
+				}
+			}
+			> button {
+				margin-top: -4px;
+			}
+		}
+	}
+}
+.cm-setting.-account-verification-success {
+	.cm-wrapper {
+		._head {
+			padding-top: 20px;
+			padding-bottom: 24px;
+			text-align: center;
+			._head-logo {
+				display: inline-block;
+				vertical-align: top;
+				margin-bottom: 10px;
+			}
+			._success {
+				display: block;
+				width: 140px;
+				margin: 34px auto 24px;
+			}
+			._head-text {
+				font-weight: bold;
+				font-size: 18px;
+			}
+			._paragraph {
+				max-width: 220px;
+				margin: 0 auto 24px;
+			}
+			._submit > .cm-button {
+				width: 100%;
+			}
+		}
+	}
+}
+.loader-wrp {
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #eee;
+    position: absolute;
+    z-index: 50;
+    display:none;
+    &.active {
+    	display: block;
+    }
+    .loader {
+    	width: 30px;
+	    height: 30px;
+	    position:absolute;
+	    top:45%;
+	    left:50%;
+	    margin-left:-15px;
+	    margin-top:-15px;
+    }
+}
+.-hide {
+	opacity:0;
+}
+
+._tooltip-password.active {
+	display: block;
+}
+._tooltip-password {
+	position: relative;
+	display: none;
+	background: #fff;
+	margin-top: 10px;
+	padding: 10px 20px 10px 10px;
+	border: 1px solid #e4e4e4;
+	border-radius: 4px;
+	._title {
+		color: #59BAE7;
+		margin-bottom: 5px;
+	}
+	._list {
+		position: relative;
+		font-size: 12px;
+		color: #4A4A4A;
+		padding-left: 20px;
+		> span {
+			position: absolute;
+			top: 5px;
+			left: 0;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		> i {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: #59BAE7;
+			margin: 0;
+			padding: 0;
+		}
+		&.active {
+			> span {
+				display: none;
+			}
+			> i {
+				display: block;
+			}
+		}
+	}
+}

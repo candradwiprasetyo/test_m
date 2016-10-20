@@ -1,0 +1,50 @@
+mixin img(File, Attr)
+	if Attr
+		img(src='assets/img/' + File height=Attr.height width=Attr.width class=Attr.class id=Attr.id style=Attr.style)
+	else
+		img(src='assets/img/' + File)
+
+mixin icon(Icon, Size)
+	i(class='ci-' + Icon + " -s" + Size)
+
+mixin pp(Size)
+	.cm-pp(style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="-s" + Size)
+mixin layout(Option)
+	doctype
+	html(lang="en")
+		head
+			meta(charset="utf-8")
+			meta(name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height")
+			meta(name="theme-color" content="#59BAE7")
+			meta(name="msapplication-navbutton-color" content="#59BAE7")
+			meta(name="apple-mobile-web-app-capable" content="#59BAE7")
+			meta(name="apple-mobile-web-app-status-bar-style" content="#59BAE7")
+			link(rel="stylesheet" href="assets/css/app.css")
+			script(src="assets/libs/jquery.js")
+			if Option
+				//- css
+				if Option.css
+					each css in Option.css
+						link(rel="stylesheet" href="assets/css/" + css)
+				//- javascript library
+				if Option.libs
+					each lib in Option.libs
+						script(src="assets/libs/" + lib)
+				//- javascript
+				if Option.js
+					each js in Option.js
+						script(src="assets/js/" + js)
+			
+			script(src="assets/libs/pikaday.js")
+			
+		body.cm
+			div(ui-view)
+				if Option && Option.navbar
+					.cm-navbar
+						each nav in ["timeline", "friend-request", "notification","search", "menu"]
+							if nav == Option.navbar
+								a(href="_" + nav + ".html" class="cm-navbar-item -" + nav + " -active")
+							else
+								a(href="_" + nav + ".html" class="cm-navbar-item -" + nav)
+						.cm-clearfix
+				block

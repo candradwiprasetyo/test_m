@@ -1,0 +1,33 @@
+<div class="cm-sticky">
+	<div class="cm-wrapper">
+		<div class="_search">
+			<div class="_search-input"><i class="ci-search -s16"></i>
+				<div class="_tag" ng-repeat="with in vm.drawer.data.withs">
+					<span ng-bind="with.user_display_name"></span>
+					<i class="ci-delete-2 -s8" ng-click="vm.drawer.data.deleteWith(with)"></i>
+				</div>
+				<div class="_input">
+					<input 
+						type="text"
+						placeholder="{{'$add.a.friends'|translate}} .."
+						ng-model="vm.drawer.data.search"
+						ng-model-options="{debounce: 150}"
+						ng-change="vm.drawer.data.searchWith()"
+					>
+				</div>
+				<div class="cm-clearfix"></div><i class="ci-delete-2 -s10" ng-click="vm.drawer.data.deleteSearch()"></i>
+			</div>
+		</div>
+		<div class="cm-messages" ng-if="vm.drawer.data.isEmpty">
+		<i class="ci-warning -s40"></i>
+		<p><ciayo translate="$not.found"></ciayo></p>
+	</div>
+		<div class="_list-item">
+			<div class="_list" ng-repeat="with in vm.drawer.data.list" ng-click="vm.drawer.data.selectWith(with);">
+				<div style="background-size:cover;background-color: {{with.avatar.background}};background-image: url({{with.avatar.cropped}})" class="cm-pp -s30"></div>
+				<span ng-bind="with.user_display_name"></span>
+				<i class="ci-check-1 -s16" ng-if="vm.drawer.data.isExist(with)"></i>
+			</div>
+		</div>
+	</div>
+</div>

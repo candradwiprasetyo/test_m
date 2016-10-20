@@ -1,0 +1,25 @@
+<div class="cm-sticky cm-wizzard -mascot">
+	<div class="cm-wrapper">
+		
+		<div class="_head">
+			<a ui-sref="create-avatar.avatar" class="_back"><ciayo translate="$back">BACK</ciayo></a>
+			<div class="_title"><ciayo translate="$select.your.mascot">SELECT YOUR MASCOT</ciayo></div>
+		</div>
+		<div class="_paragraph"><ciayo translate="$the.navajo.indians">The Navajo Indians have their spirit animals, but here in the CIAYO World, we have our mascots. Pick one to accompany you along the way!</ciayo></div>
+		<div ng-repeat="mascot in vm.mascot" class="_mascot -{{mascot.name | lowercase}}" ng-click="vm.selectedMascot=mascot.id_image_mascot" ng-class="vm.selectedMascot==mascot.id_image_mascot?'-active':''">
+			<div class="_mascot-name" ng-bind="mascot.name"></div>
+			<div ng-repeat="trait in mascot.mascot_trait">
+				<div class="_mascot-label" ng-bind="trait.name"></div>
+				<div class="_mascot-bar">
+					<div class="_mascot-bar-meter">
+						<div style="width: {{trait.percent}}%; background: {{trait.color}}" class="_mascot-bar-meter-line"></div>
+					</div>
+					<div class="_mascot-bar-digit" ng-bind="trait.percent+'%'"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="_sticky">
+		<button class="cm-button -block -primary" ng-click="vm.saveMascot()" ng-disabled="vm.isLoading">{{vm.isLoading?'Loading...':'Next'}}</button>
+	</div>
+</div>

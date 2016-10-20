@@ -1,0 +1,35 @@
+.cm-error {
+	.cm-wrapper {
+		margin: 20px 0;
+		text-align: center;
+		._logo > img {
+			max-width: 40px;
+			max-height: 40px;
+		}
+		._error-img > img {
+			margin: 24px 0;
+			max-width: 140px;
+			max-height: 140px;
+		}
+		._error {
+			font-size: 18px;
+			font-weight: bold;
+			color: #59BAE7;
+			text-transform: uppercase;
+			> span {
+				color: #EC4380;
+			}
+		}
+		._info {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		._paragraph {
+			padding: 8px 30px 16px 42px;
+			color: #666;
+		}
+		._submit > .cm-button {
+			width: 296px;
+		}
+	}
+}

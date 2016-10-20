@@ -1,0 +1,119 @@
+<div>
+	<div class="cm-timeline" lazy-load ="vm.loadCard()">
+		<div class="cm-timeline-post" ng-click="vm.setStatePost('open')">
+			<div class="_button"><i class="ci-add-item -s20"></i>
+				<div class="_label"><ciayo translate="$search.activity"></ciayo></div>
+			</div>
+		</div>
+		<div>
+			<div class="_new-post" ng-class="{'-active':vm.timeline.new_post_count>0 && vm.timeline.new_post_paused==false}" ng-click="vm.newPostLoad()"><img src="../assets/svg/new-post.svg"/>New Post..</div>
+		</div>
+		<div class="cm-loader" ng-if="vm.timeline.new_post_loading"></div>
+		<div class="cm-loader" ng-repeat="loading in vm.timeline.loading_count track by $index"></div>
+		<c-card ng-repeat="card in vm.timeline.card_list" card="card" type="timeline" index="$index"/>
+	</div>
+	<!-- drawer post-->
+	<div class="cm-panel -timeline-post -topbar" ng-class="{'-open':vm.post.isPostActive()}">
+		<div class="cm-topbar">
+			<div class="cm-topbar-item -left" ng-click="vm.setStatePost()"><ciayo translate="$back">BACK</ciayo></div>
+			<div class="cm-topbar-item -right" ng-click="vm.setStatePost('save')"><ciayo translate="$post">POST</ciayo></div>
+			<div class="cm-topbar-title"><ciayo translate="$post.activity">Post Activity</ciayo></div>
+		</div>
+		<div style="background:#f0f0f0" class="cm-panel-content">
+			<div class="_show-to">
+				<div class="_show-to-label"><ciayo translate="$show.to:">Show to:</ciayo> </div>
+				<div class="_show-to-button">
+					<i class=" -s16" ng-class="'ci-'+vm.post.permission.data.icon"></i>
+					<span ng-bind="(vm.post.permission.data.name|translate)"></span>
+					<select ng-options="(permission.name|translate) for permission in vm.post.permission.list track by permission.id"
+					ng-model="vm.post.permission.data">
+					</select><i class="ci-dropdown -s10"></i>
+				</div>
+			</div>
+			<div class="_activity-input"><i class="ci-edit -s16"></i>
+				<input class="_input" type="text" placeholder="{{'$search.activity'|translate}}" ng-model="vm.post.activity.search" ng-model-options="{debounce: 150}" ng-change="vm.post.searchActivity()" ng-readonly="vm.post.activity.data" ng-click="vm.post.searchActivity(1)">
+				
+				<div class="_activity-input-list" ng-class="{'cm-hide':vm.post.activity.search==''}">
+					<div class="_list" ng-repeat="activity in vm.post.activity.list" ng-click="vm.post.selectActivity(activity)" ng-class="{_new:activity.activity_new==true}">
+						<img ng-src="{{activity.activity_thumbnail}}">
+						<span ng-bind="activity.activity_name"></span>
+						<div class="_label-new"><ciayo translate="$new">New</ciayo></div>
+					</div>
+				</div>
+				<i class="ci-delete-2 -s10" ng-click="vm.post.reset()"></i>
+			</div>
+			<div ng-if="vm.post.loadingActivity" class="cm-loader"></div>
+			<div class="cm-messages" ng-if="vm.post.activity.isEmpty">
+				<i class="ci-warning -s40"></i>
+				<p><ciayo translate="$not.found"></ciayo></p>
+			</div>
+			<div class="_feeling" ng-class="{'cm-hide':vm.post.activity.data==undefined}">
+				<div class="_feeling-option" ng-repeat="mood in vm.post.mood.list" ng-class="{'-active':vm.post.mood.data.mood_id==mood.mood_id}" ng-click="vm.post.selectMood(mood)">
+					<i class="-s16" ng-class="mood.name.toLowerCase()=='flat'?'ci-mood-normal':('ci-mood-'+mood.name.toLowerCase())"></i>
+					<span ng-bind="mood.name"></span></div>
+				<div class="cm-clearfix"></div>
+			</div>
+			<div class="_media" ng-class="{'cm-hide':vm.post.activity.data==undefined}">
+				<!--<c-card-parallax parallax="vm.post.activity.parallax" ng-hide="vm.post.hide_parallax"></c-card-parallax>-->
+				<c-card-parallax parallax="vm.post.activity.parallax"></c-card-parallax>
+				<img src="assets/img/timeline/card-template.png" style="width:100%;display:block;visibility:hidden;">
+				<div class="_caption-button" ng-click="vm.post.setCaption()" ng-if="vm.post.caption.length==0">
+					<button><i class="ci-add-item -s16"></i><span><ciayo translate="$caption">Caption</ciayo></span></button>
+				</div>
+				<div class="_caption" ng-if="vm.post.caption.length"> 
+					<div class="_caption-edit" ng-click="vm.post.setCaption()"><i class="ci-edit -s16"></i>
+					</div><span ng-bind="vm.post.caption"></span>
+				</div>
+			</div>
+			
+			<div class="_column" ng-class="{'cm-hide':vm.post.activity.data==undefined}">
+				<div class="_column-button" ng-repeat="item in vm.post.items track by $index" ng-click="vm.post.setItem($index)"><img src="assets/img/timeline/column.png" class="_holder"/>
+					<div  ng-if="item!=undefined" ng-style="(item!=undefined)?{'background-image': 'url('+item.item_image_thumbnail+')'}:{}" class="_button -item -filled"></div>
+					<div class="_button -item" ng-if="item==undefined">
+						<div class="_block"><i class="ci-add-item -s16"></i><span><ciayo translate="$item">Item</ciayo> <label ng-bind="($index+1)"></label></span>
+						</div>
+					</div>
+				</div>
+				<div class="_column-button" ng-click="vm.post.setWith()"><img src="assets/img/timeline/column.png" class="_holder"/>
+					<!-- kalo empty-->
+					<div class="_button -with" ng-if="vm.post.withs.length==0">
+						<div class="_block"><i class="ci-add-with-people-1 -s16"></i><span><ciayo translate="$with">With</ciayo></span>
+						</div>
+					</div>
+					<!-- kalo keisi-->
+					<div class="_button -with -filled" ng-if="vm.post.withs.length!=0">
+						<div class="_block"><span><ciayo translate="$with">With</ciayo></span><b ng-bind="vm.post.withs.length"></b></div><i class="ci-with -s16"></i>
+					</div>
+				</div>
+				<div class="_column-button" ng-click="vm.post.setPlace()">
+					<img src="assets/img/timeline/column.png" class="_holder"/>
+					<!-- klo empty-->
+					<div class="_button -place" ng-if="vm.post.place==undefined">
+						<div class="_block"><i class="ci-add-place-1 -s16"></i><span><ciayo translate="$place">Place</ciayo></span>
+						</div>
+					</div>
+					<!-- kalo keisi-->
+					<div ng-if="vm.post.place" style="{{'background-image: url('+vm.post.place.place_thumbnail+')'}}" class="_button -place -filled"><i class="ci-setting-information -s8"></i>
+					</div>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- modal post-item-clear-->
+	<div class="cm-modal -timeline-post-item-clear">
+		<div toggle-close class="cm-modal-backdrop"></div>
+		<div class="cm-modal-content -pad">
+			<div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+			</div>
+			<div class="_paragraph"><ciayo translate="$delete.all.items">Delete all items ?</ciayo></div>
+			<div toggle-close class="cm-button -primary -small"><ciayo translate="$yes">YES</ciayo></div>
+			<div toggle-close class="cm-button -primary -small"><ciayo translate="$no">NO</ciayo></div>
+		</div>
+	</div>
+	<div class="view-more" ng-show="vm.timeline.load_more">
+		<div class="loader" ng-show="vm.timeline.loading"></div>
+			<div class="button" ng-click="vm.timeline.getCardList()" ng-hide="vm.timeline.loading"><ciayo translate="$view.more">View more</ciayo>
+			</div>
+	</div>
+</div>

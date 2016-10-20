@@ -1,0 +1,1034 @@
+include _mixins
++layout({
+	navbar: "timeline"
+})
+	.cm-timeline
+		.cm-timeline-post
+			._button
+				+icon("add-item", 20)
+				._label What are you doing?
+		mixin card(Ver, With, Place, Comment)
+			.cm-card
+				._head
+					+pp(30)
+					._username aji_mahendra
+					._userstatus is leaving on a jetplane
+				if Ver !== "detail"
+					._media
+						._timestamp
+							._time 08:15
+							._date 01 JAN 2015
+						img(src="assets/img/timeline/_activity.png" style="display:block;width:100%")
+						._info-layer
+							mixin layer-item(No)
+								._layer.-item(class="-item-" + No)
+									+img("timeline/_item-1-large.png", {class: "_image"})
+									._title Asics Run Shoes
+									._paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam sapiente totam reiciendis voluptates quis numquam at, mollitia veritatis nulla quam saepe harum, culpa, neque doloribus quod. Saepe, deserunt, hic?
+							+layer-item(1)
+							+layer-item(2)
+							+layer-item(3)
+							if With == "filled"
+								._layer.-with
+									._title With 5 people
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+									._list
+										+pp(30)
+										._username Daniel Tatang's
+							if With == "secret"
+								._layer.-with-secret
+									+img("card/its-secret.png", {class: "_image"})
+									._paragraph It's secret
+							if With == "alone"
+								._layer.-with-alone
+									+img("card/im-alone.png", {class: "_image"})
+									._paragraph I'm alone
+							if Place == "filled"
+								._layer.-place
+									+img("timeline/_place-1-layer.png", {class:"_logo"})
+									._title BMW Motor SARL
+									._address 23-29 Rives de Clausen, L-2165 Luxembourg | Company No: R.C.S. Luxembourg  | B100.468, VAT: LU 20981643
+									._map: img(src="assets/img/timeline/_map.png" style="width:100%;display:block")
+
+							if Place == "secret"
+								._layer.-place.-secret
+									+img("card/secret-place.png", {class:"_logo"})
+									._title It's Secret
+									._address [Keterangan tentang bahwa user merahasiakan tempat ini untuk diketahui oleh orang lain]
+									._map This location is not available on map
+									
+							._close: +icon("delete-2", 10)
+							._overlay
+					._info
+						+img("timeline/column.png", {class: "_holder"})
+						._row
+							._column
+								._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-1.png)" layer-target="-item-1")
+								._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-2.png)" layer-target="-item-2")
+								._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-4.png)" layer-target="-item-3")
+								._cell.-item.-empty: ._block(style="background-image: url(assets/img/timeline/item-empty.png)")
+
+								if With == "filled"
+									._cell.-with.-friend
+										._block(layer-target="-with")
+											span
+												| with
+												b 5
+											+icon("with", 20)
+
+								if With == "ask"
+									._cell.-with.-ask
+										._block
+											+icon("icon-with-side", 42)
+											span
+												| who 
+												br
+												| are you 
+												br
+												| with?
+
+								if With == "secret"
+									._cell.-with.-secret
+										._block(layer-target="-with-secret")
+											+icon("icon-with-side", 42)
+											+icon("icon-balon", 44)
+											span 
+												| It's 
+												br
+												| Secret
+												
+								if With == "alone"
+									._cell.-with.-alone
+										._block(layer-target="-with-alone")
+											+icon("icon-with-side", 42)
+											+icon("icon-balon", 44)
+											span
+												| I'm 
+												br
+												| Alone
+								
+								if Place == "filled"
+									._cell.-place.-filled
+										._block(layer-target="-place" style="background-image: url(assets/img/timeline/_place-1.png)")
+											+icon("icon-place-side", 42)
+
+								if Place == "ask"
+									._cell.-place.-ask
+										._block
+											+icon("icon-place-side", 42)
+											span 
+												| where 
+												br
+												| are you?
+
+								if Place == "secret"
+									._cell.-place.-secret
+										._block(layer-target="-place.-secret")
+											+icon("icon-place-side", 42)
+											+icon("icon-balon", 44)
+											span 
+												| It's
+												br
+												| Secret
+					._react
+						._overview: +img("timeline/_react.png")
+						._dropdown
+							._dropdown-button: +icon("cimotion", 20)
+							._dropdown-reaction
+								._arrow
+								._col: ._reaction.-s40(style="background-image: url('assets/img/card/Ciayo.png');")
+								._col: ._reaction.-s25(style="background-image: url('assets/img/card/Chips.png');")
+								._col: ._reaction.-s50(style="background-image: url('assets/img/card/Crocket.png');")
+								._col: ._reaction.-s30(style="background-image: url('assets/img/card/Coco.png');")
+								._col: ._reaction.-s45(style="background-image: url('assets/img/card/Carla.png');")
+								._col: ._reaction.-s55(style="background-image: url('assets/img/card/Chuck.png');")
+								.cm-clearfix
+						._paragraph Be the first to CIMOTE this!
+				._tab
+					._tab-item.-comment.-active
+						._tab-button
+							span
+								+icon("comment", 20)
+								b 54
+						._tab-pane
+							if Comment
+								if Ver !== "detail"
+									._read
+										+icon("comment", 20)
+										span Read all 36 comments ..
+								mixin comment(Class, Open)
+									.cm-card-comment(class= Class)
+										+pp(30)
+										._comment
+											._comment-username aji_mahendra
+											._comment-pubdate 5 Dec at 08:00
+											._comment-option(class= Open)
+												+icon("etc-fill", 12)
+												._comment-option-dropdown
+													._option(onclick="editComment()") Edit
+													._option Delete
+											._comment-content Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aen lacinia bibendum nulla sed
+											._comment-action
+												._comment-action-button.-reply
+													+icon("reply")
+													span Reply
+												._comment-action-button.-like.cm-color-dark-blue
+													+icon("like")
+													span 20
+												._comment-action-button.-dislike
+													+icon("dislike")
+													span 16
+												.cm-clearfix
+											if Post
+												._comment-replies View 2 replies ..
+								+comment("-post", "-open")
+								+comment
+							else
+								._empty
+									+img("timeline/empty-comment.png", {class: "_empty-image"})
+									._empty-paragraph Be the first to comment
+							mixin comment-reply
+								.cm-card-comment.-reply.-down
+									+pp(30)
+									button(type="button").cm-button.-primary.-small Send
+									._comment
+										//- ._input(contenteditable="true" placeholder="Write a comment ..")
+										input(type="text" class="_input" placeholder="Write a comment ..")
+										+icon("sticker-button", 16)		
+							if Ver == "detail"
+								._sticky
+									+comment-reply
+									+sticker("cm-hide")
+							else
+								+comment-reply
+							
+					._tab-item.-share
+						._tab-button
+							span
+								+icon("share", 20)
+								b 20
+						._tab-pane
+							._title Share this post
+							._social
+								._social-button: +icon("facebook", 40)
+								._social-button: +icon("twitter", 40)
+								._social-button: +icon("instagram", 40)
+								._social-button.-more 
+									+icon("meatball", 40)
+							._copy
+								span Copy this post’s link
+								+icon("setting-privacy-policy", 16)
+							if Ver == "timeline"
+								._shared
+									+icon("share", 16)
+									span View all 20 shares ..
+							if Ver == "detail"
+								mixin shared(Open)
+									._list
+										+pp(30)
+										._right
+											a(href)._link: +icon("facebook", 18) 
+											a(href)._link: +icon("instagram", 18) 
+											._dropdown(class= Open)
+												+icon("meatball", 18)
+												._dropdown-social
+													a(href)
+														+icon("pinterest", 18) 
+														span Pinterest
+													a(href)
+														+icon("twitter", 18) 
+														span Twitter
+										._username ananda mikola
+								+shared("-open")
+								+shared()
+								+shared()
+								+shared()
+								+shared()
+								+shared()
+
+					._tab-item.-download
+						._tab-button: span: +icon("download", 20)
+						._tab-pane
+							+img("timeline/_post.png", {class: "_image"})
+							button(type="button").cm-button.-primary.-small
+								+icon("download")
+								| Download Activity
+					._tab-item.-option
+						._tab-button: span: +icon("etc-outline", 20)
+						._tab-pane
+							._show-to
+								._show-to-label Show to:
+								._show-to-button
+									+icon("public", 16)
+									| Public
+									select
+										option Public
+										option Friends
+										option Only Me
+									+icon("dropdown", 10)
+							._option Turn Off Notifications
+							._option Edit Post
+							._option Delete Post
+					._tab-item.-ciayo
+						._tab-button: span: +icon("c-button", 30)
+						._tab-pane
+							._button
+								+img("timeline/c-add-friend.png", {class: "_button-image"})
+								._button-label view profile
+							._button
+								+img("timeline/c-profile.png", {class: "_button-image"})
+								._button-label view profile
+							._button
+								+img("timeline/c-follow.png", {class: "_button-image"})
+								._button-label follow
+					.cm-clearfix
+				mixin sticker(Class)
+					.cm-sticker(class= Class)
+						.cm-sticker-bar
+							.cm-sticker-bar-button.-active Sticker
+							.cm-sticker-bar-button Emoji
+							.cm-sticker-bar-button.-shop 
+								+icon("mobile-store-default-36", 16)
+								span Shop
+							.cm-clearfix
+						.cm-sticker-tab
+							.cm-sticker-tab-control.-prev(disabled): +icon("prev", 12)
+							.cm-sticker-tab-control.-next: +icon("next", 12)
+							.cm-sticker-tab-viewport
+								.cm-sticker-tab-button.-active(style="background-image: url('assets/img/_sticker-tab-1.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-2.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-3.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-4.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-5.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-6.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-1.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-2.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-3.png')")
+						.cm-sticker-pane
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-sticker-item.-emoji: +img("_sticker-1.png")
+							.cm-clearfix
+				if Ver !== "detail"
+					+sticker("cm-hide")
+		+card("timeline", "filled", "filled", true)
+		+card("timeline", "ask", "ask", false)
+		+card("timeline", "secret", "secret", true)
+		+card("timeline", "alone", "secret", true)
+	// drawer post
+	.cm-panel.-timeline-post.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right POST
+			.cm-topbar-title Post Activity
+		.cm-panel-content(style="background:#f0f0f0")
+			._show-to
+				._show-to-label Show to:
+				._show-to-button
+					+icon("public", 16)
+					| Public
+					select
+						option Public
+						option Friends
+						option Only Me
+					+icon("dropdown", 10)
+			._activity-input
+				+icon("edit", 16)
+				input(type="text" placeholder="What are you doing?")
+				._activity-input-list.cm-hide
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+					._list
+						img
+						span Eat cake while take a break at work
+				+icon("delete-2", 10)
+			._feeling
+				._feeling-option
+					+icon("mood-happy", 16)
+					span Happy
+				._feeling-option.-active
+					+icon("mood-normal", 16)
+					span Normal
+				._feeling-option
+					+icon("mood-sad", 16)
+					span Sad
+				.cm-clearfix
+			._media
+				img(src="assets/img/timeline/_activity.png" style="width:100%;display:block")
+				._caption-button.cm-hide
+					button
+						+icon("add-item", 16)
+						span Caption
+				._caption 
+					._caption-edit: +icon("edit", 16)
+					| Nyantai dulu broooh!!
+			._column
+				._column-button(toggle-post-item="#post-item-1")
+					+img("timeline/column.png", {class: "_holder"})
+					._button.-item.-filled(style="background-image: url('assets/img/timeline/_item-1.png')")
+				._column-button(toggle-post-item="#post-item-2")
+					+img("timeline/column.png", {class: "_holder"})
+					._button.-item.-filled(style="background-image: url('assets/img/timeline/_item-2.png')")
+				._column-button(toggle-post-item="#post-item-3")
+					+img("timeline/column.png", {class: "_holder"})
+					._button.-item
+						._block
+							+icon("add-item", 16)
+							span Item 3
+				._column-button(toggle-post-item="#post-item-4")
+					+img("timeline/column.png", {class: "_holder"})
+					._button.-item
+						._block
+							+icon("add-item", 16)
+							span Item 4
+				._column-button
+					+img("timeline/column.png", {class: "_holder"})
+					// kalo empty
+					._button.-with.cm-hide
+						._block
+							+icon("add-with-people", 16)
+							span With
+					// kalo keisi
+					._button.-with.-filled
+						._block
+							span With
+							b 5
+						+icon("with", 16)
+				._column-button
+					+img("timeline/column.png", {class: "_holder"})
+					// klo empty
+					._button.-place.cm-hide
+						._block
+							+icon("add-with-people", 16)
+							span Place
+					// kalo keisi
+					._button.-place.-filled(style="background-image: url('assets/img/timeline/_place-1.png')")
+						+icon("setting-information", 8)
+				.cm-clearfix
+	// drawer post-caption
+	.cm-panel.-timeline-post-caption.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right SAVE
+			.cm-topbar-title Add a Caption
+		.cm-panel-content
+			._field
+				input(type="text" placeholder="Add a caption ..")._input
+				._counter 29
+			._caption-box
+				img(src="assets/img/timeline/_activity.png" style="width:100%;display:block")
+				._caption Nyantai dulu broooh!!
+	// drawer post-item
+	.cm-panel.-timeline-post-item.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right SAVE
+			.cm-topbar-title Add Items
+		.cm-panel-content
+			.cm-sticky
+				.cm-wrapper
+					._pane.-filled#post-item-1
+						+img("timeline/_item-1-large.png", {class: "_image"})
+						._title Asics Run Shoes
+						._paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo placeat obcaecati quasi sunt blanditiis iste quod. Repellendus voluptatem soluta dolore eos illum aperiam, pariatur deleniti neque, temporibus recusandae porro.
+						._controls
+							button(type="button").cm-button.-primary.-small
+								+icon("edit")
+								| Replace
+							button(type="button").cm-button.-primary.-small
+								+icon("trash")
+								| Delete
+					._pane.-filled#post-item-2
+						+img("timeline/_item-2.png", {class: "_image"})
+						._title Asics Run Shoes
+						._paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quo placeat obcaecati quasi sunt blanditiis iste quod. Repellendus voluptatem soluta dolore eos illum aperiam, pariatur deleniti neque, temporibus recusandae porro.
+						._controls
+							button(type="button").cm-button.-primary.-small
+								+icon("edit")
+								| Replace
+							button(type="button").cm-button.-primary.-small
+								+icon("trash")
+								| Delete
+					._pane#post-item-3
+						._search
+							._search-input
+								+icon("search", 16)
+								input(type="text" placeholder="Add an item ..")
+								+icon("delete-2", 10)
+						._list-item
+							._list
+								img
+								span Converse Shoes
+							._list
+								img
+								span Nike Shoes
+							._list
+								img
+								span Asics Run Shoes
+					._pane#post-item-4
+						._search
+							._search-input
+								+icon("search", 16)
+								input(type="text" placeholder="Add an item ..")
+								+icon("delete-2", 10)
+								
+				._sticky
+					._label Max. 4 items
+					._clear
+						+icon("trash", 16)
+						span Clear all
+					._item
+						._item-tab(toggle-post-item="#post-item-1").-filled
+							+img("timeline/column.png")
+							._item-tab-button(style="background-image: url('assets/img/timeline/_item-1.png')")
+						._item-tab(toggle-post-item="#post-item-2").-filled
+							+img("timeline/column.png")
+							._item-tab-button(style="background-image: url('assets/img/timeline/_item-2.png')")
+						._item-tab(toggle-post-item="#post-item-3").-empty
+							+img("timeline/column.png")
+							._item-tab-button
+								+icon("add-item", 16)
+						._item-tab(toggle-post-item="#post-item-4").-empty
+							+img("timeline/column.png")
+							._item-tab-button
+								+icon("add-item", 16)
+						.cm-clearfix
+	// drawer card-cimotion 
+	.cm-panel.-card-cimotion.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Cimotion
+		.cm-panel-content
+			._tab
+				._tab-item.-active
+					| ALL 104
+				._tab-item
+					+img("card/ciayo-20.png")
+					| 23
+				._tab-item
+					+img("card/chips-20.png")
+					| 23
+				._tab-item
+					+img("card/crocket-20.png")
+					| 23
+				._tab-item
+					+img("card/coco-20.png")
+					| 23
+				._tab-item
+					+img("card/carla-20.png")
+					| 23
+				._tab-item
+					+img("card/chuck-20.png")
+					| 23
+				.cm-clearfix
+			._list
+				+pp(30)
+				+img("card/ciayo-20.png", {class: "_reaction"})
+				._username ananda mikola
+			._list
+				+pp(30)
+				+img("card/chuck-20.png", {class: "_reaction"})
+				._username Lorem ipsum dolor
+			._list
+				+pp(30)
+				+img("card/coco-20.png", {class: "_reaction"})
+				._username ananda mikola
+			._list
+				+pp(30)
+				+img("card/carla-20.png", {class: "_reaction"})
+				._username ananda mikola
+			._list
+				+pp(30)
+				+img("card/chips-20.png", {class: "_reaction"})
+				._username ananda mikola
+	// drawer card-detail
+	.cm-panel.-card-detail.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Comments
+		.cm-panel-content
+			+card("detail", false, false, true)
+	// drawer reply comment
+	.cm-panel.-card-comment-reply.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Replies
+		.cm-panel-content
+			+comment("-top -post")
+			+comment("-post", "-open")
+			+comment
+			._sticky
+				+comment-reply
+				+sticker("cm-hide")
+	// drawer edit comment
+	.cm-panel.-card-comment-edit.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right SAVE
+			.cm-topbar-title Edit Comment
+		.cm-panel-content
+			.cm-sticky
+				.cm-card-comment.-edit.-up
+					+pp(30)
+					._comment
+						._input(contenteditable="true")
+						+icon("sticker-button", 16)
+				._sticky
+					+sticker()
+	// modal post-item-clear
+	.cm-modal.-dialog.-timeline-post-item-clear
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._dialog-paragraph Delete all items ?
+			._dialog-buttons
+				.cm-button.-primary.-small(toggle-close) YES
+				.cm-button.-primary.-small(toggle-close) NO
+	// modal ask-with
+	.cm-modal.-dialog.-card-ask-with
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._dialog-paragraph Ask aji_mahendra about the whereabouts of this activity?
+			._dialog-buttons
+				.cm-button.-primary.-small(toggle-close) CANCEL
+				.cm-button.-primary.-small(toggle-close open-ask-with) YES
+	// modal ask-place
+	.cm-modal.-dialog.-card-ask-place
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._dialog-paragraph Ask aji_mahendra about the people [he/she] is with on this activity?
+			._dialog-buttons
+				.cm-button.-primary.-small(toggle-close) CANCEL
+				.cm-button.-primary.-small(toggle-close open-ask-place) YES
+	// open drawer ask with
+	.cm-panel.-topbar.-card-ask.-with
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Respond to a Question
+		.cm-panel-content
+			.cm-card
+				._head
+					+pp(30)
+					._username aji_mahendra
+					._userstatus is leaving on a jetplane
+				._media
+					._timestamp
+						._time 08:15
+						._date 01 JAN 2015
+					img(src="assets/img/timeline/_activity.png" style="display:block;width:100%")
+					._caption Nyantai dulu broooh!!
+			._list: button(type="button" open-with).cm-button.-primary.-block Add a place
+			._list: button(type="button").cm-button.-primary.-block Ssh . . . It’s a secret
+	// open drawer ask place
+	.cm-panel.-topbar.-card-ask.-place
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Respond to a Question
+		.cm-panel-content
+			.cm-card
+				._head
+					+pp(30)
+					._username aji_mahendra
+					._userstatus is leaving on a jetplane
+				._media
+					._timestamp
+						._time 08:15
+						._date 01 JAN 2015
+					img(src="assets/img/timeline/_activity.png" style="display:block;width:100%")
+					._caption Nyantai dulu broooh!!
+			._list: button(type="button" open-place).cm-button.-primary.-block Add a place
+			._list: button(type="button").cm-button.-primary.-block Ssh . . . It’s a secret
+			._list: button(type="button").cm-button.-primary.-block I’m alone, apparently
+	// drawer post-with
+	.cm-panel.-timeline-post-with.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right SAVE
+			.cm-topbar-title Tag People
+		.cm-panel-content
+			.cm-sticky
+				.cm-wrapper
+					._search
+						._search-input
+							+icon("search", 16)
+							._tag
+								| Daniel
+								+icon("delete-2", 8)
+							._tag
+								| Hendra
+								+icon("delete-2", 8)
+							._tag
+								| Ferry
+								+icon("delete-2", 8)
+							._tag
+								| Sandy
+								+icon("delete-2", 8)
+							._input
+								input(type="text" placeholder="Add a friend ..")
+							.cm-clearfix
+							+icon("delete-2", 10)
+					._list-item
+						._list
+							+pp(30)
+							span Kuncoro Jati Kusumo
+						._list
+							+pp(30)
+							span Daniel tatang's
+							+icon("check-1", 16)
+						._list
+							+pp(30)
+							span Hendra Detkor
+							+icon("check-1", 16)
+						._list
+							+pp(30)
+							span Ferry Capcai
+	// drawer post-place
+	.cm-panel.-timeline-post-place.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-item.-right SAVE
+			.cm-topbar-title Add a Place
+		.cm-panel-content
+			.cm-sticky
+				.cm-wrapper
+					// klo uda select place
+					._place.cm-hide
+						img._image
+						div Amaris Hotel
+						small Mangga Dua Square
+						+icon("delete-2", 10)
+					._search
+						._search-input
+							+icon("search", 16)
+							input(type="text" placeholder="Add a place ..")
+							+icon("delete-2", 10)
+					._map
+						._map-unvaible.cm-hide Sorry, this place is not available on map
+						+img("timeline/_map.png", {style: "width:100%;display:block"})
+						._map-locate: +icon("setting-information", 16)
+					._title Suggested Places
+					._list-item
+						._list
+							img
+							span 
+								div Amaris Hotel
+								small Mangga Dua Square  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel corrupti odio sequi tenetur debitis minima est illum architecto sapiente atque id nihil nostrum recusandae, error ipsam fugit ex optio incidunt.
+						._list
+							img
+							span 
+								div Amaris Hotel
+								small Mangga Dua Square
+						._list
+							img
+							span 
+								div Amaris Hotel
+								small Mangga Dua Square
+	script.
+		$(document).on("ready", function(){
+
+			// hide navbar on scroll
+			var last_position = 0;
+			$(window).on("scroll", function(){
+				var scrollPosition = $(window).scrollTop();
+				
+				if(scrollPosition >= 50){
+					$(".cm-navbar").css("top", "-50px")
+				}
+				if(last_position > scrollPosition){
+					$(".cm-navbar").css("top", "0px")
+				}
+
+				last_position = scrollPosition;
+			})
+
+			// post - feeling selector 
+			$(".cm-panel.-timeline-post ._feeling-option").on("click", function(){
+				$(this).addClass("-active").siblings("._feeling-option").removeClass("-active");
+			})
+
+			// open post
+			$(".cm-timeline-post").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-timeline-post").addClass("-open")
+			})
+			// close post
+			$(".-timeline-post .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-timeline-post").removeClass("-open")
+			})
+
+			// open post-caption
+			$(".cm-panel.-timeline-post ._caption-button, .cm-panel.-timeline-post ._caption-edit").on("click", function(){
+				$(".-timeline-post-caption").addClass("-open");
+			})
+			// close post-caption
+			$(".cm-panel.-timeline-post-caption .cm-topbar-item").on("click", function(){
+				$(".-timeline-post-caption").removeClass("-open")
+			})
+
+			// open post-item
+			$(".cm-panel.-timeline-post ._button.-item").on("click", function(){
+				$(".cm-panel.-timeline-post-item").addClass("-open");
+				//$(".-timeline-post-item ._search-input input").focus();
+			})
+			// close post-item
+			$(".cm-panel.-timeline-post-item .cm-topbar-item").on("click", function(){
+				$(".cm-panel.-timeline-post-item").removeClass("-open")
+			})
+			// open post-item-clear
+			$(".cm-panel.-timeline-post-item ._sticky ._clear").on("click", function(){
+				$(".cm-modal.-timeline-post-item-clear").addClass("-open");
+			})
+			// close post-item-clear
+			$(".cm-modal.-timeline-post-item-clear [toggle-close]").on("click", function(){
+				$(".cm-modal.-timeline-post-item-clear").removeClass("-open");
+			})
+			// repaint layout post-item
+			var $drawerPostItem = $(".-timeline-post-item");
+			$(window).on("resize.post_item", function(){
+				$drawerPostItem.find(".cm-wrapper").css("margin-bottom", $drawerPostItem.find("._sticky").outerHeight() -1)
+			}).trigger("resize.post_item")
+
+			// tab -timeline-post-item
+			$("[toggle-post-item]").on("click", function(){
+				var target = $(this).attr("toggle-post-item")
+				$(target).siblings("._pane").removeClass("-open")
+				$(target).addClass("-open");
+
+				var toggler = $("[toggle-post-item='" + target + "']");
+				toggler.siblings("[toggle-post-item]").removeClass("-active")
+				toggler.addClass("-active");
+
+				$drawerPostItem.find(".cm-wrapper").css("min-height", $(target).outerHeight())
+
+				if($(target).hasClass("-filled")){
+					$drawerPostItem.find(".cm-sticky").css("background", "#ECEFF1")
+				} else{
+					$drawerPostItem.find(".cm-sticky").css("background", "#FFFFFF")
+				}
+			})
+
+			// open post-place
+			$(".-timeline-post ._button.-with").on("click", function(){
+				$(".-timeline-post-with").addClass("-open");
+			})
+			// close post-place
+			$(".-timeline-post-with .cm-topbar-item").on("click", function(){
+				$(".-timeline-post-with").removeClass("-open")
+			})
+			
+			// open post-place
+			$(".-timeline-post ._button.-place").on("click", function(){
+				$(".-timeline-post-place").addClass("-open");
+			})
+			// close post-place
+			$(".-timeline-post-place .cm-topbar-item").on("click", function(){
+				$(".-timeline-post-place").removeClass("-open")
+			})
+
+			// card tab - initial height (comment tab's)
+			$(window).on("resize.card-tab", function(){
+				$(".cm-card").each(function(){
+					$(this).children("._tab").css("height", $(this).find("._tab-item").outerHeight() + $(this).children("._tab").find(".-active ._tab-pane").outerHeight())
+				})
+			}).trigger("resize.card-tab")
+			// card tab - toggle tab
+			$(".cm-card ._tab-button").on("click", function(){
+				$(this).parent().addClass("-active").siblings("._tab-item").removeClass("-active")
+				$(this).closest("._tab").css("height", $(this).parent().outerHeight() + $(this).siblings("._tab-pane").outerHeight())
+			})
+			// card reaction - toggler
+			$(".cm-card ._react ._dropdown-button").on("click", function(){
+				$(this).parent("._dropdown").toggleClass("-open")
+				$(this).siblings("._dropdown-reaction").find("._reaction").removeClass("-active")
+			})
+			// card reaction - selector
+			$("._reaction").on("click", function (){
+					$(this).parent().siblings("._col").removeClass('-active');
+					$(this).parent().addClass('-active');
+					$(this).on('animationiteration webkitAnimationIteration', function(){
+						$(this).parent().removeClass("-active");
+						$(this).closest("._dropdown").removeClass("-open")
+					});
+			});
+			// open cimotion
+			$(".cm-card ._react ._paragraph").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-cimotion").addClass("-open")
+			})
+			// close cimotion
+			$(".cm-panel.-card-cimotion .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-cimotion").removeClass("-open")
+			})
+			// open detail-comment
+			$(".cm-card ._tab-item.-comment ._read").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-detail").addClass("-open")
+			})
+			// open detail-share
+			$(".cm-card ._tab-item.-share ._shared").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-detail").addClass("-open")
+			})
+			// close detail
+			$(".cm-panel.-card-detail .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-detail").removeClass("-open")
+			})
+			// open sticker
+			$(".ci-sticker-button").on("click", function(){
+				$(this).closest(".cm-card").find(".cm-sticker").toggleClass("cm-hide")
+				$(this).closest(".cm-panel-content").find(".cm-sticker").toggleClass("cm-hide")
+			})
+			// card - toggle layer
+			$("[layer-target]").on("click", function(){
+				var target = $(this).attr("layer-target");
+				$(this).closest(".cm-card").find("._media ._info-layer").children("."+target).addClass("-active").siblings("._layer").removeClass("-active")
+			})
+			$(".cm-card ._media ._info-layer ._close").on("click", function(){
+				$(this).siblings("._layer").removeClass("-active")
+			})
+			// open modal ask-with
+			$(".cm-card ._cell.-with.-ask").on("click", function(){
+				$(".cm-modal.-card-ask-with").addClass("-open");
+			})
+			// close post-item-clear
+			$(".cm-modal.-card-ask-with [toggle-close]").on("click", function(){
+				$(".cm-modal.-card-ask-with").removeClass("-open");
+			})
+			// open modal ask-with
+			$(".cm-card ._cell.-place.-ask").on("click", function(){
+				$(".cm-modal.-card-ask-place").addClass("-open");
+			})
+			// close post-item-clear
+			$(".cm-modal.-card-ask-place [toggle-close]").on("click", function(){
+				$(".cm-modal.-card-ask-place").removeClass("-open");
+			})
+			// open card-ask-with
+			$("[open-ask-with]").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-ask.-with").addClass("-open")
+			})
+			// close card-ask-with
+			$(".cm-panel.-card-ask.-with .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-ask.-with").removeClass("-open");
+			})
+			// open card-ask-place
+			$("[open-ask-place]").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-ask.-place").addClass("-open")
+			})
+			// close card-ask-place
+			$(".cm-panel.-card-ask.-place .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-ask.-place").removeClass("-open");
+			})
+
+			$("[open-place]").click(function(){
+				$(".cm-panel.-timeline-post-place").addClass("-open")
+			})
+
+			$("[open-with]").click(function(){
+				$(".cm-panel.-timeline-post-with").addClass("-open")
+			})
+
+			$("._comment-action-button.-reply").on("click", function(){
+				$(".cm").addClass("-locked")
+				$(".cm-panel.-card-comment-reply").addClass("-open")
+			})
+
+			$(".cm-panel.-card-comment-reply .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-comment-reply").removeClass("-open")
+			})
+			$(".cm-panel.-card-comment-edit .cm-topbar-item").on("click", function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel.-card-comment-edit").removeClass("-open")
+			})
+
+			$(".cm-card-comment.-reply ._comment ._input, .cm-card-comment.-edit ._comment ._input").on({
+				"focus": function(){
+					$(this).parent().addClass("-focus")
+				},
+				"blur": function(){
+					$(this).parent().removeClass("-focus")
+				}
+			})
+		})
+
+		function editComment(){
+			$(".cm-panel.-card-comment-edit").addClass("-open")
+		}

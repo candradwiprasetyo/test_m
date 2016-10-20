@@ -1,0 +1,166 @@
+include _mixins
++layout({
+})
+	.cm-profile
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Aji's Profile
+		.cm-profile-content
+			._profile-wrp
+				+img("profile/ava.png", {class: "_avatar"})
+				+img("profile/banner-profile.png", {class: "_banner"})
+			._profile-name-wrp
+				._username aji_mahendra_gabisa_moveon
+				._title the vampire slayer
+				._cme
+					+icon("c-button", 30)
+				._c-button
+					._button
+						+img("profile/check.png")
+						span check me
+					._button
+						+img("profile/add.png")
+						span add friend
+					._button
+						+img("profile/follow.png")
+						span follow
+					._close
+						+icon("delete-2", 10)
+				._edit
+					+icon("edit", 16)
+			._profile-menu
+				._menu
+					._wrapper
+						+img("profile/profile-overview-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-overview-activ.png", {class: "_active"})
+						span overview
+				._menu
+					._wrapper
+						+img("profile/profile-timeline-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-timeline-activ.png", {class: "_active"})
+						span timeline
+				._menu
+					._wrapper
+						+img("profile/profile-connection-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-connection-activ.png", {class: "_active"})
+						span connection
+				._menu.-active
+					._wrapper
+						+img("profile/profile-achievement-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-achievement-activ.png", {class: "_active"})
+						span achievement
+			.cm-achievement
+				._wrapper
+					._title Badges (6)
+					._badges
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Walking with confidence
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+						._item
+							img(src="assets/img/achievement/_badge.png")
+							span Welcome to Ciayo
+				._wrapper
+					._title
+						| Achievement
+						button.cm-button.-primary.-small
+							i.ci-search
+					._sort Sort By
+						._select
+							i.ci-hi-lo
+							select
+								option Highest to lowest
+								option Lowest to High
+							i.ci-dropdown._right
+					._tabs
+						._item.-active All
+						._item Ongoing
+						._item Completed
+					._content
+						ul
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+							li
+								._progress
+									img(src="assets/img/achievement/_achievement-1.png")
+								._name Walking With Confidence
+					.cm-clearfix
+			.cm-modal.-archievement
+				.cm-modal-backdrop
+				.cm-modal-content
+					._container-achievement_detail
+						._main-image
+						img(src="assets/img/achievement/_achievement-detail@2x.png")
+					._container-description
+							._title-description
+								h2._achievement-name Chamber of delusions Test max character
+								._icon-used_as_title
+										img(src="assets/img/achievement/icon-used_as_title@2x.png")
+								._button-action Use as title
+								.cm-clearfix
+							._paragraph-description
+								p No need to do a DNA check or a chromosome test, just tell us about your medical history
+							._footer-description
+								b Reward:
+								._currency-info 
+									._value(style="background-image: url('assets/img/achievement/currency-caps@2x.png');") 100
+								._icon-share
+									img(src="assets/img/achievement/icon-share@2x.png")
+								.cm-clearfix
+	script.
+		// menu profile //
+		$(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).addClass("-active")
+		})
+
+		// c button //
+		$(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+			$(this).parent().addClass("-active")
+		})
+		$(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+			$(this).parent().parent().removeClass("-active")
+		})

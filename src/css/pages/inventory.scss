@@ -1,0 +1,66 @@
+.cm-inventory{
+
+}
+
+.cm-inventory-menu{
+	background-size: auto 24px;
+	background-position: 12px 18px;
+	background-repeat: no-repeat;
+	padding: 21px 12px 21px (12px + 24px + 10px);
+	border-bottom: 1px solid $border-color;
+}
+
+.cm-inventory-label{
+	line-height: 14px;
+	padding: 17px 12px;
+	background: #fff;
+	border-bottom: 1px solid $border-color;
+}
+
+.cm-inventory-item{
+	position: relative;
+	padding: 8px 12px;
+	background: #fff;
+	border-bottom: 1px solid $border-color;
+	
+	._image{
+		float: left;
+		display: block;
+		width: 80px;
+		height: 80px;
+	}
+	._control{
+		margin: 25px 0;
+		float: right;
+	}
+	._info{
+		overflow: hidden;
+		padding: 0 10px;
+		min-height: 80px;
+		font-size: 0;
+		color: #666;
+
+		&:before,
+		._wrap{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		&:before{
+			content: "";
+			min-height: inherit;
+		}
+		._wrap{
+			width: 100%;
+		}
+	}
+	._title{
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 14px;
+		margin-bottom: 8px;
+	}
+	._date{
+		font-size: 12px;
+		line-height: 12px;
+	}
+}

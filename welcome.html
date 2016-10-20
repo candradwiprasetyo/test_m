@@ -1,0 +1,236 @@
+<div class="cm-nlp-wrapper -slider" style="position: relative; z-index: 2;">
+	<div class="cm-nlp-container">
+		<div class="cm-nlp-slide">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-1.jpg"></div>
+					<div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-2.jpg"></div>
+					<div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-3.jpg"></div>
+					<div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-4.jpg"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-pagination -cm-nlp-pagination"></div>
+	<div class="cm-nlp-nav"><a href="#">
+			<div class="-cm-nlp-nav-left -register">
+				<p><ciayo translate="$register" style="text-transform:uppercase">REGISTER</ciayo></p>
+			</div></a><a href="#">
+			<div class="-cm-nlp-nav-right -login">
+				<p><ciayo translate="$login" style="text-transform:uppercase">LOGIN</ciayo></p>
+			</div></a>
+		<div class="cm-clear"></div>
+	</div>
+	<div class="cm-nlp-lang">
+		<div class="selected">
+			<span>Select Language: 
+				<select ng-model="vm.language" ng-change="vm.changeLanguage()"> 
+		          <option value="1">English (US)</option>
+		          <option value="2">Bahasa Indonesia</option>
+		        </select>
+		        <i class="ci-dropdown"></i>
+		    </span>
+		</div>
+	</div>
+</div>
+<div class="cm-wellcome -user">
+	<div class="_register">
+		<div class="cm-wrapper">
+			<div class="_top">
+				<p><ciayo translate="$tap.to.register">Tap to register</ciayo></p>
+			</div>
+			<div class="_head"><img src="assets/img/ciayo-50.png" class="_head-logo"/>
+				<div class="_head-text"><ciayo translate="$create.an.account">Create an account and enter the CIAYO World!</ciayo></div>
+			</div>
+			<div class="_tab -email">
+				<div class="_tab-btn -email" ng-click="vm.registerType='email'"><i class="ci-email -s16"></i><span><ciayo translate="$email">EMAIL</ciayo></span>
+				</div>
+				<div class="_tab-btn -phone " ng-click="vm.registerType='phone'"><i class="ci-phone -s16"></i><span><ciayo translate="$phone">PHONE</ciayo></span>
+				</div>
+				<div class="_tab-line"></div>
+				<div class="_tab-alert" ng-show="vm.errMsg">
+					<div class="cm-alert"><i class="ci-warning -s16"></i>{{vm.errMsg}}
+					</div>
+				</div>
+				<div class="_tab-pane">
+					<div class="_form -email">
+						<div class="_form-row">
+							<input type="email" name="regEmail" placeholder="{{'$email.address'|translate}}" class="cm-input" ng-model="vm.regEmail" ng-blur="vm.validateEmail('regEmail', vm.regEmail)">
+						</div>
+						<div class="_form-row">
+							<input name="regEPass" type="{{vm.isShow?'text':'password'}}" placeholder="{{'$password'|translate}}" class="cm-input" ng-model="vm.regEPass" ng-change="vm.validatePassword('regEPass', vm.regEPass)" ng-blur="vm.checkPass('regEPass', vm.regEPass);vm.showTooltip=false" ng-focus="vm.showTooltip=!vm.showTooltip">
+							<i class="ci-show" ng-class="vm.isShow?'-active':''" ng-click="vm.isShow=!vm.isShow"></i>
+						</div>
+						<div class="_tooltip-password" id="regEPass" ng-class="vm.showTooltip?'active':''">
+              <div class="_title"><ciayo translate="$your.password.needs">Your password needs to : </ciayo></div>
+              <div class="_list" ng-class="vm.st.new_password.length>=8?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.be.at">Must be at least 8 characters</ciayo>
+              </div>
+              <div class="_list" ng-class="vm.st.new_password_valid?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.not.contain">Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )</ciayo>
+              </div>
+            </div>
+					</div>
+					<div class="_form -phone">
+						<div class="_form-row">
+							<div class="_code">
+								<select ng-init="vm.regPC='62'" class="cm-input" ng-model="vm.regPC">
+									<option value="62" selected>+62</option>
+									<option ng-repeat="list in vm.listPhoneCode | orderBy: 'country_name'" ng-if="list.phone_code && list.phone_code != 62" ng-bind="'+'+list.phone_code" value="{{list.phone_code}}"></option>
+								</select>
+							</div>
+							<div class="_number">
+								<input name="regPhone" type="number" placeholder="{{'$phone.number'|translate}}" class="cm-input" ng-model="vm.regPhone" ng-blur="vm.validatePhone('regPhone', vm.regPhone)" onkeypress="return numberOnly(this, event)">
+							</div>
+							<div class="cm-clearfix"></div>
+						</div>
+						<div class="_form-row">
+							<input name="regPPass" type="{{vm.isShow?'text':'password'}}" placeholder="{{'$password'|translate}}" class="cm-input" ng-model="vm.regPPass" ng-change="vm.validatePassword('regPPass', vm.regPPass)" ng-blur="vm.checkPass('regPPass', vm.regPPass);vm.showTooltip=false" ng-focus="vm.showTooltip=!vm.showTooltip">
+							<i class="ci-show" ng-class="vm.isShow?'-active':''" ng-click="vm.isShow=!vm.isShow"></i>
+						</div>
+						<div class="_tooltip-password" id="regPPass" ng-class="vm.showTooltip?'active':''">
+              <div class="_title"><ciayo translate="$your.password.needs">Your password needs to : </ciayo></div>
+              <div class="_list" ng-class="vm.st.new_password.length>=8?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.be.at">Must be at least 8 characters</ciayo>
+              </div>
+              <div class="_list" ng-class="vm.st.new_password_valid?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.not.contain">Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )</ciayo>
+              </div>
+            </div>
+					</div>
+				</div>
+			</div>
+			<div class="_submit">
+				<button class="cm-button -primary" ng-click="vm.register()" ng-disabled="vm.showLoading">
+					<ciayo translate="$register">Register</ciayo>
+					<span class="cm-loader"></span>
+				</button>
+			</div>
+			<div class="_terms">
+					
+				<!-- <ciayo translate="$term.policy" translate-values="{terms: '/about', data_policy: '/about'}">By clicking Register, you agree to our <a target="_blank" href="#">Terms</a>and that you have read our <a href="#" target="_blank">Data Policy</a>, including our <a href="#" target="_blank">Cookie Use</a></ciayo> -->
+			</div>
+		</div>
+		<div class="_login">
+			<div class="_arrow"><i class="ci-add-item -s14"></i>
+			</div>
+			<div class="_down">
+				<p><ciayo translate="$tap.to.login">Tap to login</ciayo></p>
+			</div>
+			<div class="_wrap">
+				<div class="cm-wrapper">
+					<div class="_head"><img src="assets/img/ciayo-70-white.png" class="_head-logo"/>
+						<div class="_head-text"><ciayo translate="$login.to.your">Login to your CIAYO account</ciayo></div>
+					</div>
+					<div class="_tab -email">
+						<div class="_tab-btn -email" ng-click="vm.loginType='email'"><i class="ci-email -s16"></i><span><ciayo translate="$email">EMAIL</ciayo></span>
+						</div>
+						<div class="_tab-btn -phone" ng-click="vm.loginType='phone'"><i class="ci-phone -s16"></i><span><ciayo translate="$phone">PHONE</ciayo></span>
+						</div>
+						<div class="_tab-line"></div>
+						<div class="_tab-alert" ng-show="vm.errMsg">
+							<div class="cm-alert"><i class="ci-warning -s16"></i>{{vm.errMsg}}
+							</div>
+						</div>
+						<div class="_tab-pane">
+							<div class="_form -email">
+								<div class="_form-row">
+									<input name="logEmail" type="email" placeholder="{{'$email.address'|translate}}" class="cm-input" ng-model="vm.logEmail" ng-blur="vm.validateEmail('logEmail', vm.logEmail)">
+								</div>
+								<div class="_form-row">
+									<input name="logEPass" type="{{vm.isShow?'text':'password'}}" placeholder="{{'$password'|translate}}" class="cm-input" ng-model="vm.logEPass" ng-change="vm.validatePassword('logEPass', vm.logEPass)" ng-blur="vm.checkPass('logEPass', vm.logEPass);vm.showTooltip=false" ng-focus="vm.showTooltip=!vm.showTooltip">
+									<i class="ci-show" ng-class="vm.isShow?'-active':''" ng-click="vm.isShow=!vm.isShow"></i>
+								</div>
+							</div>
+							<div class="_form -phone">
+								<div class="_form-row">
+								<div class="_code">
+										<select ng-init="vm.logPC='62'" class="cm-input" ng-model="vm.logPC">
+											<option value="62" selected>+62</option>
+											<option ng-repeat="list in vm.listPhoneCode | orderBy: 'country_name'" ng-if="list.phone_code && list.phone_code != 62" ng-bind="'+'+list.phone_code" value="{{list.phone_code}}"></option>
+										</select>
+									</div>
+									<div class="_number">
+										<input name="logPhone" type="number" placeholder="{{'$phone.number'|translate}}" class="cm-input" ng-model="vm.logPhone" ng-blur="vm.validatePhone('logPhone', vm.logPhone)" onkeypress="return numberOnly(this, event)">
+									</div>
+									<div class="cm-clearfix"></div>
+								</div>
+								<div class="_form-row">
+									<input name="logPPass" type="{{vm.isShow?'text':'password'}}" placeholder="{{'$password'|translate}}" class="cm-input" ng-model="vm.logPPass" ng-change="vm.validatePassword('logPPass', vm.logPPass)" ng-blur="vm.checkPass('logPPass', vm.logPPass);vm.showTooltip=false" ng-focus="vm.showTooltip=!vm.showTooltip">
+									<i class="ci-show" ng-class="vm.isShow?'-active':''" ng-click="vm.isShow=!vm.isShow"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="_submit">
+						<button class="cm-button -primary" ng-click="vm.login()" ng-disabled="vm.showLoading">
+							<ciayo translate="$login">Login</ciayo>
+							<span class="cm-loader"></span>
+						</button>
+					</div>
+					<div class="_forgot"><a ui-sref="forgot-password" class="_link"><ciayo translate="$forgot.password?">Forgot Password?</ciayo></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+angular.element(document).ready(function(){
+
+		$("._tab-btn.-email").on("click", function(){
+			$(this).parent("._tab").addClass("-email").removeClass("-phone")
+		})
+
+		$("._tab-btn.-phone").on("click", function(){
+			$(this).parent("._tab").addClass("-phone").removeClass("-email")
+		})
+	
+		$("._down").on("click", function(){
+			$(document.body).addClass("-login-is-open")
+			$(document.body).scrollTop(0)
+		})
+	
+		$("._top").on("click", function(){
+			$(document.body).removeClass("-login-is-open")
+		})
+		
+		$(".-register").on("click", function(){
+			$('.-slider').slideUp(400);
+		})
+		
+		$(".-login").on("click", function(){
+			$(document.body).addClass("-login-is-open")
+			$(document.body).scrollTop(0)
+
+			$('.-slider').slideUp(400);
+		})
+
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			spaceBetween: 0,
+			autoplay: 3000,
+			autoplayDisableOnInteraction: true
+		});
+	})
+
+	function numberOnly(myfield, e, dec){
+		var key;
+		var keychar;
+		if (window.event) {
+			key = window.event.keyCode; 
+		} else if (e) {
+			key = e.which; 
+		} else {
+			return true;
+		}
+
+		keychar = String.fromCharCode(key);
+
+		if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) ) {
+			return true;
+		} else if ((("0123456789").indexOf(keychar) > -1)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>

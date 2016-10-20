@@ -1,0 +1,54 @@
+ <div class="cm-trending">
+  <div class="cm-topbar"><a ui-sref="menu">
+      <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+    <div class="cm-topbar-title"><ciayo translate="$trending">Trending</ciayo></div>
+  </div>
+  <div class="cm-trending-tab"><a ui-sref="trending">
+      <div class="item">
+        <div class="icon post"></div>
+        <div class="name"><ciayo translate="$posts">Posts</ciayo></div>
+      </div></a><a ui-sref="trending-people">
+      <div class="item">
+        <div class="icon people"></div>
+        <div class="name"><ciayo translate="$people">People</ciayo></div>
+      </div></a><a ui-sref="trending-activity">
+      <div class="item-active"> 
+        <div class="icon activity"></div>
+        <div class="name"><ciayo translate="$activity">Activity</ciayo></div>
+      </div></a><a ui-sref="trending-place">
+      <div class="item"> 
+        <div class="icon place"></div>
+        <div class="name"><ciayo translate="$place">Place</ciayo></div>
+      </div></a></div>
+
+          <div class="trending-activity" lazy-load ="vm.trending_activity.getTrendingActivityList()">
+             <div class="empty" ng-if="vm.trending_activity.trending_activity_list==0&&vm.trending_activity.trending_activity_start==true">
+              <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+              <div class="desc"><ciayo translate="$trending.activity.not">Trending activity not found</ciayo></div>
+            </div>
+            <div class="empty" ng-if="vm.trending_activity.trending_activity_list==0&&vm.trending_activity.trending_activity_start==false">
+              <div class="loader"></div>
+            </div>
+            <div class="list" ng-repeat="trending in vm.trending_activity.trending_activity_list">
+              <div class="activity-ribbon">{{trending.trending_activity_number}}</div>
+              <div class="activity-title">{{trending.activity_detail.name}}</div>
+              <div class="activity-img"> 
+
+              <img ng-src="{{trending.activity_detail.image}}">
+
+             <!-- <c-card-parallax parallax="trending.parallax" style="display:block;width:100%"></c-card-parallax> 
+             <img src="assets/img/timeline/card-template.png" style="width:100%;display:block;visibility:hidden;">-->
+
+              </div>
+              <div class="activity-desc"><ciayo translate="$posted"></ciayo> {{trending.activity_detail.count_activity}} <ciayo translate="$times"></ciayo></div>
+            </div>
+            
+          </div>
+       
+<div class="view-more" ng-show="vm.trending_activity.load_more">
+    <div class="loader" ng-show="vm.trending_activity.loading"></div>
+        <div class="button" ng-click="vm.trending_activity.getTrendingActivityList()" ng-hide="vm.trending_activity.loading"><ciayo translate="$view.more">View more</ciayo>
+    </div>
+
+</div>
+   

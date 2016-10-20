@@ -1,0 +1,66 @@
+include _mixins
++layout({
+	navbar: "search"
+})
+	.cm-search
+		.cm-search-input 
+			+icon("search", 20)
+			+icon("delete-2", 10)
+			input(
+			  	type='text'
+			  	name='i_search'
+			  	placeholder='Search CIAYO Friends . . .'
+			)
+		mixin list()
+			.list
+				.photo-profile
+					img(src="assets/img/friend-request/user.png")
+				.name-profile
+					.display-name Bos Jacky
+					.full-name Bos Jacky semakin di depan
+						+icon("currency-cans", 6)
+						| &nbsp; Male
+					.mutual-friend 7 mutual friends
+				.config-profile
+					.icon
+						+icon("c-button", 30)
+				.action 
+					.icon-group-frame
+						.icon-group
+							.icon
+								img(src="assets/img/search/i_check_me.png")
+							.name view profile
+						.icon-group
+							.icon
+								img(src="assets/img/search/i_add_friend.png")
+							.name add friend
+						.icon-group
+							.icon
+								img(src="assets/img/search/i_follow.png")
+							.name follow
+						.close-button
+							+icon("delete-2", 10)
+		+list()
+		+list()
+		+list()
+		+list()
+		+list()
+		+list()
+		+list()
+		+list()
+		+list()
+		
+script.
+	$('.ci-c-button').click(function(e) {
+		e.preventDefault();
+		//$(this).parent().siblings('.list').removeClass('open');
+		//$(this).parent('.list').toggleClass('open');
+		$(this).parent().parent().parent().addClass("open").siblings(".list").removeClass("open");
+	});
+
+	$('.close-button').click(function(e) {
+		e.preventDefault();
+		//$(this).parent().siblings('.list').removeClass('open');
+		//$(this).parent('.list').toggleClass('open');
+		$(this).parent().parent().parent(".list").removeClass("open");
+	});

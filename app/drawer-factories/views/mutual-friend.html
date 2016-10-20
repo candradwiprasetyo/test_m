@@ -1,0 +1,80 @@
+<div class="cm-mutual-friend">
+
+<!-- <div>
+  {{vm.drawer.data.mutualFriend.loader_drawer}}
+</div> -->
+
+<div class="mutual-friend">
+              <div class="list" ng-class="(vm.drawer.data.mutualFriend.accept)?'accept':(vm.drawer.data.mutualFriend.decline)?'decline':''">
+                <div class="photo-profile" style="background: {{vm.drawer.data.mutualFriend.background_avatar_parent}}" ><img ng-src="{{vm.drawer.data.mutualFriend.avatar_parent}}" ui-sref="profile({ username: vm.drawer.data.mutualFriend.username_parent })" ng-click="vm.drawer.setState()"></div>
+                <div class="name-profile">
+                  <span class="display-name" ui-sref="profile({ username: vm.drawer.data.mutualFriend.username_parent })" ng-click="vm.drawer.setState()">{{vm.drawer.data.mutualFriend.user_display_name_parent}}</span>
+
+                    <span ng-if="vm.drawer.data.mutualFriend.accept==false&&vm.drawer.data.mutualFriend.decline==false">
+                      <div class="full-name">
+                      {{vm.drawer.data.mutualFriend.user_full_name_parent.replace('-',' ')}}<span ng-show="vm.drawer.data.mutualFriend.user_full_name_parent.replace(' ','').length>1"><i class="ci-currency-cans -s6"></i>&nbsp; </span>{{vm.drawer.data.mutualFriend.gender_name_parent}}
+                      </div>
+                    </span>
+
+                    <span ng-if="vm.drawer.data.mutualFriend.accept==true">
+                      <div class="full-name">{{vm.drawer.data.mutualFriend.user_display_name_parent}} <ciayo translate="$has.become.your.friend">has become your friend</ciayo></div>
+                    </span>
+                    <span ng-if="vm.drawer.data.mutualFriend.decline==true">
+                      <div class="full-name"><ciayo translate="$request.declined">Request declined</ciayo></div>
+                    </span>
+
+                </div>
+                <div class="config-profile">
+                  <div class="item" ng-if="vm.drawer.data.mutualFriend.status.friend.add==true&&vm.drawer.data.mutualFriend.status.friend.addstatus==false">
+                      <span ng-if="vm.drawer.data.mutualFriend.approve==false">
+                        <i class="ci-delete -s20" ng-click="vm.drawer.data.mutualFriend.action_decline(vm.drawer.data.mutualFriend.user_id_parent)"></i>
+                        <i class="ci-accept -s20" ng-click="vm.drawer.data.mutualFriend.action_accept(vm.drawer.data.mutualFriend.user_id_parent)"></i>
+                      </span>
+                  </div>
+                  <div class="item" ng-if="vm.drawer.data.mutualFriend.accept==true">
+                    <div class="button-accept" ui-sref="profile({ username: vm.drawer.data.mutualFriend.username_parent })"><ciayo translate="$view.profile">View Profile</ciayo></div>
+                  </div>
+                   <div class="item" ng-if="vm.drawer.data.mutualFriend.decline==true">
+                    <div class="button-decline"><ciayo translate="$decline">Decline</ciayo></div>
+                  </div>
+                </div>
+              </div>
+              
+
+              <div class="list-child" ng-class="(friend.accept)?'accept':(friend.decline)?'decline':''" ng-repeat="friend in vm.drawer.data.mutualFriend.mutual_friend_list">
+                <div class="photo-profile" style="background: {{friend.user_avatar_thumbnail.background_avatar}}"><img ng-src="{{friend.user_avatar_thumbnail.avatar}}" ui-sref="profile({ username: friend.username })" ng-click="vm.drawer.setState()"></div>
+                <div class="name-profile" style="width:80%;">
+                  <span class="display-name" ui-sref="profile({ username: friend.username })" ng-click="vm.drawer.setState()">{{friend.user_display_name}}</span>
+                    <span ng-if="friend.accept==false&&friend.decline==false">
+                      <div class="full-name">{{friend.user_full_name.replace('-',' ')}}<span ng-show="friend.user_full_name.replace(' ','').length>1"><i class="ci-currency-cans -s6"></i>&nbsp; </span>{{friend.gender_name}}
+                      </div>
+                      <div class="mutual-friend">
+                        <span ng-if="friend.total_mutual_friend>0" ng-click="vm.drawer.data.load_drawer(friend.user_id, friend.username
+                        )">{{friend.total_mutual_friend + ' mutual friends'}}</span>
+                        <span ng-if="friend.total_mutual_friend==0"><ciayo translate="$you.dont.have">You dont have mutual friend</ciayo></span>
+                      </div>
+                    </span>
+                    <span ng-if="friend.accept==true">
+                      <div class="full-name">{{friend.user_display_name}} <ciayo translate="$has.become.your.friend">has become your friend</ciayo></div>
+                    </span>
+                    <span ng-if="friend.decline==true">
+                      <div class="full-name"><ciayo translate="$request.declined">Request declined</ciayo></div>
+                    </span>
+                </div>
+                <div class="config-profile">
+                  <div class="item" ng-if="friend.accept==true">
+                    <div class="button-accept" ng-click="vm.drawer.data.mutualFriend.view_user(friend)"><ciayo translate="$view.profile">View Profile</ciayo></div>
+                  </div>
+                   <div class="item" ng-if="friend.decline==true">
+                    <div class="button-decline"><ciayo translate="$decline">Decline</ciayo></div>
+                  </div>
+                </div>
+              </div>
+
+              
+          <div class="view-more" ng-show="vm.drawer.data.mutualFriend.load_more">
+                  <div class="loader" ng-show="vm.drawer.data.mutualFriend.loading"></div>
+                  <div class="button" ng-click="vm.drawer.data.mutualFriend.getMutualFriendList(false)" ng-hide="vm.drawer.data.mutualFriend.loading"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+        </div>
+</div>

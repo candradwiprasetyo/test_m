@@ -1,0 +1,52 @@
+ <div class="cm-trending">
+  <div class="cm-topbar"><a ui-sref="menu">
+      <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+    <div class="cm-topbar-title"><ciayo translate="$trending">Trending</ciayo></div>
+  </div>
+  <div class="cm-trending-tab">
+    <a ui-sref="trending">
+      <div class="item">
+        <div class="icon post"></div>
+        <div class="name"><ciayo translate="$posts">Posts</ciayo></div>
+      </div>
+    </a>
+    <a ui-sref="trending-people">
+      <div class="item">
+        <div class="icon people"></div>
+        <div class="name"><ciayo translate="$people">People</ciayo></div>
+      </div>
+    </a>
+    <a ui-sref="trending-activity">
+      <div class="item"> 
+        <div class="icon activity"></div>
+        <div class="name"><ciayo translate="$activity">Activity</ciayo></div>
+      </div>
+    </a>
+    <a ui-sref="trending-place">
+      <div class="item-active"> 
+        <div class="icon place"></div>
+        <div class="name"><ciayo translate="$place">Place</ciayo></div>
+      </div>
+    </a>
+  </div>
+  <div class="trending-place">
+            <div class="empty" ng-if="vm.trending_place.trending_place_list==0&&vm.trending_place.trending_place_start==true">
+              <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+              <div class="desc"><ciayo translate="$trending.place.not">Trending place not found</ciayo></div>
+            </div>
+            <div class="empty" ng-if="vm.trending_place.trending_place_list==0&&vm.trending_place.trending_place_start==false">
+              <div class="loader"></div>
+            </div>
+    <div class="list" ng-repeat="trending in vm.trending_place.trending_place_list">
+      <div class="place-ribbon">{{trending.trending_place_number}}</div>
+      <div class="list-header">
+        <div class="place-img"><img ng-src="{{trending.img_thumb}}"></div>
+        <div class="place-title">{{trending.name}}</div>
+        <div class="place-location">{{trending.address}}</div>
+      </div>
+      <div class="place-location-img"> <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{trending.latitude}},{{trending.longitude}}&zoom=15&size=436x312&key=AIzaSyAp_OxlQ8w6fayEK51b-6mpupMi-wbdOwc"/></div>
+      <div class="place-desc"><ciayo translate="$visited"></ciayo> {{trending.visited}} <ciayo translate="$times"></ciayo></div>
+    </div>
+  </div>
+</div>
+   

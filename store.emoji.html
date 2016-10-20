@@ -1,0 +1,16 @@
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_title">
+			<ciayo translate="$emoji">Emoji</ciayo>
+		</div>
+	</div>
+	<div class="_emoji">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listEmoji" ng-click="vm.st.viewDetail(item.product_id, 'emoji')">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+			<span ng-bind="item.price_1" ng-if="item.price_1" class="_price" style="background-image: url(assets/img/store/non-currency-caps.png)"></span>
+			<span class="_free" ng-if="item.price_1 ==0"><ciayo translate="$free">Free</ciayo></span>
+		</div>
+		<p ng-hide="vm.st.listEmoji.length">No Data</p>
+	</div>
+</div>

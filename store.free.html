@@ -1,0 +1,20 @@
+<div class="_wrap">
+	<div class="cm-store-slide owl-carousel">
+		<div ng-repeat="item in vm.st.listBannerFree" ng-click="vm.st.viewDetail(item.product_id)"><img ng-src="{{item.image.mobile}}"></div>
+	</div>
+	<div class="_grid">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listFree" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+			<span class="_free"><ciayo translate="$free">Free</ciayo></span>
+		</div>
+		<div class="cm-clearfix"></div>
+	</div>
+	<div ng-show="vm.st.load_more">
+		<p><div class="loader"></div></p>
+	</div>
+	<div class="_button" ng-hide="vm.st.full_free" ng-click="vm.st.loadMoreFree()">
+		<button type="button" class="cm-button -default -block" ng-if="vm.st.listFree.length>50"><ciayo translate="$view.more.">View more...</ciayo></button>
+		<button type="button" class="cm-button -default -block"><ciayo translate="$view.more.">View more...</ciayo></button>
+	</div>
+</div>

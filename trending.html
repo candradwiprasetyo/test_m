@@ -1,0 +1,39 @@
+ <div class="cm-trending">
+        <div class="cm-topbar"><a ui-sref="menu">
+            <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+          <div class="cm-topbar-title"><ciayo translate="$trending">Trending</ciayo></div>
+        </div>
+        <div class="cm-trending-tab"><a ui-sref="trending">
+            <div class="item-active">
+              <div class="icon post"></div>
+              <div class="name"><ciayo translate="$posts">Posts</ciayo></div>
+            </div></a><a ui-sref="trending-people">
+            <div class="item">
+              <div class="icon people"></div>
+              <div class="name"><ciayo translate="$people">People</ciayo></div>
+            </div></a><a ui-sref="trending-activity">
+            <div class="item"> 
+              <div class="icon activity"></div>
+              <div class="name"><ciayo translate="$activity">Activity</ciayo></div>
+            </div></a><a ui-sref="trending-place">
+            <div class="item"> 
+              <div class="icon place"></div>
+              <div class="name"><ciayo translate="$place">Place</ciayo></div>
+            </div></a></div>
+
+            <div class="trending-post" lazy-load ="vm.timeline.getCardList()">
+              <div class="list">
+                <c-card ng-repeat="card in vm.timeline.card_list | limitTo:10" card="card" type="trending" index="$index"/>
+              </div>
+
+               <div class="view-more" ng-show="vm.timeline.load_more">
+                <div class="loader" ng-show="vm.timeline.loading"></div>
+                  <div class="button" ng-click="vm.timeline.getCardList()" ng-hide="vm.timeline.loading"><ciayo translate="$view.more">View more</ciayo>
+                  </div>
+              </div>
+            </div>
+
+      </div>
+
+
+   

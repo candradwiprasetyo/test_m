@@ -1,0 +1,79 @@
+<div class="cm-mutual-friend">
+        <div class="cm-topbar"><a ui-sref="friend-request">
+          <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+          <div class="cm-topbar-title"><ciayo translate="$mutual.friends">Mutual Friends</ciayo></div>
+        </div>
+        <div class="mutual-friend">
+             
+              <div class="list" ng-class="(vm.mutual.accept)?'accept':(vm.mutual.decline)?'decline':''">
+                <div class="photo-profile" style="background: {{vm.mutual.background_avatar_parent}}" ><img ng-src="{{vm.mutual.avatar_parent}}" ui-sref="profile({ username: vm.mutual.username_parent })"></div>
+                <div class="name-profile">
+                  <span class="display-name" ui-sref="profile({ username: vm.mutual.username_parent })">{{vm.mutual.user_display_name_parent}}</span>
+
+                    <span ng-if="vm.mutual.accept==false&&vm.mutual.decline==false">
+                      <div class="full-name">{{vm.mutual.user_full_name_parent}}<i class="ci-currency-cans -s6"></i>&nbsp; {{vm.mutual.gender_name_parent}}
+                      </div>
+                    </span>
+
+                    <span ng-if="vm.mutual.accept==true">
+                      <div class="full-name">{{vm.mutual.user_display_name_parent}} <ciayo translate="$has.become.your">has become your friend</ciayo></div>
+                    </span>
+                    <span ng-if="vm.mutual.decline==true">
+                      <div class="full-name"><ciayo translate="$request.declined">Request declined</ciayo></div>
+                    </span>
+
+                </div>
+                <div class="config-profile">
+                  <div class="item" ng-if="vm.mutual.accept==false&&vm.mutual.decline==false">
+                      <span ng-if="vm.mutual.approve==false">
+                        <i class="ci-delete -s20" ng-click="vm.mutual.action_decline(vm.mutual.user_id_parent)"></i>
+                        <i class="ci-accept -s20" ng-click="vm.mutual.action_accept(vm.mutual.user_id_parent)"></i>
+                      </span>
+                  </div>
+                  <div class="item" ng-if="vm.mutual.accept==true">
+                    <div class="button-accept" ui-sref="profile({ username: vm.mutual.username_parent })"><ciayo translate="$view.profile">View Profile</ciayo></div>
+                  </div>
+                   <div class="item" ng-if="vm.mutual.decline==true">
+                    <div class="button-decline"><ciayo translate="$decline">Decline</ciayo></div>
+                  </div>
+                </div>
+              </div>
+              
+
+              <div class="list-child" ng-class="(friend.accept)?'accept':(friend.decline)?'decline':''" ng-repeat="friend in vm.mutual.mutual_friend_list">
+                <div class="photo-profile" style="background: {{friend.user_avatar_thumbnail.background_avatar}}"><img ng-src="{{friend.user_avatar_thumbnail.avatar}}" ui-sref="profile({ username: friend.username })"></div>
+                <div class="name-profile" style="width:80%;">
+                  <span class="display-name" ui-sref="profile({ username: friend.username })">{{friend.user_display_name}}</span>
+                    <span ng-if="friend.accept==false&&friend.decline==false">
+                      <div class="full-name">{{friend.user_full_name}}<i class="ci-currency-cans -s6"></i>&nbsp; {{friend.gender_name}}
+                      </div>
+                      <div class="mutual-friend">
+                        <span ng-if="friend.total_mutual_friend>0" ui-sref="mutual-friend({ user_id: friend.user_id, username: friend.username })">{{'Have ' + friend.total_mutual_friend + ' mutual friends with you'}}</span>
+                        <span ng-if="friend.total_mutual_friend==0">You dont have mutual friend</span>
+                      </div>
+                    </span>
+                    <span ng-if="friend.accept==true">
+                      <div class="full-name">{{friend.user_display_name}} has become your friend</div>
+                    </span>
+                    <span ng-if="friend.decline==true">
+                      <div class="full-name">Request declined</div>
+                    </span>
+                </div>
+                <div class="config-profile">
+                  <div class="item" ng-if="friend.accept==true">
+                    <div class="button-accept" ng-click="vm.mutual.view_user(friend)"><ciayo translate="$view.profile">View Profile</ciayo></div>
+                  </div>
+                   <div class="item" ng-if="friend.decline==true">
+                    <div class="button-decline"><ciayo translate="$decline">Decline</ciayo></div>
+                  </div>
+                </div>
+              </div>
+
+              
+          <div class="view-more" ng-show="vm.mutual.load_more">
+                  <div class="loader" ng-show="vm.mutual.loading"></div>
+                  <div class="button" ng-click="vm.mutual.getMutualFriendList(false)" ng-hide="vm.mutual.loading"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+        </div>
+      
+    

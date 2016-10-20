@@ -1,0 +1,298 @@
+include _mixins
++layout({
+})
+	.cm-profile
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Aji's Profile
+		.cm-profile-content
+			._profile-wrp
+				+img("profile/ava.png", {class: "_avatar"})
+				+img("profile/banner-profile.png", {class: "_banner"})
+			._profile-name-wrp
+				._username aji_mahendra_gabisa_moveon
+				._title the vampire slayer
+				._cme
+					+icon("c-button", 30)
+				._c-button
+					._button
+						+img("profile/check.png")
+						span check me
+					._button
+						+img("profile/add.png")
+						span add friend
+					._button
+						+img("profile/follow.png")
+						span follow
+					._close
+						+icon("delete-2", 10)
+				._edit
+					+icon("edit", 16)
+			._profile-menu
+				._menu
+					._wrapper
+						+img("profile/profile-overview-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-overview-activ.png", {class: "_active"})
+						span overview
+				._menu.-active
+					._wrapper
+						+img("profile/profile-timeline-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-timeline-activ.png", {class: "_active"})
+						span timeline
+				._menu
+					._wrapper
+						+img("profile/profile-connection-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-connection-activ.png", {class: "_active"})
+						span connection
+				._menu
+					._wrapper
+						+img("profile/profile-achievement-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-achievement-activ.png", {class: "_active"})
+						span achievement
+			mixin card(No, With, Place)
+				.cm-card
+					._head
+						+pp(30)
+						._username aji_mahendra
+						._userstatus is leaving on a jetplane
+					if No !== "detail"
+						._media
+							._timestamp
+								._time 08:15
+								._date 01 JAN 2015
+							img(src="assets/img/timeline/_activity.png" style="display:block;width:100%")
+							if No !== 2
+								._info-layer
+									mixin layer-item(No)
+										._layer.-item(class="-item-" + No)
+											+img("timeline/_item-1-large.png", {class: "_image"})
+											._title Asics Run Shoes
+											._paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam sapiente totam reiciendis voluptates quis numquam at, mollitia veritatis nulla quam saepe harum, culpa, neque doloribus quod. Saepe, deserunt, hic?
+									+layer-item(1)
+									+layer-item(2)
+									+layer-item(3)
+									if No == 1
+										._layer.-with
+										._layer.-place
+									._close: +icon("delete-2", 10)
+									._overlay
+						._info
+							+img("timeline/column.png", {class: "_holder"})
+							._row
+								._column
+									mixin cell-items
+										._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-1.png)" toggle-layer="item-1")
+										._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-2.png)" toggle-layer="item-2")
+										._cell.-item: ._block(style="background-image: url(assets/img/timeline/_item-4.png)" toggle-layer="item-3")
+
+									if No == 1
+										+cell-items
+										._cell.-with.-friend
+											._block(toggle-layer="-friend")
+												span
+													| with
+													b 5
+												+icon("with", 20)
+										._cell.-place.-filled
+											._block(style="background-image: url(assets/img/timeline/_place-1.png)")
+												+icon("setting-information", 8)
+
+									if No == 2
+										._cell.-item.-empty: ._block(style="background-image: url(assets/img/timeline/item-empty.png)")
+										._cell.-with.-ask
+											._block
+												span 
+													| with
+													+icon("with-friends-blank", 20)
+										._cell.-place.-ask
+											._block
+												span 
+													| where
+													+icon("place-blank", 20)
+									if No == 3
+										+cell-items
+										._cell.-with.-secret
+											._block
+												span
+													+icon("with-secret", 20)
+													| secret
+										._cell.-place.-secret
+											._block
+												span 
+													+icon("place-secret", 20)
+													| secret
+									if No == 4
+										+cell-items
+										._cell.-with.-alone
+											._block
+												span
+													+icon("with", 20)
+													| I'ma lone
+										._cell.-place.-secret
+											._block
+												span 
+													+icon("place-secret", 20)
+													| secret
+						._react
+							._overview: +img("timeline/_react.png")
+							._dropdown
+								._dropdown-button: +icon("cimotion", 20)
+								._dropdown-reaction
+									._arrow
+									._col: ._reaction.-s40(style="background-image: url('assets/img/card/Ciayo.png');")
+									._col: ._reaction.-s25(style="background-image: url('assets/img/card/Chips.png');")
+									._col: ._reaction.-s50(style="background-image: url('assets/img/card/Crocket.png');")
+									._col: ._reaction.-s30(style="background-image: url('assets/img/card/Coco.png');")
+									._col: ._reaction.-s45(style="background-image: url('assets/img/card/Carla.png');")
+									._col: ._reaction.-s55(style="background-image: url('assets/img/card/Chuck.png');")
+									.cm-clearfix
+							._paragraph Be the first to CIMOTE this!
+					._tab
+						._tab-item.-comment.-active
+							._tab-button
+								span
+									+icon("comment", 20)
+									b 54
+							._tab-pane
+								if No !== 2
+									if No !== "detail"
+										._read
+											+icon("comment", 20)
+											span Read all 36 comments ..
+									mixin comment(Post)
+										._row
+											+pp(30)
+											._comment(class= Post)
+												._comment-username aji_mahendra
+												._comment-pubdate 5 Dec at 08:00
+												._comment-option
+													+icon("etc-fill", 12)
+												._comment-content Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aen lacinia bibendum nulla sed
+												._comment-action
+													._comment-action-button.-reply
+														+icon("reply")
+														span Reply
+													._comment-action-button.-like
+														+icon("like")
+														span 20
+													._comment-action-button.-dislike
+														+icon("dislike")
+														span 16
+													.cm-clearfix
+												if Post
+													._comment-replies View 2 replies ..
+													
+									+comment("-post")
+									+comment
+								if No == 2
+									._empty
+										+img("timeline/empty-comment.png", {class: "_empty-image"})
+										._empty-paragraph Be the first to comment
+								if No !== "detail"
+									._row.-reply
+										+pp(30)
+										button(type="button").cm-button.-primary.-small Send
+										._comment.-post
+											input(type="text" placeholder="Write a comment ..").cm-input.-small
+											+icon("sticker-button", 16)
+						._tab-item.-share
+							._tab-button
+								span
+									+icon("share", 20)
+									b 20
+							._tab-pane
+								._title Share this post
+								._social
+									._social-button.-facebook: +icon("facebook", 40)
+									._social-button.-twitter: +icon("twitter", 40)
+									._social-button.-instagram: +icon("instagram", 40)
+									._social-button.-more 
+										+icon("meatball", 40)
+								._copy
+									span Copy this post’s link
+									+icon("setting-privacy-policy", 16)
+								._shared
+									+icon("share", 16)
+									span View all 20 shares ..
+						._tab-item.-download
+							._tab-button: span: +icon("download", 20)
+							._tab-pane
+								+img("timeline/_post.png", {class: "_image"})
+								button(type="button").cm-button.-primary.-small
+									+icon("download")
+									| Download Activity
+						._tab-item.-option
+							._tab-button: span: +icon("etc-outline", 20)
+							._tab-pane
+								._show-to
+									._show-to-label Show to:
+									._show-to-button
+										+icon("public", 16)
+										| Public
+										select
+											option Public
+											option Friends
+											option Only Me
+										+icon("dropdown", 10)
+								._option Turn Off Notifications
+								._option Edit Post
+								._option Delete Post
+						._tab-item.-ciayo
+							._tab-button: span: +icon("c-button", 30)
+							._tab-pane
+								._button
+									+img("timeline/c-add-friend.png", {class: "_button-image"})
+									._button-label view profile
+								._button
+									+img("timeline/c-profile.png", {class: "_button-image"})
+									._button-label view profile
+								._button
+									+img("timeline/c-follow.png", {class: "_button-image"})
+									._button-label follow
+						.cm-clearfix
+					.cm-sticker.cm-hide
+						.cm-sticker-bar
+							.cm-sticker-bar-button.-active Sticker
+							.cm-sticker-bar-button Emoji
+							.cm-sticker-bar-button.-shop 
+								+icon("mobile-store-default-36", 16)
+								span Shop
+							.cm-clearfix
+						.cm-sticker-tab
+							.cm-sticker-tab-control.-prev(disabled): +icon("prev", 12)
+							.cm-sticker-tab-control.-next: +icon("next", 12)
+							.cm-sticker-tab-viewport
+								.cm-sticker-tab-button.-active(style="background-image: url('assets/img/_sticker-tab-1.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-2.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-3.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-4.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-5.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-6.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-1.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-2.png')")
+								.cm-sticker-tab-button(style="background-image: url('assets/img/_sticker-tab-3.png')")
+						.cm-sticker-pane
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-sticker-item.-sticker: +img("_sticker-1.png")
+							.cm-clearfix
+			+card(1, "filled", "filled")
+			+card(2, "ask", "ask")
+	script.
+		// menu profile //
+		$(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).addClass("-active")
+		})
+
+		// c button //
+		$(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+			$(this).parent().addClass("-active")
+		})
+		$(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+			$(this).parent().parent().removeClass("-active")
+		})

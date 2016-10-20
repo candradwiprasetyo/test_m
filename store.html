@@ -1,0 +1,225 @@
+<div class="cm-store">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left" ui-sref="menu">
+			<ciayo translate="$back">BACK</ciayo>
+		</div>
+		<div class="cm-topbar-title">
+			<ciayo translate="$store">Store</ciayo>
+		</div>
+	</div>
+
+	<div class="cm-store-coin">
+		<div class="_label">My coin :</div>
+		<div class="_coin -caps" ng-bind="vm.st.caps"></div>
+	</div>
+
+	<div class="cm-store-search">
+		<i class="ci-search -s20"></i>
+		<input placeholder="{{'$search.sticker.or.emoji'|translate}}.." ng-model="vm.st.keyword" ng-enter="vm.st.searchItem()" class="cm-input">
+	</div>
+
+	<div class="cm-store-goto">
+		<p><ciayo translate="$open.your.inventory">Open your inventory and manage your knik-knacks!</ciayo></p>
+		<button type="button" class="cm-button -primary -small" ui-sref="inventory.home"><ciayo translate="$go.to.inventory">Go to inventory</ciayo></button>
+	</div>
+
+	<div class="cm-store-nav">
+		<div class="_link" ui-sref-active="-active" ui-sref="store.home"><ciayo translate="$home">Home</ciayo></div>
+		<div class="_link" ui-sref-active="-active" ui-sref="store.premium"><ciayo translate="$premium">Premium</ciayo></div>
+		<div class="_link" ui-sref-active="-active" ui-sref="store.contributor"><ciayo translate="$contributor">Contributor</ciayo></div>
+		<div class="_link" ui-sref-active="-active" ui-sref="store.free"><ciayo translate="$free">Free</ciayo></div>
+		<div class="_link" ui-sref-active="-active" ui-sref="store.emoji"><ciayo translate="$emoji">Emoji</ciayo></div>
+		<!-- <div class="_link" ui-sref-active="-active" ui-sref="store.all"><ciayo translate="$all">All</ciayo></div> -->
+	</div>
+
+	<div ui-view></div>
+</div>
+
+<div class="cm-panel -sticker-search -topbar">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left" ng-click="vm.st.closeSearchDrawer()">
+			<ciayo translate="$back">BACK</ciayo>
+		</div>
+		<div class="cm-topbar-title">
+			<ciayo translate="$search">Search</ciayo>
+		</div>
+	</div>
+	<div class="cm-panel-content">
+		<div class="cm-store-card -cm-premium-card -cm-store-premcat">
+			<div class="loader-wrp" ng-hide="vm.st.item_search_load">
+				<div class="loader"></div>
+			</div>
+			<div ng-hide="!vm.st.item_search_load">
+				<div class="cm-store-card-title">
+					<ciayo translate="$search.result.for:">Search result for: </ciayo><span ng-bind="vm.st.keyword"></span></div>
+				<div class="cm-store-card-detail"> </div>
+				<div class="cm-store-clear"></div>
+				<div class="cm-store-content -cm-store-detail-card -cm-store-inventory-sticker-wrap">
+					<ul id="foo" class="-cm-store-invetory-sticker-drag">
+						<li ng-repeat="item in vm.st.listSearchItem" ng-click="vm.st.viewDetail(item.product_id)">
+							<div class="cm-store-sticker-detail-col1"><img ng-src="{{item.image}}"></div>
+							<div class="cm-store-sticker-detail-col2 -cm-inventory-sticker-mark">
+								<p class="-cm-store-sticker-name" ng-bind="item.name">Chips</p>
+								<p class="-cm-store-sticker-contrib" ng-bind="item.description">Lorem ipsum dolorem ipsumd </p>
+							</div>
+							<div class="cm-store-sticker-detail-col3">
+								<div class="cm-store-sticker-detail-label2">
+									<button ng-click="vm.st.viewDetail(item.product_id)"><ciayo translate="$buy">Buy</ciayo></button>
+								</div>
+							</div>
+							<div class="cm-store-clear"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="cm-panel -sticker-all -topbar">
+	<div class="cm-panel-content" style="margin-top:-50px">
+		<div class="cm-topbar">
+			<div class="cm-topbar-item -left" ng-click="vm.st.closeSeeAllDrawer()">
+				<ciayo translate="$back">BACK</ciayo>
+			</div>
+			<div class="cm-topbar-title" ng-bind="vm.st.see_all_title"></div>
+			<div class="cm-store-card -cm-premium-card -cm-store-premcat">
+				<div class="loader-wrp" ng-hide="vm.st.listSeeAll">
+					<div class="loader"></div>
+				</div>
+				<div class="cm-topbar-title">
+					<ciayo translate="$category">Category</ciayo>
+				</div>
+				<div class="cm-store-card -cm-premium-card -cm-store-premcat" ng-if="vm.st.listSeeAll.length>0" lazy-load="vm.st.loadMore()" lazy-load-element=".cm-panel.-sticker-all.-topbar div.cm-panel-content">
+
+					<div class="cm-store-content -cm-store-detail-card" ng-repeat="item in vm.st.listSeeAll">
+						<div class="cm-store-break-line -cm-store-line2"></div>
+						<div class="cm-store-sticker-detail-col1"><img ng-src="{{item.image}}"></div>
+						<div class="cm-store-sticker-detail-col2">
+							<p class="-cm-store-sticker-name" ng-bind="item.name"></p>
+							<p class="-cm-store-sticker-contrib" ng-bind="item.description"></p>
+							<div class="-cm-store-sticker-coin">
+								<div ng-if="item.price_1==0&&item.price_2==0" style="color:#000">
+									<ciayo translate="$free">Free</ciayo>
+								</div>
+								<div ng-if="item.price_1!=0||item.price_2!=0">
+									<img src="assets/img/store/non-currency-caps.png">
+									<p ng-bind="item.price_1">10</p>
+									<!-- <img src="assets/img/store/currency-cans.png">
+									<p ng-bind="item.price_2">10</p> -->
+								</div>
+							</div>
+						</div>
+						<div class="cm-store-sticker-detail-col3">
+							<div class="cm-store-sticker-detail-label2">
+								<button ng-click="vm.st.viewDetail(item.product_id, vm.st.type=='emoji'?vm.st.type:'')"><ciayo translate="$buy">Buy</ciayo></button>
+							</div>
+						</div>
+						<div class="cm-store-clear"></div>
+					</div>
+					<br>
+					<div ng-show="vm.st.load_more" ng-if="vm.st.full!=true">
+						<div class="loader"></div>
+					</div>
+					<div class="-cm-store-premium-category -cm-store-more -sticker-detail-more" ng-click="vm.st.loadMore()" ng-hide="vm.st.full || vm.st.load_more" ng-if="">
+						<p>
+							<ciayo translate="$view.more.">View more...</ciayo>
+						</p>
+					</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="cm-panel -sticker-detail -topbar">
+	<div class="cm-panel-content" style="margin-top:-50px">
+		<div class="cm-topbar">
+			<div class="cm-topbar-item -left" ng-click="vm.st.closeDetailDrawer()">
+				<ciayo translate="$back">BACK</ciayo>
+			</div>
+			<div class="cm-topbar-title">
+				<ciayo translate="$store">Store</ciayo>
+			</div>
+			<div class="cm-store-card -cm-premium-card -cm-store-premcat">
+				<div class="loader-wrp" ng-hide="vm.st.item_detail_load">
+					<div class="loader"></div>
+				</div>
+				<div class="detail.content" ng-hide="!vm.st.item_detail_load">
+					<div class="cm-store-sticker-detail-account">
+						<div class="cm-store-sticker-detail-account-name">
+							<p>
+								<ciayo translate="$my.coin">My account:</ciayo>
+							</p>
+						</div>
+						<div class="cm-store-sticker-detail-account-value1"><img src="assets/img/store/non-currency-caps.png"><span ng-bind="vm.st.caps"></span></div>
+						<!-- <div class="cm-store-sticker-detail-account-value2"><img src="assets/img/store/currency-cans.png"><span ng-bind="vm.st.cans"></span></div> -->
+						<div class="cm-store-clear"></div>
+					</div>
+					<div class="cm-store-break-line -cm-store-sticker-detail-line"></div>
+					<div class="cm-store-content -cm-store-sticker-detail-wrap" ng-click="vm.st.stickerClickOutside()">
+						<div class="cm-store-sticker-main-detail-left"><img ng-src="{{vm.st.itemDetail.image}}" ng-if="vm.st.itemDetail.image"><img src="" ng-if="!vm.st.itemDetail.image"></div>
+						<div class="cm-store-sticker-main-detail-right">
+							<p class="-cm-store-sticker-name" ng-bind="vm.st.itemDetail.name">Chips daily life sticker</p>
+							<p class="-cm-store-sticker-contrib" ng-bind="vm.st.itemDetail.author.username"></p>
+							<div class="-cm-store-sticker-coin">
+								<div ng-if="vm.st.itemDetail.price_1!=0 || vm.st.itemDetail.price_2!=0">
+									<img src="assets/img/store/non-currency-caps.png">
+									<p ng-bind="vm.st.itemDetail.price_1">10</p>
+									<!-- <img src="assets/img/store/currency-cans.png">
+									<p ng-bind="vm.st.itemDetail.price_2">10</p> -->
+								</div>
+								<p ng-if="vm.st.itemDetail.price_1==0 && vm.st.itemDetail.price_2==0">
+									<ciayo translate="$free">Free</ciayo>
+								</p>
+							</div>
+							<div class="cm-store-sticker-detail-label2 -cm-store-sticker-detail-button">
+								<button ng-click="vm.st.buySticker()" ng-hide="vm.st.itemDetail.bought"><ciayo translate="$buy">Buy</ciayo></button>
+								<p class="-cm-store-sticker-purchase" ng-show="vm.st.itemDetail.bought">
+									<ciayo translate="$purchased">Purchased</ciayo>
+								</p>
+							</div>
+						</div>
+						<div class="cm-store-clear"></div>
+						<div class="cm-store-sticker-detail-mark" ng-bind="vm.st.itemDetail.description">
+							<p>loremipsum dolorem apsum silum loremipsum dolorem apsum silum loremipsum dolorem apsum silum loremipsum dolorem apsum
+								silum
+							</p>
+						</div>
+					</div>
+					<div class="cm-store-break-line -cm-store-sticker-detail-line"></div>
+					<div class="cm-store-content -cm-store-sticker-detail-wrap">
+						<div class="cm-store-sticker-text-prev">
+							<p>
+								<ciayo translate="$click.sticker.for">Click sticker for preview</ciayo>
+							</p>
+						</div>
+						<div ng-if="!vm.st.type" class="cm-store-sticker-detail-col4" ng-repeat="item in vm.st.itemDetail.sticker_item">
+							<img ng-src="{{item.image}}" class="stickeritem" style="opacity:{{vm.st.opacity}}" ng-click="vm.st.previewSticker($event,item.sticker_id)">
+						</div>
+						<div ng-if="vm.st.type=='emoji'" class="cm-store-sticker-detail-col4" ng-repeat="item in vm.st.itemDetail.emoji_item">
+							<img ng-src="{{item.image}}" class="stickeritem" style="opacity:{{vm.st.opacity}}" ng-click="vm.st.previewSticker($event,item.sticker_id)">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+				$(".stickeritem").click(function (e) {
+						$(".stickeritem").fadeOut();
+						$(this).fadeIn();
+				});
+
+				setTimeout(function(){
+					var swiper = new Swiper('.swiper-container', {
+						pagination: '.swiper-pagination',
+						paginationClickable: true,
+						nextButton: '.swiper-button-next',
+						prevButton: '.swiper-button-prev',
+						spaceBetween: 0
+					});
+				}, 1000)
+			</script>
+</div>

@@ -1,0 +1,62 @@
+`<div class="cm-sticky cm-wizzard -born">
+	<div class="cm-wrapper">
+		<div class="_head"><a ui-sref="create-avatar.name" class="_back"><ciayo translate="$back">BACK</ciayo></a>
+			<div class="_title"><ciayo translate="$when.were.you">WHEN WERE YOU BORN?</ciayo></div><img src="assets/img/wizzard/born.png" class="_banner"/>
+		</div>
+		<div class="_date">
+			<div class="_label"><ciayo translate="$date.of.birth">Date of Birth</ciayo></div>
+			<div class="_form">
+				<input type="hidden" id="inputDateHidden">
+				<input type="text" placeholder="DD/MM/YYYY" id="inputDate" class="cm-input" readonly><i class="ci-calendar -s16"></i>
+			</div>
+		</div>
+		<div class="cm-alert" ng-hide="!vm.errMsg"><i class="ci-warning -s16"></i>{{vm.errMsg}}
+		</div>
+	</div>
+	<div class="_sticky">
+		<button class="cm-button -block -primary" ng-click="vm.saveDOB()" ng-disabled="vm.isLoading">{{vm.isLoading?'Loading...':('$next'|translate)}}</button>
+	</div>
+</div>
+<div class="cm-panel -dob -topbar">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div>
+		<div class="cm-topbar-title"><ciayo translate="$date.of.birth">Date of Birth</ciayo></div>
+	</div>
+	<div style="background:#f0f0f0" class="cm-panel-content">
+		<div id="asd"></div>
+	</div>
+</div>
+<script>
+	$("#inputDate").on("click", function(){
+		$(".cm").addClass("-locked")
+		$(".cm-panel.-dob").addClass("-open")
+	})
+	
+	$(".cm-topbar-item").on("click", function(){
+		$(".cm").removeClass("-locked")
+		$(".cm-panel.-dob").removeClass("-open")
+	})
+
+	var date = new Date();
+	tanggal = date.getDate();
+	bulan = date.getMonth()+1;
+	tahun = date.getFullYear() - 13;
+	var today = new Date(tahun+'-'+bulan+'-'+tanggal);
+
+	var picker = new Pikaday(
+	{
+			field: document.getElementById('inputDate'),
+			firstDay: 1,
+			format: 'DD/MM/YYYY',
+			defaultDate: today,
+			yearRange: [1900,tahun],
+			bound: false,
+			container: document.getElementById('asd'),
+			onSelect: function() {
+				$(".cm").removeClass("-locked");
+				$(".cm-panel").removeClass("-open");
+				var unixTimestamp = this.getMoment().unix();
+				$('#inputDateHidden').val(unixTimestamp);
+			}
+	});
+</script>

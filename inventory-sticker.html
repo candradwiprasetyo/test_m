@@ -1,0 +1,54 @@
+<div class="cm-topbar">
+	<div class="cm-topbar-item -left" ui-sref="inventory.home"><ciayo translate="$back">BACK</ciayo></div>
+	<div class="cm-topbar-item -right" ng-click="vm.sortable()" ng-if="!vm.isSortable"><ciayo translate="$sort">SORT</ciayo></div>
+	<div class="cm-topbar-item -right" ng-click="vm.disSortable()" ng-if="vm.isSortable"><ciayo translate="$done">DONE</ciayo></div>
+	<div class="cm-topbar-title"><ciayo translate="$my.sticker">My Stickers</ciayo></div>
+</div>
+
+<div class="cm-inventory-label" ng-bind="('$my.sticker'|translate)+' ('+vm.collection.length+')'"></div>
+
+<div ng-if="!vm.collection.length">
+	<div class="loader" ng-if="!vm.noData"></div>
+	<p ng-if="vm.noData" ng-bind="vm.noData"></p>
+</div>
+
+<div id="sort">
+	<div class="cm-inventory-item" ng-repeat="item in vm.collection | orderBy:'order'" id="{{item.id}}" ng-if="item.type=='sticker'" ng-click="vm.previewSticker(item.id)" data-order="{{item.order}}">
+		<img src="" class="_image" ng-src="{{item.image}}">
+		<div class="_control">
+			<!--<button class="cm-button -primary -small" ng-click="vm.deleteSticker(item.id, $index)" ng-if="!vm.isSortable"><ciayo translate="$delete">Delete</ciayo></button>-->
+			<img src="assets/img/store/hamburger.png" ng-if="vm.isSortable" style="width:24px;height:24px;display:block;margin:3px 0">
+		</div>
+		<div class="_info">
+			<div class="_wrap">
+				<div class="_title" ng-bind="item.name">Chips on bed</div>
+				<div class="_date">expiry date: 17/05/2016</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="cm-panel -sticker-detail -topbar">
+	<div class="cm-panel-content" style="margin-top:-50px">
+		<div class="cm-topbar">
+			<div class="cm-topbar-item -left" ng-click="vm.closePreview()">
+				<ciayo translate="$back">BACK</ciayo>
+			</div>
+			<div class="cm-topbar-title">
+				&nbsp;
+			</div>
+			<div class="cm-store-card -cm-premium-card -cm-store-premcat">
+				<div class="loader-wrp" ng-hide="vm.item_detail_load">
+					<div class="loader"></div>
+				</div>
+				<div class="detail.content" ng-hide="!vm.item_detail_load">
+					<div class="cm-store-content -cm-store-sticker-detail-wrap">
+						<div class="cm-store-sticker-detail-col4" ng-repeat="item in vm.itemDetail">
+							<img ng-src="{{item.image}}" class="stickeritem" style="opacity:{{vm.st.opacity}}">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

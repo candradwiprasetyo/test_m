@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="theme-color" content="#59BAE7">
+    <meta name="msapplication-navbutton-color" content="#59BAE7">
+    <meta name="apple-mobile-web-app-capable" content="#59BAE7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59BAE7">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-profile">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Aji's Profile</div>
+        </div>
+        <div class="cm-profile-content">
+          <div class="_profile-wrp"><img src="assets/img/profile/ava.png" class="_avatar"/><img src="assets/img/profile/banner-profile.png" class="_banner"/>
+          </div>
+          <div class="_profile-name-wrp">
+            <div class="_username">aji_mahendra_gabisa_moveon</div>
+            <div class="_title">the vampire slayer</div>
+            <div class="_cme"><i class="ci-c-button -s30"></i>
+            </div>
+            <div class="_c-button">
+              <div class="_button"><img src="assets/img/profile/check.png"/><span>check me</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/add.png"/><span>add friend</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/follow.png"/><span>follow</span>
+              </div>
+              <div class="_close"><i class="ci-delete-2 -s10"></i>
+              </div>
+            </div>
+            <div class="_edit"><i class="ci-edit -s16"></i>
+            </div>
+          </div>
+          <div class="_profile-menu">
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-overview-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-overview-activ.png" class="_active"/><span>overview</span>
+              </div>
+            </div>
+            <div class="_menu -active">
+              <div class="_wrapper"><img src="assets/img/profile/profile-timeline-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-timeline-activ.png" class="_active"/><span>timeline</span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-connection-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-connection-activ.png" class="_active"/><span>connection</span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-achievement-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-achievement-activ.png" class="_active"/><span>achievement</span>
+              </div>
+            </div>
+          </div>
+              <div class="cm-card">
+                <div class="_head">
+                  <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                  <div class="_username">aji_mahendra</div>
+                  <div class="_userstatus">is leaving on a jetplane</div>
+                </div>
+                <div class="_media">
+                  <div class="_timestamp">
+                    <div class="_time">08:15</div>
+                    <div class="_date">01 JAN 2015</div>
+                  </div><img src="assets/img/timeline/_activity.png" style="display:block;width:100%">
+                  <div class="_info-layer">
+                              <div class="_layer -item -item-1"><img src="assets/img/timeline/_item-1-large.png" class="_image"/>
+                                <div class="_title">Asics Run Shoes</div>
+                                <div class="_paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam sapiente totam reiciendis voluptates quis numquam at, mollitia veritatis nulla quam saepe harum, culpa, neque doloribus quod. Saepe, deserunt, hic?</div>
+                              </div>
+                              <div class="_layer -item -item-2"><img src="assets/img/timeline/_item-1-large.png" class="_image"/>
+                                <div class="_title">Asics Run Shoes</div>
+                                <div class="_paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam sapiente totam reiciendis voluptates quis numquam at, mollitia veritatis nulla quam saepe harum, culpa, neque doloribus quod. Saepe, deserunt, hic?</div>
+                              </div>
+                              <div class="_layer -item -item-3"><img src="assets/img/timeline/_item-1-large.png" class="_image"/>
+                                <div class="_title">Asics Run Shoes</div>
+                                <div class="_paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam sapiente totam reiciendis voluptates quis numquam at, mollitia veritatis nulla quam saepe harum, culpa, neque doloribus quod. Saepe, deserunt, hic?</div>
+                              </div>
+                    <div class="_layer -with"></div>
+                    <div class="_layer -place"></div>
+                    <div class="_close"><i class="ci-delete-2 -s10"></i>
+                    </div>
+                    <div class="_overlay"></div>
+                  </div>
+                </div>
+                <div class="_info"><img src="assets/img/timeline/column.png" class="_holder"/>
+                  <div class="_row">
+                    <div class="_column">
+                                  <div class="_cell -item">
+                                    <div style="background-image: url(assets/img/timeline/_item-1.png)" toggle-layer="item-1" class="_block"></div>
+                                  </div>
+                                  <div class="_cell -item">
+                                    <div style="background-image: url(assets/img/timeline/_item-2.png)" toggle-layer="item-2" class="_block"></div>
+                                  </div>
+                                  <div class="_cell -item">
+                                    <div style="background-image: url(assets/img/timeline/_item-4.png)" toggle-layer="item-3" class="_block"></div>
+                                  </div>
+                      <div class="_cell -with -friend">
+                        <div toggle-layer="-friend" class="_block"><span>with<b>5</b></span><i class="ci-with -s20"></i>
+                        </div>
+                      </div>
+                      <div class="_cell -place -filled">
+                        <div style="background-image: url(assets/img/timeline/_place-1.png)" class="_block"><i class="ci-setting-information -s8"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="_react">
+                  <div class="_overview"><img src="assets/img/timeline/_react.png"/>
+                  </div>
+                  <div class="_dropdown">
+                    <div class="_dropdown-button"><i class="ci-cimotion -s20"></i>
+                    </div>
+                    <div class="_dropdown-reaction">
+                      <div class="_arrow"></div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Ciayo.png');" class="_reaction -s40"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Chips.png');" class="_reaction -s25"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Crocket.png');" class="_reaction -s50"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Coco.png');" class="_reaction -s30"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Carla.png');" class="_reaction -s45"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Chuck.png');" class="_reaction -s55"></div>
+                      </div>
+                      <div class="cm-clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="_paragraph">Be the first to CIMOTE this!</div>
+                </div>
+                <div class="_tab">
+                  <div class="_tab-item -comment -active">
+                    <div class="_tab-button"><span><i class="ci-comment -s20"></i><b>54</b></span></div>
+                    <div class="_tab-pane">
+                      <div class="_read"><i class="ci-comment -s20"></i><span>Read all 36 comments ..</span>
+                      </div>
+                                  <div class="_row">
+                                    <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                                    <div class="_comment -post">
+                                      <div class="_comment-username">aji_mahendra</div>
+                                      <div class="_comment-pubdate">5 Dec at 08:00</div>
+                                      <div class="_comment-option"><i class="ci-etc-fill -s12"></i>
+                                      </div>
+                                      <div class="_comment-content">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aen lacinia bibendum nulla sed</div>
+                                      <div class="_comment-action">
+                                        <div class="_comment-action-button -reply"><i class="ci-reply -sundefined"></i><span>Reply</span>
+                                        </div>
+                                        <div class="_comment-action-button -like"><i class="ci-like -sundefined"></i><span>20</span>
+                                        </div>
+                                        <div class="_comment-action-button -dislike"><i class="ci-dislike -sundefined"></i><span>16</span>
+                                        </div>
+                                        <div class="cm-clearfix"></div>
+                                      </div>
+                                      <div class="_comment-replies">View 2 replies ..</div>
+                                    </div>
+                                  </div>
+                                  <div class="_row">
+                                    <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                                    <div class="_comment">
+                                      <div class="_comment-username">aji_mahendra</div>
+                                      <div class="_comment-pubdate">5 Dec at 08:00</div>
+                                      <div class="_comment-option"><i class="ci-etc-fill -s12"></i>
+                                      </div>
+                                      <div class="_comment-content">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aen lacinia bibendum nulla sed</div>
+                                      <div class="_comment-action">
+                                        <div class="_comment-action-button -reply"><i class="ci-reply -sundefined"></i><span>Reply</span>
+                                        </div>
+                                        <div class="_comment-action-button -like"><i class="ci-like -sundefined"></i><span>20</span>
+                                        </div>
+                                        <div class="_comment-action-button -dislike"><i class="ci-dislike -sundefined"></i><span>16</span>
+                                        </div>
+                                        <div class="cm-clearfix"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                      <div class="_row -reply">
+                        <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                        <button type="button" class="cm-button -primary -small">Send</button>
+                        <div class="_comment -post">
+                          <input type="text" placeholder="Write a comment .." class="cm-input -small"><i class="ci-sticker-button -s16"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -share">
+                    <div class="_tab-button"><span><i class="ci-share -s20"></i><b>20</b></span></div>
+                    <div class="_tab-pane">
+                      <div class="_title">Share this post</div>
+                      <div class="_social">
+                        <div class="_social-button -facebook"><i class="ci-facebook -s40"></i>
+                        </div>
+                        <div class="_social-button -twitter"><i class="ci-twitter -s40"></i>
+                        </div>
+                        <div class="_social-button -instagram"><i class="ci-instagram -s40"></i>
+                        </div>
+                        <div class="_social-button -more"> <i class="ci-meatball -s40"></i>
+                        </div>
+                      </div>
+                      <div class="_copy"><span>Copy this post’s link</span><i class="ci-setting-privacy-policy -s16"></i>
+                      </div>
+                      <div class="_shared"><i class="ci-share -s16"></i><span>View all 20 shares ..</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -download">
+                    <div class="_tab-button"><span><i class="ci-download -s20"></i></span></div>
+                    <div class="_tab-pane"><img src="assets/img/timeline/_post.png" class="_image"/>
+                      <button type="button" class="cm-button -primary -small"><i class="ci-download -sundefined"></i>Download Activity
+                      </button>
+                    </div>
+                  </div>
+                  <div class="_tab-item -option">
+                    <div class="_tab-button"><span><i class="ci-etc-outline -s20"></i></span></div>
+                    <div class="_tab-pane">
+                      <div class="_show-to">
+                        <div class="_show-to-label">Show to:</div>
+                        <div class="_show-to-button"><i class="ci-public -s16"></i>Public
+                          <select>
+                            <option>Public</option>
+                            <option>Friends</option>
+                            <option>Only Me</option>
+                          </select><i class="ci-dropdown -s10"></i>
+                        </div>
+                      </div>
+                      <div class="_option">Turn Off Notifications</div>
+                      <div class="_option">Edit Post</div>
+                      <div class="_option">Delete Post</div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -ciayo">
+                    <div class="_tab-button"><span><i class="ci-c-button -s30"></i></span></div>
+                    <div class="_tab-pane">
+                      <div class="_button"><img src="assets/img/timeline/c-add-friend.png" class="_button-image"/>
+                        <div class="_button-label">view profile</div>
+                      </div>
+                      <div class="_button"><img src="assets/img/timeline/c-profile.png" class="_button-image"/>
+                        <div class="_button-label">view profile</div>
+                      </div>
+                      <div class="_button"><img src="assets/img/timeline/c-follow.png" class="_button-image"/>
+                        <div class="_button-label">follow</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cm-clearfix"></div>
+                </div>
+                <div class="cm-sticker cm-hide">
+                  <div class="cm-sticker-bar">
+                    <div class="cm-sticker-bar-button -active">Sticker</div>
+                    <div class="cm-sticker-bar-button">Emoji</div>
+                    <div class="cm-sticker-bar-button -shop"> <i class="ci-mobile-store-default-36 -s16"></i><span>Shop</span>
+                    </div>
+                    <div class="cm-clearfix"></div>
+                  </div>
+                  <div class="cm-sticker-tab">
+                    <div disabled class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+                    </div>
+                    <div class="cm-sticker-tab-control -next"><i class="ci-next -s12"></i>
+                    </div>
+                    <div class="cm-sticker-tab-viewport">
+                      <div style="background-image: url('assets/img/_sticker-tab-1.png')" class="cm-sticker-tab-button -active"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-2.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-3.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-4.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-5.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-6.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-1.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-2.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-3.png')" class="cm-sticker-tab-button"></div>
+                    </div>
+                  </div>
+                  <div class="cm-sticker-pane">
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cm-card">
+                <div class="_head">
+                  <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                  <div class="_username">aji_mahendra</div>
+                  <div class="_userstatus">is leaving on a jetplane</div>
+                </div>
+                <div class="_media">
+                  <div class="_timestamp">
+                    <div class="_time">08:15</div>
+                    <div class="_date">01 JAN 2015</div>
+                  </div><img src="assets/img/timeline/_activity.png" style="display:block;width:100%">
+                </div>
+                <div class="_info"><img src="assets/img/timeline/column.png" class="_holder"/>
+                  <div class="_row">
+                    <div class="_column">
+                      <div class="_cell -item -empty">
+                        <div style="background-image: url(assets/img/timeline/item-empty.png)" class="_block"></div>
+                      </div>
+                      <div class="_cell -with -ask">
+                        <div class="_block"><span>
+                             
+                            with<i class="ci-with-friends-blank -s20"></i></span></div>
+                      </div>
+                      <div class="_cell -place -ask">
+                        <div class="_block"><span>
+                             
+                            where<i class="ci-place-blank -s20"></i></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="_react">
+                  <div class="_overview"><img src="assets/img/timeline/_react.png"/>
+                  </div>
+                  <div class="_dropdown">
+                    <div class="_dropdown-button"><i class="ci-cimotion -s20"></i>
+                    </div>
+                    <div class="_dropdown-reaction">
+                      <div class="_arrow"></div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Ciayo.png');" class="_reaction -s40"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Chips.png');" class="_reaction -s25"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Crocket.png');" class="_reaction -s50"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Coco.png');" class="_reaction -s30"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Carla.png');" class="_reaction -s45"></div>
+                      </div>
+                      <div class="_col">
+                        <div style="background-image: url('assets/img/card/Chuck.png');" class="_reaction -s55"></div>
+                      </div>
+                      <div class="cm-clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="_paragraph">Be the first to CIMOTE this!</div>
+                </div>
+                <div class="_tab">
+                  <div class="_tab-item -comment -active">
+                    <div class="_tab-button"><span><i class="ci-comment -s20"></i><b>54</b></span></div>
+                    <div class="_tab-pane">
+                      <div class="_empty"><img src="assets/img/timeline/empty-comment.png" class="_empty-image"/>
+                        <div class="_empty-paragraph">Be the first to comment</div>
+                      </div>
+                      <div class="_row -reply">
+                        <div style="background-color: #A9E0F6;background-image: url('assets/img/_profile.png')" class="cm-pp -s30"></div>
+                        <button type="button" class="cm-button -primary -small">Send</button>
+                        <div class="_comment -post">
+                          <input type="text" placeholder="Write a comment .." class="cm-input -small"><i class="ci-sticker-button -s16"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -share">
+                    <div class="_tab-button"><span><i class="ci-share -s20"></i><b>20</b></span></div>
+                    <div class="_tab-pane">
+                      <div class="_title">Share this post</div>
+                      <div class="_social">
+                        <div class="_social-button -facebook"><i class="ci-facebook -s40"></i>
+                        </div>
+                        <div class="_social-button -twitter"><i class="ci-twitter -s40"></i>
+                        </div>
+                        <div class="_social-button -instagram"><i class="ci-instagram -s40"></i>
+                        </div>
+                        <div class="_social-button -more"> <i class="ci-meatball -s40"></i>
+                        </div>
+                      </div>
+                      <div class="_copy"><span>Copy this post’s link</span><i class="ci-setting-privacy-policy -s16"></i>
+                      </div>
+                      <div class="_shared"><i class="ci-share -s16"></i><span>View all 20 shares ..</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -download">
+                    <div class="_tab-button"><span><i class="ci-download -s20"></i></span></div>
+                    <div class="_tab-pane"><img src="assets/img/timeline/_post.png" class="_image"/>
+                      <button type="button" class="cm-button -primary -small"><i class="ci-download -sundefined"></i>Download Activity
+                      </button>
+                    </div>
+                  </div>
+                  <div class="_tab-item -option">
+                    <div class="_tab-button"><span><i class="ci-etc-outline -s20"></i></span></div>
+                    <div class="_tab-pane">
+                      <div class="_show-to">
+                        <div class="_show-to-label">Show to:</div>
+                        <div class="_show-to-button"><i class="ci-public -s16"></i>Public
+                          <select>
+                            <option>Public</option>
+                            <option>Friends</option>
+                            <option>Only Me</option>
+                          </select><i class="ci-dropdown -s10"></i>
+                        </div>
+                      </div>
+                      <div class="_option">Turn Off Notifications</div>
+                      <div class="_option">Edit Post</div>
+                      <div class="_option">Delete Post</div>
+                    </div>
+                  </div>
+                  <div class="_tab-item -ciayo">
+                    <div class="_tab-button"><span><i class="ci-c-button -s30"></i></span></div>
+                    <div class="_tab-pane">
+                      <div class="_button"><img src="assets/img/timeline/c-add-friend.png" class="_button-image"/>
+                        <div class="_button-label">view profile</div>
+                      </div>
+                      <div class="_button"><img src="assets/img/timeline/c-profile.png" class="_button-image"/>
+                        <div class="_button-label">view profile</div>
+                      </div>
+                      <div class="_button"><img src="assets/img/timeline/c-follow.png" class="_button-image"/>
+                        <div class="_button-label">follow</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cm-clearfix"></div>
+                </div>
+                <div class="cm-sticker cm-hide">
+                  <div class="cm-sticker-bar">
+                    <div class="cm-sticker-bar-button -active">Sticker</div>
+                    <div class="cm-sticker-bar-button">Emoji</div>
+                    <div class="cm-sticker-bar-button -shop"> <i class="ci-mobile-store-default-36 -s16"></i><span>Shop</span>
+                    </div>
+                    <div class="cm-clearfix"></div>
+                  </div>
+                  <div class="cm-sticker-tab">
+                    <div disabled class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+                    </div>
+                    <div class="cm-sticker-tab-control -next"><i class="ci-next -s12"></i>
+                    </div>
+                    <div class="cm-sticker-tab-viewport">
+                      <div style="background-image: url('assets/img/_sticker-tab-1.png')" class="cm-sticker-tab-button -active"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-2.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-3.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-4.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-5.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-6.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-1.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-2.png')" class="cm-sticker-tab-button"></div>
+                      <div style="background-image: url('assets/img/_sticker-tab-3.png')" class="cm-sticker-tab-button"></div>
+                    </div>
+                  </div>
+                  <div class="cm-sticker-pane">
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-sticker-item -sticker"><img src="assets/img/_sticker-1.png"/>
+                    </div>
+                    <div class="cm-clearfix"></div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+      <script>
+        // menu profile //
+        $(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+        	$(this).siblings().removeClass("-active")
+        	$(this).addClass("-active")
+        })
+        
+        // c button //
+        $(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+        	$(this).parent().addClass("-active")
+        })
+        $(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+        	$(this).parent().parent().removeClass("-active")
+        })
+      </script>
+    </div>
+  </body>
+</html>

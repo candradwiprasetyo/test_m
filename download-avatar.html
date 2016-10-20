@@ -1,0 +1,16 @@
+
+<div class="cm-sticky cm-wizzard -your-avatar">
+	<div class="cm-wrapper">
+		<div class="_paragraph"><b><ciayo translate="$you.look.awesome!">You look awesome!</ciayo></b>
+			<p><ciayo translate="$with.your.new">With your new look, you are ready to join in all the fun in the CIAYO World.</ciayo></p>
+		</div>
+		<div class="cm-loader" ng-hide="vm.avaUserImg"></div>
+		<img src="{{vm.avaUserImg}}" class="_your-avatar" bgcolor="{{vm.avaUserBg}}" ng-hide="!vm.avaUserImg">
+		<form id="form" action="{{vm.urlDownload}}" method="post" ng-if="vm.avaUserImg">
+			<input id="avaData" type="hidden" name="c" ng-value="vm.avaData">
+			<button type="submit" class="cm-button -small -primary"> <i class="ci-download -s14"></i><span><ciayo translate="$download.avatar">Download Avatar</ciayo></span>
+			</button>
+		</form>
+	</div>
+	<div class="_sticky"><a ui-sref="timeline" class="cm-button -block -primary"><ciayo translate="$done">Done</ciayo></a></div>
+</div>

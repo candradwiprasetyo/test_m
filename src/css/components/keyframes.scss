@@ -1,0 +1,69 @@
+@-webkit-keyframes load8 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes load8 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes gebeggebeg {
+	10%, 90% {
+		transform: translate3d(-2px, 0, 0);
+	}
+	
+	20%, 80% {
+		transform: translate3d(4px, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		transform: translate3d(-8px, 0, 0);
+	}
+
+	40%, 60% {
+		transform: translate3d(8px, 0, 0);
+	}
+}
+
+$_reaction_size : 40px;
+@keyframes s25 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 25);}
+}
+
+@keyframes s30 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 30);}
+}
+
+@keyframes s40 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 40);}
+}
+
+@keyframes s45 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 45);}
+}
+
+@keyframes s50 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 50);}
+}
+
+@keyframes s55 {
+	from { background-position: 0px;}
+	to { background-position: -($_reaction_size * 55);}
+}

@@ -1,0 +1,30 @@
+<div class="cm-profile">
+  <div class="cm-profile-content">
+    <div class="_profile-connection">
+      <div class="_search">
+      <i class="ci-search"></i>
+        <input type="text" class="_search_text" placeholder="{{'$search.friends'|translate}}..." ng-model="vm.drawer.data.searchFriend.search_text" ng-enter="vm.drawer.data.searchFriend.get_profile()">
+      </div>
+      <div class="_title">
+         <div class="_tab" ng-click="vm.drawer.data.searchFriend.redirect_page('friend')" ng-class="(vm.drawer.data.searchFriend.tab_active=='friend')?'_active':''"><ciayo translate="$all.friends" style="text-transform:uppercase">ALL FRIENDS</ciayo> ({{vm.drawer.data.searchFriend.count_friend_list}})</div>
+         <div class="_tab" ng-click="vm.drawer.data.searchFriend.redirect_page('mutual')" ng-class="(vm.drawer.data.searchFriend.tab_active=='mutual')?'_active':''" ng-show="vm.drawer.data.searchFriend.myprofile==false"><ciayo translate="$mutual" style="text-transform:uppercase">MUTUAL</ciayo> ({{vm.drawer.data.searchFriend.count_mutual_list}}) </div>
+      </div>
+
+     <div class="_content" ng-if="vm.drawer.data.searchFriend.tab_active=='friend'">
+        <c-friend-connection user = "user" ng-repeat="user in vm.drawer.data.searchFriend.user_list" type="vm.drawer.data.searchFriend.type"></c-friend-connection>
+        <div class="view-more" ng-show="vm.drawer.data.searchFriend.load_more">
+        <div class="loader" ng-show="vm.drawer.data.searchFriend.loading"></div>
+            <div class="button" ng-click="vm.drawer.data.searchFriend.getFriendList()" ng-hide="vm.drawer.data.searchFriend.loading"><ciayo>View more</ciayo></div>
+        </div>
+      </div>
+
+      <div class="_content" ng-if="vm.drawer.data.searchFriend.tab_active=='mutual'">
+       <c-friend-connection user = "user" ng-repeat="user in vm.drawer.data.searchFriend.mutual_list" type="vm.drawer.data.searchFriend.type"></c-friend-connection>
+        <div class="view-more" ng-show="vm.drawer.data.searchFriend.load_more_mutual">
+            <div class="loader" ng-show="vm.drawer.data.searchFriend.loading_mutual"></div>
+            <div class="button" ng-click="vm.drawer.data.searchFriend.getMutualList()" ng-hide="vm.drawer.data.searchFriend.loading_mutual"><ciayo>View more</ciayo></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

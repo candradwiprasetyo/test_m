@@ -1,0 +1,252 @@
+include _mixins
++layout({
+})
+	.cm-setting
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Settings
+		.cm-setting-menu
+			._list-menu.-edit-account
+				+icon("setting-edit-account", 20) 
+				|Edit Account
+			._list-menu.-change-password
+				+icon("setting-change-password", 20)
+				|Change Password
+			._list-menu.-privacy-settings
+				+icon("setting-privacy-setting", 20)
+				|Privacy Settings
+			._list-menu.-general-settings
+				+icon("setting-general-setting", 20)
+				|General Settings
+			._list-menu.-logout
+				+icon("setting-logout", 20)
+				|Logout
+	.cm-panel.-edit-account.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Edit Account
+		.cm-panel-content
+			._email
+				._email-label Email Address
+				input(type="text" value="aji.mahendra@gmail.com").cm-input._email-input
+				._email-verify Verify your email account
+			._phone
+				._phone-label Phone Number
+				._phone-number
+					._phone-code
+						|ID +62
+						+icon("dropdown", 10)
+						select
+							option ID +61
+							option ID +62
+							option ID +63
+					input(type="number" value="8881157720").cm-input._phone-input
+					.cm-clearfix
+				._phone-verify Verify your phone number
+			._login-notif
+				._login-notif-label Login Notifications
+				._login-notif-text
+					|Notify me through email or phone when someone is trying to log in into my account
+				._login-notif-radio
+					label.cm-switch
+						input(type="checkbox")
+						span
+			._deactive-account
+				._deactive-account-label Deactive Account
+				._deactive-account-text
+					|When your account is deactivated, people can't search, tag, and see your CIAYO profile
+				._deactive-account-button
+					button.cm-button.-primary Deactive Account
+			._delete-account
+				._delete-account-label Delete Account
+				._delete-account-text
+					|If you delete your account, all your credentials and acoount information will be lost and you have to make a new account to enter CIAYO World
+				._delete-account-button
+					button.cm-button.-primary Delete Account
+	.cm-modal.-setting-account-deactivate
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._paragraph Are you sure you want to deactivate your account?
+			._horizontal-line
+			.cm-button.-primary.-small(toggle-close) Cancel
+			.cm-button.-primary.-small(toggle-close) Yes
+	.cm-panel.-change-password.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Change Password
+		.cm-panel-content
+			._old-password
+				._label Old Password
+				._input-wrp
+					input(type="password" value="password").cm-input._input
+					+icon("eye", 16)
+			._new-password
+				._label New Password
+				._input-wrp
+					input(type="password" value="password").cm-input._input
+					+icon("eye", 16)
+				._tooltip-password.active
+					._title Your password needs to : 
+					._list.active
+						span
+						+icon("check-1", 10)
+						|Must be at least 8 characters
+					._list
+						span
+						+icon("check-1", 10)
+						|Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )
+			._new-password-confirm
+				._label New Password Confirmation
+				._input-wrp
+					input(type="password" value="").cm-input._input.error
+					+icon("eye", 16)
+				._error.active Your password do not match with each other
+			._button
+				button.cm-button.-primary Save
+	.cm-panel.-privacy-settings.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Privacy Setting
+		.cm-panel-content
+			._list-privacy
+				._label Timeline Access
+				._option.-active
+					+icon("public", 16)
+					|Public
+					select
+						option Public
+						option Friends
+						option Only Me
+					+icon("dropdown", 10)
+			._list-privacy
+				._label Default Post Setting
+				._option
+					+icon("public", 16)
+					|Public
+					select
+						option Public
+						option Friends
+						option Only Me
+					+icon("dropdown", 10)
+			._list-privacy
+				._label Who can find me
+				._option
+					+icon("public", 16)
+					|Public
+					select
+						option Public
+						option Friends
+						option Only Me
+					+icon("dropdown", 10)
+			._list-privacy
+				._label Who can add me
+				._option
+					+icon("public", 16)
+					|Public
+					select
+						option Public
+						option Friends
+						option Only Me
+					+icon("dropdown", 10)
+	.cm-panel.-general-settings.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title General Settings
+		.cm-panel-content
+			._card-settings
+				._label Card Settings
+				._text
+					|Parallax Timeline View
+					._option
+						label.cm-switch
+							input(type="checkbox")
+							span
+				._text-additional Parallax allows you to see activity images in a 3D-like prespective. If you have motion sickness, turn this off.
+			._notification-settings
+				._label Notification Settings
+				._text 
+					|Notification Tones
+					._option
+						label.cm-switch
+							input(type="checkbox")
+							span
+				._text Ringtone
+					._option._select
+						+icon("dropdown", 10)
+						select
+							option Ringtone 1
+							option Ringtone 2
+							option Ringtone 3
+				._text
+					|Connection Request
+					._option
+						label.cm-switch
+							input(type="checkbox")
+							span
+				._text
+					|Comments
+					._option
+						label.cm-switch
+							input(type="checkbox")
+							span
+			._language-settings
+				._label Language Setting
+				._text
+					|What language do you want to use in CIAYO?
+					._option._select
+						+icon("dropdown", 10)
+						select
+							option English (US)
+							option Bahasa Indonesia
+							option Bahasa Arab
+			._email-notifications
+				._label Email Notifications
+				._text
+					|New Features
+					._option
+						label.cm-switch
+							input(type="checkbox")
+							span
+	script.
+		$("._list-menu.-edit-account").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-account").addClass("-open")
+		})
+		$(".-edit-account .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-account").removeClass("-open")
+		})
+		$("._list-menu.-change-password").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-change-password").addClass("-open")
+		})
+		$(".-change-password .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-change-password").removeClass("-open")
+		})
+		$("._list-menu.-privacy-settings").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-privacy-settings").addClass("-open")
+		})
+		$(".-privacy-settings .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-privacy-settings").removeClass("-open")
+		})
+		$("._list-menu.-general-settings").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-general-settings").addClass("-open")
+		})
+		$(".-general-settings .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-general-settings").removeClass("-open")
+		})
+
+		// open setting-deactive-account
+		$(".-edit-account ._deactive-account ._deactive-account-button").on("click", function(){
+			$(".-setting-account-deactivate").addClass("-open");
+		})
+		// close setting-deactive-account
+		$(".-setting-account-deactivate [toggle-close]").on("click", function(){
+			$(".-setting-account-deactivate").removeClass("-open");
+		})

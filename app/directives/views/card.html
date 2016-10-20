@@ -1,0 +1,437 @@
+<div class="cm-card-row">
+	<div class="cm-card" id="cm-card_{{index}}" ng-class="{'-official':card.id==1}">
+		<div class="_head">	
+			<div style="background-color: {{card.user.avatar.background}};background-image: url({{card.user.avatar.cropped}});" class="cm-pp -s30"></div>
+			<div class="_username" ng-bind="card.user.user_display_name" ng-click="card.drawer.setState()" ui-sref="profile({username:card.user.username})"></div>
+			<div class="_userstatus" ng-bind-html="card.title" ng-click="card.openDrawer()"></div>
+		</div>
+		<div class="_media">
+			<div class="_timestamp" ng-if="type!='trending'">
+				<div class="_time">{{card.created_at*1000 |date:'HH:mm'}}</div>
+				<div class="_date">{{card.created_at*1000 |date:'d MMM yyyy'}}</div>
+			</div>
+			<div class="trending_ribbon" ng-if="type=='trending'">{{index>8?'':'0'}}{{index+1}}</div>
+			<c-card-parallax parallax="card.parallax" style="display:block;width:100%" ng-if="!card.is_static"/>
+			<img src="assets/img/timeline/card-template.png" style="width:100%;display:block;visibility:hidden;" ng-if="!card.is_static ||card.loading_image">
+			
+			<img style="width:100%" ng-src="{{card.image_preview}}" ng-if="(card.is_static && !card.is_loading) && !card.loading_image">
+			<div class="cm-loader" ng-if="(card.is_static && card.is_loading) || card.loading_image"/>
+			
+			<div class="_caption" ng-bind="card.caption" ng-if="card.caption"></div>
+			<div class="_info-layer">
+				<div class="_layer -item" ng-class="{'-active':card.layer.type==1 && card.layer.index==1}">
+					<img ng-src="{{card.layer.data.image.detail}}"  ng-if="card.layer.type==1 && card.layer.index==1" class="_image" />
+					<div class="_title" ng-bind="card.layer.data.name"></div>
+					<div class="_paragraph" ng-bind="card.layer.data.description"></div>
+				</div>
+				<div class="_layer -item" ng-class="{'-active':card.layer.type==1 && card.layer.index==2}">
+					<img ng-src="{{card.layer.data.image.detail}}"  ng-if="card.layer.type==1 && card.layer.index==2"  class="_image" />
+					<div class="_title" ng-bind="card.layer.data.name"></div>
+					<div class="_paragraph" ng-bind="card.layer.data.description"></div>
+				</div>
+				<div class="_layer -item" ng-class="{'-active':card.layer.type==1 && card.layer.index==3}">
+					<img ng-src="{{card.layer.data.image.detail}}"  ng-if="card.layer.type==1 && card.layer.index==3" class="_image" />
+					<div class="_title" ng-bind="card.layer.data.name"></div>
+					<div class="_paragraph" ng-bind="card.layer.data.description"></div>
+				</div>
+				<div class="_layer -item" ng-class="{'-active':card.layer.type==1 && card.layer.index==4}">
+					<img ng-src="{{card.layer.data.image.detail}}" ng-if="card.layer.type==1 && card.layer.index==4" class="_image" />
+					<div class="_title" ng-bind="card.layer.data.name"></div>
+					<div class="_paragraph" ng-bind="card.layer.data.description"></div>
+				</div>
+				<div class="_layer -with" ng-class="{'-active':card.layer.type==2 && card.with.type==0}">
+					<div class="_title"><ciayo translate="$with">With</ciayo><span></span> <ciayo ciayo translate="$people">people</ciayo></div>
+					<div class="_list" ng-repeat="list in card.with.list" ng-click="card.drawer.setState()" ui-sref="profile({'username':list.user_name})">
+						<div style="background-color: {{list.avatar.background}};background-image: url('{{list.avatar.cropped}}')" class="cm-pp -s30"></div>
+						<div class="_username" ng-bind="list.user_display_name" ></div>
+					</div>
+				</div>
+				<div class="_layer -with-secret" ng-class="{'-active':card.layer.type==2 && card.with.type==1}">
+					<img src="assets/img/card/its-secret.png" class="_image" />
+					<div class="_paragraph"><ciayo>It's secret</ciayo></div>
+				</div>
+				<div class="_layer -with-alone" ng-class="{'-active':card.layer.type==2 && card.with.type==2}">
+					<img src="assets/img/card/im-alone.png" class="_image" />
+					<div class="_paragraph"><ciayo translate="$i'm.alone">I'm<br>alone</ciayo></div>
+				</div>
+				<div class="_layer -place" ng-class="{'-active':card.layer.type==3 && card.place.type==0}">
+					<img ng-src="{{card.place.data.image.detail}}" class="_logo" />
+					<div class="_title" ng-bind="card.place.data.name"></div>
+					<div class="_address" ng-bind="card.place.data.address"></div>
+					<div class="_map">
+						<img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{card.place.data.position.lat}},{{card.place.data.position.long}}&zoom=15&size=436x312&key=AIzaSyAp_OxlQ8w6fayEK51b-6mpupMi-wbdOwc" />
+					</div>
+				</div>
+				<div class="_layer -place -secret" ng-class="{'-active':card.layer.type==3 && card.place.type==1}">
+					<img src="assets/img/card/secret-place.png" class="_logo" />
+					<div class="_title"><ciayo>It's Secret</ciayo></div>
+					<div class="_address">[Keterangan tentang bahwa user merahasiakan tempat ini untuk diketahui oleh orang lain]</div>
+					<div class="_map"><ciayo translate="$this.location.is">This location is not available on map</ciayo></div>
+				</div>
+				<div class="_close" ng-click="card.setLayer(0)"><i class="ci-delete-2 -s10"></i>
+				</div>
+				<div class="_overlay"></div>
+			</div>
+		</div>
+		<div class="_info"><img src="assets/img/timeline/column.png" class="_holder" />
+			<div class="_row">
+				<div class="_column">
+					<!-- ITEM -->
+					<div class="_cell -item -empty" ng-if="card.item.type==-1">
+						<div style="background-image: url(assets/img/timeline/item-empty.png)" class="_block"></div>
+					</div>
+					<div class="_cell -item" ng-if="card.item.type==0" ng-repeat="list in card.item.list" ng-click="card.setLayer(1,list,$index+1)">
+						<div style="background-image: url({{list.image.thumbnail}})" class="_block"></div>
+					</div>
+					<!-- END OF ITEM -->
+					<!-- WITH -->
+					<div class="_cell -with -ask" ng-if="card.with.type==-1" ng-click="card.askWith()">
+						<div class="_block">
+							<i class="ci-icon-with-side -s42"></i>
+							<span><ciayo translate="$who.are.you.with">who <br>are you <br>with?</ciayo></span>
+						</div>
+					</div>
+					<div class="_cell -with -friend" ng-if="card.with.type==0" ng-click="card.setLayer(2)">
+						<div layer-target="-with" class="_block"><span><ciayo translate="$with">with</ciayo><b ng-bind="card.with.count"></b></span><i class="ci-with -s20"></i>
+						</div>
+					</div>
+					<div class="_cell -with -secret" ng-if="card.with.type==1" ng-click="card.setLayer(2)">
+						<div class="_block">
+							<i class="ci-icon-with-side -s42"></i>
+							<i class="ci-icon-balon -s44"></i>
+							<span><ciayo>It's <br>Secret</ciayo></span>
+						</div>
+					</div>
+					<div class="_cell -with -alone" ng-if="card.with.type==2" ng-click="card.setLayer(2)">
+						<div class="_block">
+							<i class="ci-icon-with-side -s42"></i>
+							<i class="ci-icon-balon -s44"></i>
+							<span><ciayo translate="$i'm.alone">I'm <br>Alone</ciayo></span>
+						</div>
+					</div>
+					<!-- END OF WITH -->
+					<!-- PLACE -->
+					<div class="_cell -place -ask" ng-if="card.place.type==-1" ng-click="card.askPlace()">
+						<div class="_block">
+							<i class="ci-icon-place-side -s42"></i>
+							<span><ciayo translate="$where.are.you?">where <br>are you?</ciayo></span>
+						</div>
+					</div>
+					<div class="_cell -place -filled" ng-if="card.place.type==0" ng-click="card.setLayer(3)">
+						<div class="_block" style="background-image: url({{card.place.data.image.thumbnail}})">
+							<i class="ci-icon-place-side -s42"></i>
+						</div>
+					</div>
+					<div class="_cell -place -secret" ng-if="card.place.type==1" ng-click="card.setLayer(3)">
+						<div class="_block">
+							<i class="ci-icon-place-side -s42"></i>
+							<i class="ci-icon-balon -s44"></i>
+							<span><ciayo translate="$it's.secret">It's<br>Secret</ciayo></span>
+						</div>
+					</div>
+					<!-- END OF PLACE -->
+				</div>
+			</div>
+		</div>
+		<div class="_react" ng-if="type!='trending'">
+			<div class="_overview" ng-switch="card.reaction.most_react">
+				<img ng-switch-when="1" src="../assets/img/card/cimotion_ciayo_80px.png">
+				<img ng-switch-when="2" src="../assets/img/card/cimotion_chips_80px.png">
+				<img ng-switch-when="3" src="../assets/img/card/cimotion_crocket_80px.png">
+				<img ng-switch-when="4" src="../assets/img/card/cimotion_coco_80px.png">
+				<img ng-switch-when="5" src="../assets/img/card/cimotion_carla_80px.png">
+				<img ng-switch-when="6" src="../assets/img/card/cimotion_chuck_80px.png">
+				<img ng-switch-default  src="../assets/img/card/cimotion_ciayo_80px-gray.png">
+			</div>
+			<div class="_dropdown" ng-class="{'-open':card.reaction.isOpen}">
+				<div class="_dropdown-button" ng-click="card.reaction.setOpen(!card.reaction.isOpen)"><i class="ci-cimotion -s20"></i>
+				</div>
+				<div class="_dropdown-reaction">
+					<div class="_arrow"></div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==1,'-selected':card.reaction.user_react==1}" ng-click="card.reaction.react(1,$event)">
+						<div style="background-image: url('assets/img/card/Ciayo.png');" class="_reaction -s40"></div>
+					</div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==2,'-selected':card.reaction.user_react==2}" ng-click="card.reaction.react(2,$event)">
+						<div style="background-image: url('assets/img/card/Chips.png');" class="_reaction -s25"></div>
+					</div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==3,'-selected':card.reaction.user_react==3}" ng-click="card.reaction.react(3,$event)">
+						<div style="background-image: url('assets/img/card/Crocket.png');" class="_reaction -s50"></div>
+					</div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==4,'-selected':card.reaction.user_react==4}" ng-click="card.reaction.react(4,$event)">
+						<div style="background-image: url('assets/img/card/Coco.png');" class="_reaction -s30"></div>
+					</div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==5,'-selected':card.reaction.user_react==5}" ng-click="card.reaction.react(5,$event)">
+						<div style="background-image: url('assets/img/card/Carla.png');" class="_reaction -s45"></div>
+					</div>
+					<div class="_col" ng-class="{'-active':card.reaction.animate==6,'-selected':card.reaction.user_react==6}" ng-click="card.reaction.react(6,$event)">
+						<div style="background-image: url('assets/img/card/Chuck.png');" class="_reaction -s55"></div>
+					</div>
+					<div class="cm-clearfix"></div>
+				</div>
+			</div>
+			<div class="_paragraph" ng-click="card.reaction.openModal()">
+				<span ng-if="card.reaction.count==0"><ciayo translate="$be.first.cimote">Be the first to CIMOTE this!</ciayo></span>
+				<span ng-if="card.reaction.count>0" class="cm-color-dark-blue"><span ng-bind="card.reaction.count"></span> <ciayo translate="$people.give.cimotion">people give CIMOTION</ciayo></span>
+			</div>
+		</div>
+		<div class="_tab" ng-if="type!='trending'">
+			<div class="_tab-item -comment" ng-class="{'-active':card.state==0}" ng-if="card.id!=1">
+				<div class="_tab-button" ng-click="card.setState(0)"><span><i class="ci-comment -s20"></i><b ng-bind="card.comment.count"></b></span></div>
+				<div class="_tab-pane">
+					<div class="_read" ng-if="card.comment.list.length> 0">
+						<i class="ci-comment -s20"></i>
+						<span ng-if="type=='timeline' && card.comment.count>0" ng-click="card.openDrawer()"><ciayo translate="$read.all">Read all</ciayo> <span ng-bind="card.comment.count"></span> <ciayo translate="$comments ..">comments ..</ciayo></span>
+						<span ng-if="type=='detail'" ng-click="card.comment.load(card.comment.list.length)"><ciayo translate="$view.more.">Load more</ciayo></span>
+					</div>
+					<div ng-if="card.comment.list.length == 0" class="_empty cm-hide">
+						<img src="assets/img/no-comment-carla.png" class="_empty-image" ng-if="((index)%5)==0"/>
+						<img src="assets/img/no-comment-chips.png" class="_empty-image" ng-if="((index)%5)==1"/>
+						<img src="assets/img/no-comment-chuck.png" class="_empty-image" ng-if="((index)%5)==2"/>
+						<img src="assets/img/no-comment-coco.png" class="_empty-image" ng-if="((index)%5)==3"/>
+						<img src="assets/img/no-comment-crocket.png" class="_empty-image" ng-if="((index)%5)==4"/>
+						<div class="_empty-paragraph"><ciayo translate="$be.first.to.comment">Be the first to comment</ciayo></div>
+					</div>
+					<div class="cm-card-comment" ng-repeat="list in card.comment.list" ng-class="{'-edited':list.created_at!=list.updated_at}">
+						<div style="background-color: {{list.user.avatar.background}};background-image: url({{list.user.avatar.cropped}});" class="cm-pp -s30" ng-click="card.drawer.setState()" ui-sref="profile({username:list.user.username})"></div>
+						<div class="_comment">
+							<div class="_comment-username" ng-bind="list.user.user_display_name" ng-click="card.drawer.setState()" ui-sref="profile({username:list.user.username})"></div>
+							<div class="_comment-pubdate">{{list.updated_at*1000 |date:'d MMM'}} at {{list.updated_at*1000 |date:'HH:mm'}}</div>
+							<div class="_comment-option" ng-class="{'-open':list.isMenuOpen}" ng-click="list.toggleMenuOpen()" ng-if="list.user.id==card.login.id || card.user.id==card.login.id">
+								<i class="ci-etc-fill -s12"></i>
+								<div class="_comment-option-dropdown">
+									<div class="_option"  ng-if="list.user.id==card.login.id" ng-click="list.user.id==card.login.id?list.editComment(card):angular.noop()"><ciayo translate="$edit">Edit</ciayo></div>
+									<div class="_option"  ng-if="list.user.id==card.login.id || card.user.id==card.login.id" ng-click="list.deleteComment()"><ciayo translate="$delete">Delete</ciayo></div>
+								</div>
+							</div>
+							<div class="_comment-content" ng-bind-html="list.parse_message"></div>
+							<div class="_comment-action">
+								<div class="_comment-action-button -reply" ng-click="list.replyComment(card)"><i class="ci-reply"></i><span><label ng-bind="list.reply.count" ng-if="list.reply.count>0"></label>&nbsp;<ciayo translate="$reply.comment">Reply Comment</ciayo></span>
+								</div>
+								<div ng-if="list.created_at!=list.updated_at" class="_comment-action-button"><span class="_cancel-separator">•</span>&nbsp;edited</div>
+								<div class="_comment-action-button -like" ng-click="list.like(1)" ng-class="{'cm-color-dark-blue':list.action.value==1}">
+									<i class="ci-like"></i>
+									<span ng-bind="list.action.like_count"></span>
+								</div>
+								<div class="_comment-action-button -dislike" ng-click="list.like(-1)" ng-class="{'cm-color-dark-blue':list.action.value==-1}">
+									<i class="ci-dislike"></i>
+									<span ng-bind="list.action.dislike_count"></span>
+								</div>
+								<div class="cm-clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div ng-class="{'_sticky':type=='detail'}" ng-if="type!='detail'">
+						<div class="cm-card-comment -reply -down">
+							<div style="background-color: {{card.login.avatar.background}};background-image: url({{card.login.avatar.cropped}});" class="cm-pp -s30"></div>
+							<button type="button" class="cm-button -primary -small" ng-click="card.comment.create()"><ciayo translate="$send">Send</ciayo></button>
+							<div class="_comment">
+								<input type="text" placeholder="{{'$write.comment'|translate}}..." class="_input" ng-model="card.comment.search" ng-focus="inputFocus(this)" ngBlur="inputBlur(this)">
+								<!--<div placeholder="Write a comment .." contenteditable="true" class="_input" ng-model="card.comment.search" ng-focus="inputFocus(this)" ngBlur="inputBlur(this)"></div>-->
+								<i class="ci-sticker-button -s16" ng-class="{'-active': card.comment.sticker.isOpen}" ng-click="card.comment.sticker.setOpen(!card.comment.sticker.isOpen,(type=='detail'?-1:index))"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="_tab-item -share" ng-class="{'-active':card.state==1}">
+				<div class="_tab-button" ng-click="card.setState(1)"><span><i class="ci-share -s20"></i><b ng-bind="card.sharing.count"></b></span></div>
+				<div class="_tab-pane">
+					<div class="_title"><ciayo translate="$share.this.post">Share this post</ciayo></div>
+					<div class="_social">
+						<div class="_social-button" ng-click="card.sharing.shareFB();" ng-class="{'-disable': card.sharing.is_sharing}">
+						<i class="ci-facebook -s40"></i>
+						</div>
+						<div class="_social-button">
+							<a target="_blank" ng-href="{{card.link.pinterest}}" ng-click="card.sharing.share('pinterest')"><i class="ci-pinterest -s40"></i></a>
+						</div>
+						<div class="_social-button">
+							<a target="_blank" ng-href="{{card.link.twitter}}" ng-click="card.sharing.share('twitter')"><i class="ci-twitter -s40"></i></a>
+						</div>
+						<div class="_social-button cm-hide">
+							<a target="_blank"><i class="ci-path-01 -s40"></i></a>
+						</div>
+					</div>
+					<div class="_copy" data-clipboard-text="{{card.detail_link}}"><span><ciayo translate="$copy.this.post's.link">Copy this post’s link</ciayo></span><i class="ci-setting-privacy-policy -s16"></i>
+					</div>
+					<div class="_shared" ng-click="card.openDrawer()" ng-if="type!='detail'">
+						<i class="ci-share -s16"></i>
+						<span><ciayo translate="$view.all">View all</ciayo> <label ng-bind="card.sharing.count"></label> <ciayo translate="$shares ..">shares ..</ciayo></span>
+					</div>
+					<div class="_list" ng-if="type=='detail'" ng-repeat="list in card.sharing.user_list">
+						<div style="background-color: {{list.user.avatar.background}};background-image: url({{list.user.avatar.cropped}});" class="cm-pp -s30" ng-click="card.drawer.setState()" ui-sref="profile({'username':list.user.username})"></div>
+						<div class="_right">
+							<a href class="_link" ng-repeat="list in list.share"><i class="ci-{{list}} -s18"></i></a>
+						</div>
+						<div class="_username" ng-bind="list.user.user_display_name" ng-click="card.drawer.setState()" ui-sref="profile({'username':list.user.username})"></div>
+					</div>
+				</div>
+			</div>
+			<div class="_tab-item -download" ng-class="{'-active':card.state==2}">
+				<div class="_tab-button" ng-click="card.setState(2)"><span><i class="ci-download -s20"></i></span></div>
+				<div class="_tab-pane"><img ng-src="{{card.image_download}}" class="_image" onload="$(window).trigger('resize.card-tab')" />
+					<form action="{{card.download_link}}" method="post">
+						<input type="text" name="c" ng-model="card.download_data" style="display:none">
+						<button class="cm-button -primary -small" type="submit">
+							<i class="ci-download"></i> <ciayo translate="$download.activity">Download Activity</ciayo>
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="_tab-item -option" ng-class="{'-active':card.state==3}">
+				<div class="_tab-button" ng-click="card.setState(3)"><span><i class="ci-etc-outline -s20"></i></span></div>
+				<div class="_tab-pane">
+					<div class="_show-to" ng-if="card.user.status.self">
+						<div class="_show-to-label"><ciayo translate="$show.to:">Show to:</ciayo></div>
+						<div class="_show-to-button"><i class="ci-{{card.permission.data.icon}} -s16"></i><span ng-bind="card.permission.data.name"></span>
+							<select ng-options="permission.name for permission in card.permission.list track by permission.id" ng-model="card.permission.data" ng-change="card.changePermission()">
+							</select>
+							<i class="ci-dropdown -s10"></i>
+						</div>
+					</div>
+					<div class="_option" ng-click="card.setSubscribe();">
+						<span ng-if="card.subscribe==true"><ciayo translate="$turn.off.notifications">Turn Off Notifications</ciayo></span>
+						<span ng-if="card.subscribe==false"><ciayo translate="$turn.on.notifications">Turn On Notifications</ciayo></span>
+					</div>
+					<div class="_option" ng-if="card.user.status.self" ng-click="card.editCaption()"><ciayo translate="$edit.caption">Edit Caption</ciayo></div>
+					<div class="_option" ng-if="card.user.status.self" ng-click="card.editWith()"><ciayo translate="$edit.with">Edit With</ciayo></div>
+					<div class="_option" ng-if="card.user.status.self" ng-click="card.deletePrompt()"><ciayo translate="$delete.post">Delete Post</ciayo></div>
+				</div>
+			</div>
+			<div class="_tab-item -ciayo" ng-class="{'-active':card.state==4}">
+				<div class="_tab-button" ng-click="card.setState(4)"><span><i class="ci-c-button -s30"></i></span></div>
+
+				<div class="_tab-pane">
+					<c-friend-connection ng-if="card.user.user_list_button" user="card.user.user_list_button" type="'timeline'"></c-friend-connection>
+					<div ng-if="!card.user.user_list_button">
+						<div class="icon-group-frame-self">
+							<div class="icon-group">
+								<div class="icon" ng-click="card.drawer.setState()" ui-sref="profile({'username':user.username})"><img src="assets/img/search/i_check_me.png"></div>
+								<div class="name" ng-click="card.drawer.setState()" ui-sref="profile({'username':user.username})">
+									<ciayo translate="$view.profile">view profile</ciayo>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cm-clearfix"></div>
+		</div>
+		<div class="_trending-tab" ng-if="type=='trending'">
+			<div class="emoticon-frame">
+				<div class="item" ng-click="card.reaction.openModal()"><img src="assets/img/trending/emoticon.png"><span class="desc" ng-bind="card.reaction.count"></span></div>
+				<div class="item" ng-click="card.setState(0);card.openDrawer();"><img src="assets/img/trending/comment.png"><span class="desc" ng-bind="card.comment.count"></span></div>
+				<div class="item" ng-click="card.setState(1);card.openDrawer();"><img src="assets/img/trending/share.png"><span class="desc" ng-bind="card.sharing.count"></span></div>
+			</div>
+			<div class="view-post-frame" ng-click="card.openDrawer()">
+				<div class="button"><ciayo translate="$view.post">View Post</ciayo></div>
+
+			</div>
+		</div>
+		<div class="_tab-loading" ng-if="card.isLoading">
+			Loading...
+		</div>
+		<div class="cm-sticker" ng-if="card.comment.sticker.isOpen && type!='detail'">
+			<div class="cm-sticker-bar">
+				<div class="cm-sticker-bar-button" ng-class="{'-active':card.comment.sticker.index==0}" ng-click="card.comment.sticker.setIndex(0, $index)" id="tab_sticker_{{$index}}"><ciayo translate="$sticker">Sticker</ciayo></div>
+				<div class="cm-sticker-bar-button" ng-class="{'-active':card.comment.sticker.index==1}" ng-click="card.comment.sticker.setIndex(1, $index)" id="tab_emoji_{{$index}}"><ciayo translate="$emoji">Emoji</ciayo></div>
+				<div class="cm-sticker-bar-button -shop" ng-click="card.drawer.setState()" ui-sref="store.home"> <i class="ci-mobile-store-default-36 -s16"></i><span><ciayo translate="$shop">Shop</ciayo></span>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+			<div class="cm-sticker-tab">
+				<div class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-control -next "><i class="ci-next -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-viewport">
+					<div ng-if="card.comment.sticker.index==0" class="cm-sticker-tab-button" ng-repeat="collection in card.comment.sticker.stickerCollection" ng-class="{'-active':card.comment.sticker.collectionIndex==$index}" ng-click="card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+					<div ng-if="card.comment.sticker.index==1" class="cm-sticker-tab-button" ng-repeat="collection in card.comment.sticker.emojiCollection" ng-class="{'-active':card.comment.sticker.collectionIndex==$index}" ng-click="card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+				</div>
+			</div>
+
+			<div class="cm-sticker-pane">
+				<div ng-if="card.comment.sticker.index==0" class="cm-sticker-item -sticker" ng-repeat="detail in card.comment.sticker.stickerCollection[card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="card.comment.sendSticker(detail)" />
+				</div>
+				<div ng-if="card.comment.sticker.index==1" class="cm-sticker-item -emoji" ng-repeat="detail in card.comment.sticker.emojiCollection[card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="card.comment.sendEmoji(detail)" />
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+
+		</div>
+
+	</div>
+	<div ng-class="{'_sticky':type=='detail'}" ng-if="type=='detail'" ng-show="card.state==0">
+		<div class="cm-card-comment -reply -down">
+			<div style="background-color: {{card.login.avatar.background}};background-image: url({{card.login.avatar.cropped}});" class="cm-pp -s30"></div>
+			<button type="button" class="cm-button -primary -small" ng-click="card.comment.create()"><ciayo translate="$send">Send</ciayo></button>
+			<div class="_comment">
+				<input type="text" placeholder="{{'$write.comment'|translate}}..." class="_input" ng-model="card.comment.search" ng-focus="inputFocus(this)" ngBlur="inputBlur(this)">
+				<!--<div placeholder="Write a comment .." contenteditable="true" class="_input" ng-model="card.comment.search" ng-focus="inputFocus(this)" ngBlur="inputBlur(this)"></div>-->
+				<i class="ci-sticker-button -s16" ng-click="card.comment.sticker.setOpen(!card.comment.sticker.isOpen,(type=='detail'?-1:index))"></i>
+			</div>
+		</div>
+		<div class="cm-sticker" ng-if="card.comment.sticker.isOpen && type=='detail'">
+			<div class="cm-sticker-bar">
+				<div class="cm-sticker-bar-button" ng-class="{'-active':card.comment.sticker.index==0}" ng-click="card.comment.sticker.setIndex(0, $index)" id="tab_sticker_{{$index}}"><ciayo translate="$sticker">Sticker</ciayo></div>
+				<div class="cm-sticker-bar-button" ng-class="{'-active':card.comment.sticker.index==1}" ng-click="card.comment.sticker.setIndex(1, $index)" id="tab_emoji_{{$index}}"><ciayo translate="$emoji">Emoji</ciayo></div>
+				<div class="cm-sticker-bar-button -shop" ng-click="card.drawer.setState()" ui-sref="store"> <i class="ci-mobile-store-default-36 -s16"></i><span><ciayo translate="$shop">Shop</ciayo></span>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+			<div class="cm-sticker-tab">
+				<div class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-control -next "><i class="ci-next -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-viewport">
+					<div ng-if="card.comment.sticker.index==0" class="cm-sticker-tab-button" ng-repeat="collection in card.comment.sticker.stickerCollection" ng-class="{'-active':card.comment.sticker.collectionIndex==$index}" ng-click="card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+					<div ng-if="card.comment.sticker.index==1" class="cm-sticker-tab-button" ng-repeat="collection in card.comment.sticker.emojiCollection" ng-class="{'-active':card.comment.sticker.collectionIndex==$index}" ng-click="card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+				</div>
+			</div>
+
+			<div class="cm-sticker-pane">
+				<div ng-if="card.comment.sticker.index==0" class="cm-sticker-item -sticker" ng-repeat="detail in card.comment.sticker.stickerCollection[card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="card.comment.sendSticker(detail)" />
+				</div>
+				<div ng-if="card.comment.sticker.index==1" class="cm-sticker-item -emoji" ng-repeat="detail in card.comment.sticker.emojiCollection[card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="card.comment.sendEmoji(detail)" />
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+
+		</div>
+	</div>
+	<script>
+			angular.element(document).ready(function () {
+				$(window).on("resize.card-tab", function () {
+					$(".cm-card").each(function () {
+						$(this).children("._tab").css("height", $(this).find("._tab-item").outerHeight() + $(this).children("._tab").find(".-active ._tab-pane").outerHeight())
+					})
+				});
+				setTimeout(function () {
+					$(window).trigger("resize.card-tab")
+					$(".cm-card-comment ._input").on({
+						"focus": function () {
+							$(this).parent().addClass("-focus")
+						},
+						"blur": function () {
+							$(this).parent().removeClass("-focus")
+						}
+					})
+				}, 1);
+			});
+
+			function test(id){
+				var objDiv = document.getElementById("cm-sticker-pane_"+id);
+				alert(objDiv);
+				//objDiv.scrollTop = objDiv.scrollHeight;
+			}
+		</script>
+	<script>
+angular.element(document).ready(function(){
+	var clipboard = new Clipboard('._copy');
+})
+	</script>
+</div>

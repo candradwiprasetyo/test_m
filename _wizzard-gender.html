@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+    <script src="assets/libs/pikaday.jquery.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-sticky cm-wizzard -gender">
+        <div class="cm-wrapper">
+          <div class="_head"><a href="_wizzard-born.html" class="_back">BACK</a>
+            <div class="_title">SELECT YOUR GENDER</div>
+          </div>
+          <div class="_gender">
+            <div class="_gender-option -male">
+              <div class="_gender-option-image"></div>
+              <div class="_gender-option-label">Male</div>
+            </div>
+            <div class="_gender-option -female">
+              <div class="_gender-option-image"></div>
+              <div class="_gender-option-label">Female</div>
+            </div>
+            <div class="cm-clearfix"></div>
+          </div>
+        </div>
+        <div class="_sticky"><a href="_wizzard-create-avatar.html" class="cm-button -block -primary">Next</a></div>
+      </div>
+      <script>
+        $("._gender-option").click(function(){
+        	$(this).siblings("._gender-option").removeClass("-active");
+        	$(this).addClass("-active");
+        })
+      </script>
+    </div>
+  </body>
+</html>

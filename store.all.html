@@ -1,0 +1,15 @@
+<div class="_wrap">
+	<!--<div class="cm-store-banner">
+	0	<img ng-src="{{vm.st.listPopular[0].image}}" class="free-sticker-banner" ng-click="vm.st.viewDetail(vm.st.listPopular[0].product_id)">
+		<span ng-bind="vm.st.listPopular[0].name"></span>
+	</div>-->
+
+	<div class="_lists">
+		<div class="cm-store-category" ng-repeat="item in vm.st.listAll" ng-click="vm.st.viewDetail(item.product_id)" style="background-image: url({{item.image}});background-color: #ddd" ng-bind="item.name"></div>
+	</div>
+	
+	<div class="_button">
+		<div class="cm-loader" ng-if="vm.st.isLoadingMore"></div>
+		<button type="button" class="cm-button -default -block" ng-click="vm.loadMoreAll();" ng-if="!vm.st.noDataAll"><ciayo translate="$view.more.">View more...</ciayo></button>
+	</div>
+</div>

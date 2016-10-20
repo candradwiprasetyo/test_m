@@ -1,0 +1,47 @@
+include _mixins
++layout({
+	libs:["owl.carousel.min.js"]
+})
+	.cm-store
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Store
+		.cm-store-coin
+			._label My coin :
+			._coin.-caps 50
+			._coin.-cans 100
+		.cm-store-search
+			+icon("search", 20)
+			input(type="text" placeholder="Search sticker or emoji ..").cm-input
+		.cm-store-goto
+			p Open your inventory and manage your knick-knacks!
+			button(type="button").cm-button.-primary.-small Go to inventory
+		.cm-store-nav
+			._link Home
+			._link.-active Premium
+			._link Contributor
+			._link Free
+			._link All Sticker
+		.cm-store-slide.owl-carousel
+			div: img(src="assets/img/store/slide-1.png")
+			div: img(src="assets/img/store/slide-2.png")
+		.cm-store-legends
+			._label Legend :
+			._legend(style="background-image: url('assets/img/store/legend-premium.png')") Premium sticker
+			._legend(style="background-image: url('assets/img/store/legend-sticker.png')") Sticker
+			._legend(style="background-image: url('assets/img/store/legend-emoji.png')") Emoji
+		.cm-store-stack
+			._head
+				._action See All
+				._title Premium New
+			._body
+				.cm-store-item
+					img()
+	script.
+		$(document).ready(function(){
+			$(".cm-store-slide").owlCarousel({
+				items: 1,
+				nav: true,
+				navText: ["<i class='ci-prev'></i>","<i class='ci-next'></i>"]
+			});
+		});

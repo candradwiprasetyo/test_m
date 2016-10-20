@@ -1,0 +1,90 @@
+include _mixins
++layout({
+	navbar: "friend-request"
+})
+	.cm-friend-request
+		.friend-request
+			.title
+				| Friend Requests (21)
+			mixin list(type)
+				if type == 1
+					.list.accept
+						.photo-profile
+							img(src="assets/img/friend-request/user.png")
+						.name-profile
+							.display-name Bos Jacky
+							.full-name Bos Jacky Bijaksana has become your friend
+						.config-profile
+							.item
+								.button-accept View Profile
+				else if type == 2
+					.list.decline
+						.photo-profile
+							img(src="assets/img/friend-request/user.png")
+						.name-profile
+							.display-name Bos Jacky
+							.full-name Request declined
+						.config-profile
+							.item
+								.button-decline Decline
+				else
+					.list
+						.photo-profile
+							img(src="assets/img/friend-request/user.png")
+						.name-profile
+							.display-name Bos Jacky
+							.full-name Bos Jacky Bijaksana
+								+icon("currency-cans", 6)
+								| &nbsp; Male
+							.mutual-friend 7 mutual friends
+						.config-profile
+							.item
+								+icon("delete", 20)
+								+icon("accept", 20)
+
+			+list(1)
+			+list()
+			+list(2)
+			+list()
+			.more-friend-request 
+				| More friend request 
+				+icon("dropdown", 10)
+
+		.invite-friend 
+			.title Invite friends to CIAYO
+			.item-frame
+				.item 
+					.icon 
+						+icon("email", 20)
+					.text Invite Friends by Email
+				.item 
+					.icon 
+						+icon("facebook", 20)
+					.text Invite from Facebook
+				.item 
+					.icon 
+						+icon("email", 20)
+					.text Invite from Gmail Account
+
+		.people-know
+			.title
+				| People you may know	
+			mixin list
+				.list 
+					.photo-profile
+						img(src="assets/img/friend-request/user.png")
+					.name-profile
+						.display-name Bos Jacky
+						.full-name Bos Jacky Bijaksana
+							+icon("currency-cans", 6)
+							| &nbsp; Male
+						.mutual-friend 7 mutual friends
+					.config-profile
+						.icon
+							+icon("c-button", 30)
+							
+			+list
+			+list
+			+list
+			
+

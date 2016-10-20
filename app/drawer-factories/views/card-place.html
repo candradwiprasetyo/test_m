@@ -1,0 +1,44 @@
+<div class="cm-sticky">
+	<div class="cm-wrapper">
+		<!-- klo uda select place-->
+		<div class="_place" ng-if="vm.drawer.data.place">
+			<img class="_image" ng-src="{{vm.drawer.data.place.place_main_image}}">
+			<div ng-bind="vm.drawer.data.place.name"></div>
+			<small ng-bind="vm.drawer.data.place.address"></small>
+			<i class="ci-delete-2 -s10" ng-click="vm.drawer.data.deletePlace()"></i>
+		</div>
+		<div class="_search" ng-if="vm.drawer.data.place==undefined">
+			<div class="_search-input"><i class="ci-search -s16"></i>
+				<input
+					type="text"
+					placeholder="Add a place .."
+					ng-model="vm.drawer.data.search"
+					ng-model-options="{debounce: 150}"
+					ng-change="vm.drawer.data.searchPlace()"
+				>
+				<i class="ci-delete-2 -s10" ng-click="vm.drawer.data.deleteSearch()"></i>
+			</div>
+		</div>
+		<div class="cm-messages" ng-if="vm.drawer.data.isEmpty">
+			<i class="ci-warning -s40"></i>
+			<p><ciayo translate="$not.found"></ciayo></p>
+		</div>
+		<div class="_list-item" ng-if="vm.drawer.data.list">
+			<div class="_list" ng-repeat="list in vm.drawer.data.list" ng-click="vm.drawer.data.selectPlace(list)" ng-class="{_new:place.place_new==true}"><img ng-src="{{list.place_main_image}}"><span><div ng-bind="list.name"></div><small ng-bind="list.address"></small></span>
+			<div class="_label-new">New</div>
+			</div>
+		</div>
+		<div>
+			<div class="_map" ng-if="vm.drawer.data.list.length==0 && vm.drawer.data.place">
+				<div class="_map-unvaible" ng-if="vm.drawer.data.place.location==undefined"><ciayo>Sorry, this place is not available on map</ciayo></div>
+				<img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{vm.drawer.data.place.location.lat}},{{vm.drawer.data.place.location.lon}}&zoom=15&size=436x312&key=AIzaSyAp_OxlQ8w6fayEK51b-6mpupMi-wbdOwc"/>
+				<div class="_map-locate" ng-if="vm.drawer.data.place.location"><i class="ci-setting-information -s16"></i>
+				</div>
+			</div>
+			<div class="_title" ng-if="vm.drawer.data.suggest.length>0 && vm.drawer.data.place==undefined"><ciayo>Suggested Places</ciayo></div>
+			<div class="_list-item" ng-if="vm.drawer.data.suggest.length>0 && vm.drawer.data.place==undefined">
+				<div class="_list" ng-repeat="list in vm.drawer.data.suggest" ng-click="vm.drawer.data.selectPlace(list)"><img ng-src="{{list.place_main_image}}"><span><div ng-bind="list.name"></div><small ng-bind="list.address"></small></span></div>
+			</div>
+		</div>
+	</div>
+</div>

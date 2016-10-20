@@ -1,0 +1,37 @@
+include _mixins
++layout({
+	css: ["swiper.min.css"],
+	libs:["swiper.min.js"]
+})
+	.cm-nlp-wrapper
+		.cm-nlp-container
+			.cm-nlp-slide
+				.swiper-container
+					.swiper-wrapper
+						.swiper-slide.-cm-nlp-slide
+							img(src="assets/img/nlp/nlp-1.jpg")
+						.swiper-slide.-cm-nlp-slide
+							img(src="assets/img/nlp/nlp-2.jpg")
+						.swiper-slide.-cm-nlp-slide
+							img(src="assets/img/nlp/nlp-3.jpg")
+						.swiper-slide.-cm-nlp-slide
+							img(src="assets/img/nlp/nlp-4.jpg")
+		.swiper-pagination.-cm-nlp-pagination
+		.cm-nlp-nav
+			a(href="#")
+				.-cm-nlp-nav-left
+					p REGISTER
+			a(href="#")
+				.-cm-nlp-nav-right
+					p LOGIN
+			.cm-clear
+	script.
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			spaceBetween: 0,
+			autoplay: 3000,
+			autoplayDisableOnInteraction: true
+		});

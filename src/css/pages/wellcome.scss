@@ -1,0 +1,388 @@
+.cm-wellcome{
+	._back {
+		margin-top: 20px;
+		text-transform: uppercase;
+		font-size: 18px;
+		line-height: 20px;
+
+		a,a:visited {
+			color: #111;
+			text-decoration: none;
+		}
+
+		i {
+			vertical-align: baseline;
+		}
+	}
+	._head{
+		padding-top: 20px;
+		padding-bottom: 24px;
+		text-align: center;
+	}
+	._head-logo{
+		display: inline-block;
+		vertical-align: top;
+		margin-bottom: 10px;
+		width: 40px;
+		height: 40px;
+	}
+	._head-text{
+		font-size: 18px;
+	}
+
+	._tab{
+		position: relative;
+
+		&.-email > ._tab-btn.-email,
+		&.-phone > ._tab-btn.-phone{
+			color: #333;
+		}
+		&.-email ._form.-email,
+		&.-phone ._form.-phone{
+			visibility: visible;
+		}
+		&.-phone{
+			> ._tab-pane{
+				transform: translateX(-100%);
+			}
+			> ._tab-line:before{
+				transform: translateX(100%);
+			}
+		}
+	}
+	._tab-btn{
+		padding: 10px;
+		text-align: center;
+		float: left;
+		width: 50%;
+		font-weight: bold;
+		cursor: pointer;
+		color: #999;
+		transition: color .3s ease;
+
+		i{
+			margin-right: 6px;
+		}
+	}
+	._tab-line{
+		border-bottom: 1px solid #ccc;
+		position: relative;
+		height: 4px;
+		clear: both;
+		margin-bottom: 10px;
+
+		&:before{
+			content: "";
+			position: absolute;
+			bottom: -1px;
+			width: 50%;
+			height: 100%;
+			background: $blue;
+			transform: translateX(0%);
+			transition: transform .3s ease;
+		}
+	}
+
+	._tab-alert{
+		color: #333;
+		margin-bottom: 10px;
+	}
+
+	._tab-pane{
+		position: relative;
+		transition: transform .6s ease;
+		margin: 0px -12px;
+
+		._form{
+			padding: 0 12px;
+			transition: visibility .6s ease;
+			visibility: hidden;
+		}
+	}
+	._form{
+		margin-bottom: 24px;
+		&.-phone{
+			position: absolute;
+			left: 100%;
+			width: 100%;
+			top: 0;
+
+			._code{
+				float: left;
+				width: 92px;
+				margin-right: 8px;
+			}
+
+			._number{
+				overflow: hidden;
+			}
+		}
+
+		i {
+			position: absolute;
+			right: 14px;
+			margin-top: -40px;
+			padding: 12px;
+			color: #ccc;
+			cursor: pointer;
+
+			&.-active {
+				color: $blue;
+			}
+		}
+	}
+	._form-row + ._form-row{
+		margin-top: 8px;
+	}
+	._submit{
+		margin-bottom: 10px;
+		.cm-button{
+			position: relative;
+			width: 100%;
+
+			
+			.cm-loader {
+				display: none;
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				height: 20px;
+				width: 20px;
+				background-size: 20px;
+				background-image:url(../img/loader-32.gif);
+			}
+			&[disabled] .cm-loader {
+				display: block;
+			}
+		}
+	}
+	
+	&.-user{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		._forgot{
+			text-align: center;
+
+			._link{
+				color: inherit;
+				text-decoration: none;
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		._terms{
+			font-size: 12px;
+			text-align: center;
+			margin: 0 15px (24px + 50px);
+			color: #535353;
+		}
+
+		._terms-link{
+			color: inherit;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		._arrow{
+			width: 50px;
+			height: 50px;
+			margin: 0 auto;
+			border-radius: 50%;
+			background: $blue;
+			text-align: center;
+			transition: top .6s ease;
+			position: absolute;
+			top: -66px;
+			left: 0;
+			right: 0;
+
+			i{
+				margin-top: 5px;
+				color: #fff;
+				position: relative;
+				z-index: 1;
+			}
+		}
+		._top{
+			position: relative;
+			height: 0;
+			color: $blue;
+			z-index: 1;
+			transition: height .6s ease;
+
+			p{
+				bottom: 20px;
+			}
+		}
+		._down{
+			position: absolute;
+			top: -50px;
+			left: 0;
+			right: 0;
+			height: 50px;
+			color: #fff;
+			background: $blue;
+			transition: all .6s ease;
+			
+			p{
+				line-height: 50px;
+				bottom: 0;
+			}
+		}
+		._top,
+		._down{
+			margin: 0 -12px;
+			overflow: hidden;
+
+			p{
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: 0;
+				font-size: 16px;
+				font-weight: bold;
+				text-align: center;
+			}
+		}
+		._login{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 0;
+			transition: all .6s ease;
+			padding-top: 0;
+
+			._head-logo{
+				position: relative;
+				z-index: 2;
+			}
+			._wrap{
+				height: 100%;
+				background: $blue;
+				color: #fff;
+				overflow: hidden;
+			}
+			._tab{
+				&.-email > ._tab-btn.-email,
+				&.-phone > ._tab-btn.-phone{
+					color: #fff;
+				}
+			}
+			._tab-btn{
+				color: #98D9F7;
+			}
+
+			._tab-line{
+				border-bottom-color: #98D9F7;
+				&:before{
+					background: #fff;
+				}
+			}
+		}
+		._register{
+			position: relative;
+			min-height: 100%;
+			overflow: auto;
+			overflow-x: hidden;
+		}
+	}
+
+	&.-forgot-success{
+		._head-logo{
+			margin-bottom: 30px;
+		}
+		._head-text{
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+	}
+
+	&.-new-password{
+		._head-text{
+			margin-bottom: 16px;
+		}
+		._links{
+			margin-top: 16px;
+			._left{
+				float: left
+			}
+			._right{
+				float: right
+			}
+		}
+	}
+
+	&.-verified{
+		._head-text{
+			font-weight: bold;
+		}
+		._success{
+			display: block;
+			width: 140px;
+			margin: 34px auto 24px;
+		}
+		._paragraph{
+			max-width: 220px;
+			margin: 0 auto 24px;
+		}
+	}
+}
+
+.-login-is-open{
+	.cm-wellcome.-user{
+		._top{
+			height: 50px;
+		}
+		._arrow{
+			top: 34px;
+		}
+		._down{
+			height: 0;
+			top: 50px;
+		}
+		._login{
+			height: 100%;
+			padding-top: 50px;
+		}
+	}
+}
+.cm-nlp-lang {
+	position:fixed;
+	top: 0;
+	text-align: center;
+	width: 100%;
+	height: 40px;
+	padding: 8px;
+	background:#fff;
+	z-index: 2;
+	.selected {
+		text-align: left;
+	    position: relative;
+	    margin: auto;
+	    width: 232px;
+	    overflow: hidden;
+		select {
+			position:absolute;
+			font-weight: bold;
+			background:#fff;
+			color: #02679E;
+			width: 145px;
+			outline: none;
+			border: 0;
+		}
+		i.ci-dropdown {
+		    position: absolute;
+		    right: 5px;
+		    top: 5px;
+		    font-size: 12px;
+			color: #02679E;
+		}
+	}
+}
+.swiper-slide {
+	margin-top: 40px;
+}

@@ -1,0 +1,539 @@
+include _mixins
++layout({
+})
+	.cm-profile
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Aji's Profile
+		//.cm-profile-content//
+		.cm-profile-content.-editable
+			._profile-wrp
+				+img("profile/ava.png", {class: "_avatar"})
+				+img("profile/banner-profile.png", {class: "_banner"})
+			._profile-name-wrp
+				._username aji_mahendra_gabisa_moveon
+				._title the vampire slayer
+				._cme
+					+icon("c-button", 30)
+				._c-button
+					._button
+						+img("profile/check.png")
+						span check me
+					._button
+						+img("profile/add.png")
+						span add friend
+					._button
+						+img("profile/follow.png")
+						span follow
+					._close
+						+icon("delete-2", 10)
+				._edit
+					+icon("edit", 16)
+			._profile-menu
+				._menu.-active
+					._wrapper
+						+img("profile/profile-overview-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-overview-activ.png", {class: "_active"})
+						span overview
+				._menu
+					._wrapper
+						+img("profile/profile-timeline-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-timeline-activ.png", {class: "_active"})
+						span timeline
+				._menu
+					._wrapper
+						+img("profile/profile-connection-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-connection-activ.png", {class: "_active"})
+						span connection
+				._menu
+					._wrapper
+						+img("profile/profile-achievement-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-achievement-activ.png", {class: "_active"})
+						span achievement
+			._about-me
+				._title 
+					|about me
+					._edit
+						+icon("edit", 16)
+				._content
+					._list
+						+icon("fullname", 16)
+						._text full name
+						._value aji mahendra
+					._list
+						+icon("birthday", 16)
+						._text place, date of birth
+						._value jakarta, 14 february 1982
+					._list
+						+icon("nationality", 16)
+						._text nationality
+						._value indonesia
+			._badge
+				._title
+					|badges
+					._edit
+						+icon("edit", 16)
+				._content
+					._item
+						._img-wrp
+							+img("profile/badge.png")
+						span Welcome to CIAYO
+					._item
+						._img-wrp
+							+img("profile/badge.png")
+						span Walking with Confidence
+				._action
+					._page
+						._number.-active 1
+						._number 2
+						._number 3
+					._see-all
+						a(href="#").cm-link see all
+					.cm-clearfix
+			._achievement
+				._title
+					|achievements
+					._edit
+						+icon("edit", 16)
+				._content
+					._item
+						._img-wrp
+							+img("profile/achv1.png")
+						span Welcome to CIAYO
+					._item
+						._img-wrp
+							+img("profile/achv2.png")
+						span Gentlemen, start your engine
+					._item
+						._img-wrp
+							+img("profile/achv3.png")
+						span Cellphone Zombie
+					._item
+						._img-wrp
+							+img("profile/achv4.png")
+						span Most Valuable Perfume
+				._action
+					._page
+						._number.-active 1
+						._number 2
+						._number 3
+					._see-all
+						a(href="#").cm-link see all
+					.cm-clearfix
+			._website
+				._title
+					|website
+					._edit
+						+icon("edit", 16)
+				._content
+					a(href="#").cm-link www.aji-arts.com
+			._social-media
+				._title
+					|my social media
+					._edit
+						+icon("edit", 16)
+				._content
+					a(href="#")
+						+img("profile/facebook.png")
+					a(href="#") 
+						+img("profile/twitter.png")
+					a(href="#")
+						+img("profile/instagram.png")
+					a(href="#")
+						+img("profile/pinterest.png")
+					a(href="#")
+						+img("profile/path.png")
+	.cm-panel.-edit-profile.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Edit Profile
+			.cm-topbar-item.-right SAVE
+		.cm-panel-content
+			._profile-wrp
+				+img("profile/ava.png", {class: "_avatar"})
+				+img("profile/banner-profile.png", {class: "_banner"})
+			._content-wrp
+				.cm-button.-primary._edit-avatar Edit Avatar
+				._list-edit
+					._title username
+					input(type="text" value="aji_mahendra_gabisa_moveon").cm-input
+				._list-edit
+					._title title
+					._option
+						select
+							option The vampire slayer
+							option The notorioust giant
+							option S.W.A.G. team leader
+						+icon("dropdown", 10)
+	.cm-panel.-edit-profile-aboutme.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Basic Info
+			.cm-topbar-item.-right SAVE
+		.cm-panel-content
+			._content-wrp
+				._list-edit
+					._title full name
+					input(type="text" value="Aji" placeholder="First name").cm-input
+					input(type="text" value="" placeholder="Middle name (optional)").cm-input
+					input(type="text" value="Mahendra" placeholder="Last name").cm-input
+				._list-edit
+					._title date of birth
+					._date
+						input(type="text" placeholder="MM/DD/YYYY" id="inputDate").cm-input
+						+icon("calendar", 16)
+					._title.-margin place of birth
+					input(type="text" value="Lembang, Bandung").cm-input
+				._list-edit
+					._title nationality
+					._option
+						select
+							option Indonesia
+							option Malaysia
+							option Singapore
+						+icon("dropdown", 10)
+	.cm-panel.-edit-profile-date-picker.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Date of Birth
+		.cm-panel-content(style='background:#f0f0f0')
+			#asd
+	.cm-panel.-edit-profile-badge-achievement.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Add Badges & Achievements
+			.cm-topbar-item.-right SAVE
+		.cm-panel-content
+			._content-wrp
+				._title badge collections
+				._item-wrp
+					._container.-selected
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/badge.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+				._title achievements
+				._item-wrp
+					._container.-selected
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+					._container
+						._add-item
+							+icon("add-item", 20)
+						._item
+							+img("profile/achv1.png")
+							._delete
+								+icon("trash", 16)
+						.cm-button.-primary.-small._add
+	.cm-panel.-edit-profile-search-achievement.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Search Achievements
+		.cm-panel-content
+			._search-wrp
+				._input
+					input(type="text" placeholder="Search achievement...").cm-input
+					+icon("search", 16)
+			._result
+				._item.-selected
+					+img("profile/achv1.png")
+					._text 
+						|Confidence
+						+icon("check-2", 20)
+				._item
+					+img("profile/achv2.png")
+					._text 
+						|Bla Bla Bla Confidence
+						+icon("check-2", 20)
+				._item
+					+img("profile/achv3.png")
+					._text 
+						|Bla Bla Bla Confidence Bla Bla
+						+icon("check-2", 20)
+				._item
+					+img("profile/achv4.png")
+					._text 
+						|Bla Bla Bla Confidence
+						+icon("check-2", 20)
+	.cm-panel.-edit-profile-website
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Website
+			.cm-topbar-item.-right SAVE
+		.cm-panel-content
+			._website
+				._icon
+				._text www.aji-arts.com
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+			._add
+				+icon("add-item", 20)
+				|Add a website / blog
+			._input
+				input(type="text" placeholder="your website address").cm-input.-small
+				.cm-button.-primary.-small._save Save
+	.cm-panel.-edit-profile-social-media
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Add Social Media Accounts
+			.cm-topbar-item.-right SAVE
+		.cm-panel-content
+			._social-media.-added.-add
+				._icon.-facebook
+					+icon("facebook", 24)
+				._text Facebook
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+				._input
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+			._social-media.-added
+				._icon.-twitter
+					+icon("twitter", 24)
+				._text Twitter
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+				._input
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+			._social-media
+				._icon.-instagram
+					+icon("instagram", 24)
+				._text Instagram
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+				._input
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+			._social-media
+				._icon.-pinterest
+					+icon("pinterest", 24)
+				._text Pinterest
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+				._input
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+			._social-media
+				._icon.-path
+					+icon("pinterest", 24)
+				._text Path
+				._action
+					+icon("edit", 16)
+					+icon("delete-2", 16)
+				._input
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+			._add
+				+icon("add-item", 20)
+				|More social media...
+				._input
+					._option
+						._selected
+							+icon("facebook", 24)
+							+icon("dropdown", 10)
+						select
+							option Facebook
+							option Twitter
+							option Instagram
+					input(type="text").cm-input.-small
+					.cm-button.-primary.-small._save Save
+	script.
+		// menu profile //
+		$(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).addClass("-active")
+		})
+
+		// c button //
+		$(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+			$(this).parent().addClass("-active")
+		})
+		$(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+			$(this).parent().parent().removeClass("-active")
+		})
+
+		// edit profile //
+		$("._profile-name-wrp ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile").addClass("-open")
+		})
+		$(".-edit-profile .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile").removeClass("-open")
+		})
+
+		// edit about me //
+		$("._about-me ._title ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-aboutme").addClass("-open")
+		})
+		$(".-edit-profile-aboutme .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-aboutme").removeClass("-open")
+		})
+		$(".-edit-profile-aboutme .cm-panel-content ._content-wrp ._list-edit ._date").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-date-picker").addClass("-open")
+		})
+		$(".-edit-profile-date-picker .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-date-picker").removeClass("-open")
+		})
+
+		// date picker //
+		var picker = new Pikaday(
+		{
+			field: document.getElementById('inputDate'),
+			firstDay: 1,
+			minDate: new Date(),
+			maxDate: new Date(2020, 12, 31),
+			yearRange: [2000,2020],
+			bound: false,
+			container: document.getElementById('asd'),
+			onSelect: function(){
+				$(".cm").removeClass("-locked")
+				$(".cm-panel").removeClass("-open")
+			}
+		});
+
+		// edit badge and achievement //
+		$("._badge ._title ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+		})
+		$(".-edit-profile-badge-achievement .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-badge-achievement").removeClass("-open")
+		})
+		$("._achievement ._title ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+		})
+		// search achievements //
+		$("._container .cm-button._add").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-search-achievement").addClass("-open")
+		})
+		$(".-edit-profile-search-achievement .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-search-achievement").removeClass("-open")
+		})
+
+		// edit website //
+		$("._website ._title ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-website").addClass("-open")
+		})
+		$(".-edit-profile-website .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-website").removeClass("-open")
+		})
+		$(".-edit-profile-website .cm-panel-content ._add").on("click", function(){
+			$(this).siblings("._input").addClass("-active")
+		})
+
+		// edit social media //
+		$("._social-media ._title ._edit").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-edit-profile-social-media").addClass("-open")
+		})
+		$(".-edit-profile-social-media .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-edit-profile-social-media").removeClass("-open")
+		})
+		$(".-edit-profile-social-media .cm-panel-content ._social-media").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).siblings().removeClass("-add")
+			$(this).addClass("-add")
+		})
+		$(".-edit-profile-social-media .cm-panel-content ._add").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).siblings().removeClass("-add")
+			$(this).addClass("-active")
+		})

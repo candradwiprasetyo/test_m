@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="theme-color" content="#59BAE7">
+    <meta name="msapplication-navbutton-color" content="#59BAE7">
+    <meta name="apple-mobile-web-app-capable" content="#59BAE7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59BAE7">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <script src="assets/libs/swiper.min.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-nlp-wrapper">
+        <div class="cm-nlp-container">
+          <div class="cm-nlp-slide">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-1.jpg"></div>
+                <div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-2.jpg"></div>
+                <div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-3.jpg"></div>
+                <div class="swiper-slide -cm-nlp-slide"><img src="assets/img/nlp/nlp-4.jpg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination -cm-nlp-pagination"></div>
+        <div class="cm-nlp-nav"><a href="#">
+            <div class="-cm-nlp-nav-left">
+              <p>REGISTER</p>
+            </div></a><a href="#">
+            <div class="-cm-nlp-nav-right">
+              <p>LOGIN</p>
+            </div></a>
+          <div class="cm-clear"></div>
+        </div>
+      </div>
+      <script>
+        var swiper = new Swiper('.swiper-container', {
+        	pagination: '.swiper-pagination',
+        	paginationClickable: true,
+        	nextButton: '.swiper-button-next',
+        	prevButton: '.swiper-button-prev',
+        	spaceBetween: 0,
+        	autoplay: 3000,
+        	autoplayDisableOnInteraction: true
+        });
+      </script>
+    </div>
+  </body>
+</html>

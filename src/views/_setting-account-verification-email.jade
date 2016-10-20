@@ -1,0 +1,39 @@
+include _mixins
++layout()
+	.cm-setting.-account-verification
+		.cm-wrapper
+			._verify-later
+				a(href='').cm-link Verify later 
+				+icon("skip", 10)
+			._paragraph To verify your account, please enter the One-Time PIN received via email on your registered email: stepfano@gmail.com
+			._code
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+				input(type="text" maxlength="1" placeholder="-")
+			._resend: a(href='').cm-button.-primary.-small Resend (3)
+			._change
+				a(href='#').cm-link change email
+			._change-content
+				._text Change Email
+				._content-wrp
+					._input-wrp.-email
+						input(type="text" value="stepfano@gmail.com")
+						+icon("delete-2", 10)
+					button.cm-button.-primary.-small Save
+	.cm-modal.-setting-mobile-number-changed
+		.cm-modal-backdrop(toggle-close)
+		.cm-modal-content.-pad
+			.cm-modal-close(toggle-close): +icon("delete-2", 10)
+			._paragraph Your email has been changed from <b>stepfano@gmail.com</b> to <b>fano_ngak@yahoo.com</b>
+	script.
+		$(".-account-verification ._change").on("click", function(){
+			$(".-account-verification ._change-content").addClass("-active");
+		})
+		$(".-account-verification ._content-wrp .cm-button").on("click", function(){
+			$(".-setting-mobile-number-changed").addClass("-open");
+		})
+		// close setting-deactive-account
+		$(".-setting-mobile-number-changed [toggle-close]").on("click", function(){
+			$(".-setting-mobile-number-changed").removeClass("-open");
+		})

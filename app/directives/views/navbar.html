@@ -1,0 +1,34 @@
+<div class="cm-navbar">
+	<a ui-sref="/" class="cm-navbar-item -timeline" ng-class="{'-active':active=='timeline'}"></a>
+	<a ui-sref="friend-request" class="cm-navbar-item -friend-request" ng-class="{'-active':active=='friend-request'}">
+		<!-- <i class="ci-notif-star" ng-show="friend_request_count>0"></i> -->
+		<span class="ci-notif-custom" ng-show="friend_request_count>0">{{friend_request_count}}</span>
+	</a>
+
+	<a ui-sref="notification" class="cm-navbar-item -notification" ng-class="{'-active':active=='notification'}" ng-click="mark_all_notification()">
+		<!-- <i class="ci-notif-star" ng-show="notification_count>0"></i> -->
+		<span class="ci-notif-custom" ng-show="notification_count>0">{{notification_count}}</span>
+	</a>
+
+	<a ui-sref="search" class="cm-navbar-item -search" ng-class="{'-active':active=='search'}"></a>
+	<a ui-sref="menu" class="cm-navbar-item -menu" ng-class="{'-active':active=='menu'}"></a>
+	<div class="cm-clearfix">
+</div>
+	<script>
+	angular.element(document).ready(function(){
+		var last_position = 0;
+		$(window).on("scroll", function(){
+			var scrollPosition = $(window).scrollTop();
+			
+			if(scrollPosition >= 50){
+				$(".cm-navbar").css("top", "-50px")
+			}
+			if(last_position > scrollPosition){
+				$(".cm-navbar").css("top", "0px")
+			}
+
+			last_position = scrollPosition;
+		})
+	});
+	</script>
+</div>

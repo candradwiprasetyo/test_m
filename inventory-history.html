@@ -1,0 +1,119 @@
+<div class="cm-topbar">
+	<div class="cm-topbar-item -left" ui-sref="inventory.home">
+		<ciayo translate="$back">BACK</ciayo>
+	</div>
+	<div class="cm-topbar-title">
+		<ciayo translate="$purchase.history">Purchase History</ciayo>
+	</div>
+</div>
+<div class="cm-inventory-filter"></div>
+<div class="cm-trending">
+		<div class="cm-store-card -cm-premium-card -cm-store-premcat">
+			<div class="cm-inventory-date-wrap">
+				<div class="cm-inventory-date-container">
+					<input id="startDateHidden" name="startDate" type="hidden">
+					<input id="startDate" placeholder="{{'$start'|translate}}" class="-cm-inventory-from" readonly>
+					<input id="endDateHidden" name="endDate" type="hidden">
+					<input id="endDate" placeholder="{{'$end'|translate}}" class="-cm-inventory-to"><img src="assets/img/store/date-arrow.png" style="position: absolute;top: 14px;left: 50%;margin-left: -24px;">
+					<a ng-click="vm.clearHistory()"><img src="assets/img/store/date-close.png" class="-date-close"></a>
+				</div>
+				<div class="cm-inventory-date-container-search" ng-click="vm.searchHistory()"><img src="assets/img/store/date-search.png" class="-date-search"></div>
+				<div class="cm-store-clear"></div>
+			</div>
+
+			<div class="cm-store-card-detail"> </div>
+			<div class="cm-store-clear"></div>
+			<div class="cm-store-break-line"></div>
+			<div class="_loader" ng-if="!vm.transaction.length">
+				<div class="loader" ng-if="!vm.noDatas"></div>
+				<div class="_nodata" ng-if="vm.noDatas" style="color: #111;text-align:center;">
+					No Data
+				</div>
+			</div>
+			<div class="cm-store-content -cm-store-detail-card" ng-repeat="list in vm.transaction">
+				<div ng-repeat="product in list.ciayo_products">
+					<div class="cm-store-sticker-detail-col1"><img ng-src="{{product.image}}"></div>
+					<div class="cm-store-sticker-detail-col2 -cm-inventory-col2">
+						<p class="-cm-store-sticker-name" ng-bind="product.name"></p>
+						<!--<p class="-cm-store-sticker-contrib">Lorem ipsum dolorem ipsumd</p>-->
+						<div class="-cm-store-sticker-coin"><img src="assets/img/store/non-currency-caps.png">
+							<p ng-bind="product.price_1">	</p>
+						</div>
+					</div>
+					<div class="cm-store-clear"></div>
+					<div class="cm-store-break-line -cm-store-line2">		</div>
+				</div>
+				<div class="cm-store-clear"></div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="cm-panel -start -topbar">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div>
+		<div class="cm-topbar-title"><ciayo translate="$start.date">Start Date</ciayo></div>
+	</div>
+	<div style="background:#f0f0f0" class="cm-panel-content">
+		<div id="start"></div>
+	</div>
+</div>
+
+<div class="cm-panel -end -topbar">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div>
+		<div class="cm-topbar-title"><ciayo translate="$end.date">End Date</ciayo></div>
+	</div>
+	<div style="background:#f0f0f0" class="cm-panel-content">
+		<div id="end"></div>
+	</div>
+</div>
+
+<script>
+	$("#startDate").on("click", function(){
+		$(".cm").addClass("-locked")
+		$(".cm-panel.-start").addClass("-open")
+		$(this).blur()
+	})
+
+	$("#endDate").on("click", function(){
+		$(".cm").addClass("-locked")
+		$(".cm-panel.-end").addClass("-open")
+		$(this).blur()
+	})
+
+	$(".cm-topbar-item").on("click", function(){
+		$(".cm").removeClass("-locked")
+		$(".cm-panel").removeClass("-open")
+	})
+
+	var picker = new Pikaday(
+	{
+			field: document.getElementById('startDate'),
+			firstDay: 1,
+			format: 'DD/MM/YYYY',
+			bound: false,
+			container: document.getElementById('start'),
+			onSelect: function() {
+				$(".cm").removeClass("-locked");
+				$(".cm-panel").removeClass("-open");
+				var dd = this.getMoment().format('YYYY-MM-DD');
+				$('#startDateHidden').val(dd);
+			}
+	});
+
+	var picker = new Pikaday(
+	{
+			field: document.getElementById('endDate'),
+			firstDay: 1,
+			format: 'DD/MM/YYYY',
+			bound: false,
+			container: document.getElementById('end'),
+			onSelect: function() {
+				$(".cm").removeClass("-locked");
+				$(".cm-panel").removeClass("-open");
+				var dd = this.getMoment().format('YYYY-MM-DD');
+				$('#endDateHidden').val(dd);
+			}
+	});
+</script>

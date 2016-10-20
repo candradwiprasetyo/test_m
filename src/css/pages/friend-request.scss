@@ -1,0 +1,483 @@
+.cm-friend-request {
+
+	.friend-request{
+
+		background: #fff;
+
+		.title{
+			padding: 17px 12px 17px 12px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.accept{
+			background: #F1F9EC;
+		}
+
+		.decline{
+			background: #FFF3F4;
+		}
+
+		
+
+		.list{
+			display:table;
+			width: 100%;
+			padding: 8px 12px 14px 12px;
+			border-bottom: 1px solid #eee;
+
+			.photo-profile{
+				width: 40px;
+				height: 40px;
+				border-radius:4px;
+				float: left;
+	  			background: #91DCE8;
+	  			overflow: hidden;
+
+				img{
+					border-radius: 4px;
+					width: 40px;
+				  	height: 40px;
+				  	position: relative;
+				}
+			}
+
+			.name-profile{
+				width: 55%;
+				padding-left: 8px;
+				float: left;
+
+				.display-name{
+					color: #02679E;
+					font-weight: bold;
+				}
+
+				.full-name{
+					color:#666;
+					font-size: 12px;
+					padding-right: 5px;
+
+					.ci-currency-cans{
+						font-size: 4px;
+						padding-left: 5px;
+					}
+				}
+
+				.mutual-friend{
+					color: #02679E;
+					font-size: 12px;
+				}
+			}
+
+			.config-profile{
+				width: 25%;
+				float: right;
+
+				.item{
+					.ci-accept{
+						float: right;
+						margin-right: 8px;
+						color: #02679E;
+					}
+					.ci-delete{
+						float: right;
+						color: #02679E;
+					}
+					.button-accept{
+						padding: 4px 2px 4px 2px;
+						color: #fff;
+						border-radius: 4px;
+						background: #02679E;
+						font-weight: normal;
+						font-size: 12px;
+						text-align: center;
+						width: 80px;
+						float: right;
+					}
+					.button-decline{
+						font-weight: normal;
+						font-size: 12px;
+						text-align: right;
+						width: 80px;
+						color: #999999;
+						float: right;
+					}
+				}
+			}
+		}
+
+		.list-child{
+			padding: 8px 12px 14px 32px;
+			height: 76px;
+			border-bottom: 1px solid #eee;
+
+			.photo-profile{
+				width: 40px;
+				height: 40px;
+				border-radius:4px;
+				float: left;
+	  			background: #91DCE8;
+	  			overflow: hidden;
+
+				img{
+					border-radius: 4px;
+					width: 151px;
+				  	height: 107.86px;
+				  	position: relative;
+				  	top: -10px;
+				  	left: -55px;
+				}
+			}
+
+			.name-profile{
+				width: 60%;
+				padding-left: 8px;
+				float: left;
+
+				.display-name{
+					color: #02679E;
+					font-weight: bold;
+				}
+
+				.full-name{
+					color:#666;
+					font-size: 12px;
+					padding-right: 5px;
+
+					.ci-currency-cans{
+						font-size: 4px;
+						padding-left: 5px;
+					}
+				}
+
+				.mutual-friend{
+					color: #02679E;
+					font-size: 12px;
+				}
+			}
+
+			.config-profile{
+				width: 25%;
+				float: right;
+
+				.item{
+					.ci-accept{
+						float: right;
+						margin-right: 8px;
+						color: #02679E;
+					}
+					.ci-delete{
+						float: right;
+						color: #02679E;
+					}
+					.button-accept{
+						padding: 4px 2px 4px 2px;
+						color: #fff;
+						border-radius: 4px;
+						background: #02679E;
+						font-weight: normal;
+						font-size: 12px;
+						text-align: center;
+						width: 80px;
+						float: right;
+					}
+					.button-decline{
+						font-weight: normal;
+						font-size: 12px;
+						text-align: right;
+						width: 80px;
+						color: #999999;
+						float: right;
+					}
+				}
+			}
+		}
+
+		.more-friend-request{
+			padding-top: 12px;
+			text-align: center;
+			padding-bottom: 12px;
+			color: #026797;
+			font-weight: bold;
+			margin-bottom: 16px;
+
+			.ci-dropdown{
+				margin-top: -3px;
+				padding-left: 3px;
+			}
+		}
+	}
+
+	.invite-friend{
+		background: #fff;
+		margin-bottom: 16px;
+
+		.title{
+			padding: 17px 12px 17px 12px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.item-frame{
+			padding:7px;
+			
+			.item{
+				width: 30.5%;
+				margin: 1%;
+				border: 1px solid #eee;
+				border-radius: 4px;
+				display: inline-block;
+				text-align: center;
+				color: #666666;
+				font-size: 12px;
+				line-height: 14px;
+				padding-top: 8px;
+				padding-bottom: 8px;
+				padding-left: 3%;
+				padding-right: 3%;
+
+				.icon{
+					text-align: center;
+					margin-bottom: 8px;
+					color: #3B5798;
+				}
+
+				.text{
+					white-space: pre-wrap; /* css-3 */
+				    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+				    white-space: -pre-wrap; /* Opera 4-6 */
+				    white-space: -o-pre-wrap; /* Opera 7 */
+				    word-wrap: break-word; /* Internet Explorer 5.5+ */
+				    white-space: pre-line;
+				}
+			}
+		}	
+	}
+
+	.people-know{
+
+		background: #fff;
+
+		.title{
+			padding: 17px 12px 17px 12px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.list{
+			padding: 8px 12px 14px 12px;
+			height: 76px;
+			border-bottom: 1px solid #eee;
+
+			.photo-profile{
+				width: 40px;
+				height: 40px;
+				border-radius:4px;
+				float: left;
+
+				img{
+					width: 100%;
+					border-radius: 4px;
+				}
+			}
+
+			.name-profile{
+				width: 60%;
+				padding-left: 8px;
+				float: left;
+
+				.display-name{
+					color: #02679E;
+					font-weight: bold;
+				}
+
+				.full-name{
+					color:#666;
+					font-size: 12px;
+					padding-right: 5px;
+
+					.ci-currency-cans{
+						font-size: 4px;
+						padding-left: 5px;
+					}
+				}
+
+				.mutual-friend{
+					color: #02679E;
+					font-size: 12px;
+				}
+			}
+
+			.config-profile{
+				width: 20%;
+				float: right;
+
+				.icon{
+					width: 30px;
+					height: 30px;
+					float: right;
+					margin-top: 5px;
+
+					.ci-c-button{
+						float: right;
+						color: #4CB1E4;
+						position: relative;
+
+					}
+				}
+				
+				
+			}
+		}
+
+		.more-friend-request{
+			padding-top: 12px;
+			text-align: center;
+			padding-bottom: 12px;
+			color: #026797;
+			font-weight: bold;
+
+			.ci-dropdown{
+				margin-top: -3px;
+				padding-left: 3px;
+			}
+		}
+	}
+}
+
+.cm-friend-request-modal{
+
+	margin: -10px;
+
+	.title{
+		text-align: left;
+		margin-top: -15px;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		padding: 6px 10px 16px 10px;
+
+	}
+
+	.title-gmail{
+		text-align: left;
+		margin-top: -15px;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		padding: 6px 10px 16px 10px;
+		padding-left: 40px;
+
+		.icon-gmail{
+			width: 20px;
+			height: 15px;
+			position: absolute;
+			left: 10px;
+			top: 16px;
+
+			img{
+				width: 100%;
+			}
+		}
+	}
+
+
+	.title-facebook{
+		text-align: left;
+		margin-top: -15px;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		padding: 6px 10px 16px 10px;
+		padding-left: 40px;
+
+		.icon-facebook{
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			left: 10px;
+			top: 16px;
+
+			img{
+				width: 100%;
+			}
+		}
+	}
+
+	.modal-content{
+
+		padding: 16px 10px;
+		padding-bottom: 0px;
+		border-bottom: 1px solid #eee;
+
+		.input{
+			width: 100%;
+			background: #F2F2F2;
+			border:1px solid #E6E6E6;
+			padding: 10px;
+			border-radius: 4px;
+		}
+
+		.input:focus{
+			border:1px solid #59BAE7;
+		}
+
+		.textarea{
+			width: 100%;
+			background: #F2F2F2;
+			border:1px solid #E6E6E6;
+			padding: 10px;
+			border-radius: 4px;
+			max-width: 100%;
+		}
+
+		.caption{
+			margin: 10px;
+		}
+
+		.button-send{
+			background: #02679E;
+			color: #fff;
+			padding: 8px;
+			text-indent: center;
+			margin-top: 10px;
+			border-radius: 4px;
+		}
+	}
+
+	.gmail-list{
+		text-align: left;
+		padding: 10px;
+		border-bottom: 1px solid #eee;
+
+		.checklist{
+			width: 16px;
+			height: 16px;
+			float: right;
+			
+			input{
+				width: 16px;
+				height: 16px;
+				content: " ";
+    			background-color: #fff;
+    			display: inline-block;
+    			visibility: visible;
+			}
+		}
+
+	}
+
+	.item_load{
+		margin: 10px;
+		border:1px solid #eee;
+		border-radius: 4px;
+		background: #f2f2f2;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.button-send{
+		background: #02679E;
+		color: #fff;
+		padding: 8px;
+		text-indent: center;
+		margin-top: 10px;
+		border-radius: 4px;
+	}
+
+	
+}

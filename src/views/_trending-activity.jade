@@ -1,0 +1,40 @@
+include _mixins
++layout({
+})
+	.cm-trending
+		.cm-topbar
+			a(href='_menu.html')
+				.cm-topbar-item.-left BACK
+			.cm-topbar-title Trending
+		.cm-trending-tab
+			a(href='_trending.html')
+				.item
+					.icon.post
+					.name Posts
+			a(href='_trending-people.html')
+				.item
+					.icon.people
+					.name People
+			a(href='_trending-activity.html')
+				.item-active
+					.icon.activity
+					.name Activity
+			a(href='_trending-place.html')
+				.item 
+					.icon.place
+					.name Place
+		mixin list(img)
+			.trending-activity
+				.list
+					.activity-ribbon 01
+					.activity-title Leaving on a jetplane
+					.activity-img 
+						img(src= img)
+					.activity-desc Posted 1,000 times this week
+		+list('assets/img/trending/activity-img1.png')
+		+list('assets/img/trending/activity-img2.png')
+		+list('assets/img/trending/activity-img3.png')
+		.view-more
+			.button View more 
+
+		

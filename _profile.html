@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="theme-color" content="#59BAE7">
+    <meta name="msapplication-navbutton-color" content="#59BAE7">
+    <meta name="apple-mobile-web-app-capable" content="#59BAE7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59BAE7">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-profile">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Aji's Profile</div>
+        </div>
+        <!--.cm-profile-content//-->
+        <div class="cm-profile-content -editable">
+          <div class="_profile-wrp"><img src="assets/img/profile/ava.png" class="_avatar"/><img src="assets/img/profile/banner-profile.png" class="_banner"/>
+          </div>
+          <div class="_profile-name-wrp">
+            <div class="_username">aji_mahendra_gabisa_moveon</div>
+            <div class="_title">the vampire slayer</div>
+            <div class="_cme"><i class="ci-c-button -s30"></i>
+            </div>
+            <div class="_c-button">
+              <div class="_button"><img src="assets/img/profile/check.png"/><span>check me</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/add.png"/><span>add friend</span>
+              </div>
+              <div class="_button"><img src="assets/img/profile/follow.png"/><span>follow</span>
+              </div>
+              <div class="_close"><i class="ci-delete-2 -s10"></i>
+              </div>
+            </div>
+            <div class="_edit"><i class="ci-edit -s16"></i>
+            </div>
+          </div>
+          <div class="_profile-menu">
+            <div class="_menu -active">
+              <div class="_wrapper"><img src="assets/img/profile/profile-overview-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-overview-activ.png" class="_active"/><span>overview</span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-timeline-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-timeline-activ.png" class="_active"/><span>timeline</span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-connection-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-connection-activ.png" class="_active"/><span>connection</span>
+              </div>
+            </div>
+            <div class="_menu">
+              <div class="_wrapper"><img src="assets/img/profile/profile-achievement-noactiv.png" class="_noactive"/><img src="assets/img/profile/profile-achievement-activ.png" class="_active"/><span>achievement</span>
+              </div>
+            </div>
+          </div>
+          <div class="_about-me">
+            <div class="_title">
+               
+              about me
+              <div class="_edit"><i class="ci-edit -s16"></i>
+              </div>
+            </div>
+            <div class="_content">
+              <div class="_list"><i class="ci-fullname -s16"></i>
+                <div class="_text">full name</div>
+                <div class="_value">aji mahendra</div>
+              </div>
+              <div class="_list"><i class="ci-birthday -s16"></i>
+                <div class="_text">place, date of birth</div>
+                <div class="_value">jakarta, 14 february 1982</div>
+              </div>
+              <div class="_list"><i class="ci-nationality -s16"></i>
+                <div class="_text">nationality</div>
+                <div class="_value">indonesia</div>
+              </div>
+            </div>
+          </div>
+          <div class="_badge">
+            <div class="_title">badges
+              <div class="_edit"><i class="ci-edit -s16"></i>
+              </div>
+            </div>
+            <div class="_content">
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/badge.png"/>
+                </div><span>Welcome to CIAYO</span>
+              </div>
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/badge.png"/>
+                </div><span>Walking with Confidence</span>
+              </div>
+            </div>
+            <div class="_action">
+              <div class="_page">
+                <div class="_number -active">1</div>
+                <div class="_number">2</div>
+                <div class="_number">3</div>
+              </div>
+              <div class="_see-all"><a href="#" class="cm-link">see all</a></div>
+              <div class="cm-clearfix"></div>
+            </div>
+          </div>
+          <div class="_achievement">
+            <div class="_title">achievements
+              <div class="_edit"><i class="ci-edit -s16"></i>
+              </div>
+            </div>
+            <div class="_content">
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/achv1.png"/>
+                </div><span>Welcome to CIAYO</span>
+              </div>
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/achv2.png"/>
+                </div><span>Gentlemen, start your engine</span>
+              </div>
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/achv3.png"/>
+                </div><span>Cellphone Zombie</span>
+              </div>
+              <div class="_item">
+                <div class="_img-wrp"><img src="assets/img/profile/achv4.png"/>
+                </div><span>Most Valuable Perfume</span>
+              </div>
+            </div>
+            <div class="_action">
+              <div class="_page">
+                <div class="_number -active">1</div>
+                <div class="_number">2</div>
+                <div class="_number">3</div>
+              </div>
+              <div class="_see-all"><a href="#" class="cm-link">see all</a></div>
+              <div class="cm-clearfix"></div>
+            </div>
+          </div>
+          <div class="_website">
+            <div class="_title">website
+              <div class="_edit"><i class="ci-edit -s16"></i>
+              </div>
+            </div>
+            <div class="_content"><a href="#" class="cm-link">www.aji-arts.com</a></div>
+          </div>
+          <div class="_social-media">
+            <div class="_title">my social media
+              <div class="_edit"><i class="ci-edit -s16"></i>
+              </div>
+            </div>
+            <div class="_content"><a href="#"><img src="assets/img/profile/facebook.png"/></a><a href="#"> <img src="assets/img/profile/twitter.png"/></a><a href="#"><img src="assets/img/profile/instagram.png"/></a><a href="#"><img src="assets/img/profile/pinterest.png"/></a><a href="#"><img src="assets/img/profile/path.png"/></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Edit Profile</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_profile-wrp"><img src="assets/img/profile/ava.png" class="_avatar"/><img src="assets/img/profile/banner-profile.png" class="_banner"/>
+          </div>
+          <div class="_content-wrp">
+            <div class="cm-button -primary _edit-avatar">Edit Avatar</div>
+            <div class="_list-edit">
+              <div class="_title">username</div>
+              <input type="text" value="aji_mahendra_gabisa_moveon" class="cm-input">
+            </div>
+            <div class="_list-edit">
+              <div class="_title">title</div>
+              <div class="_option">
+                <select>
+                  <option>The vampire slayer</option>
+                  <option>The notorioust giant</option>
+                  <option>S.W.A.G. team leader</option>
+                </select><i class="ci-dropdown -s10"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-aboutme -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Basic Info</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_content-wrp">
+            <div class="_list-edit">
+              <div class="_title">full name</div>
+              <input type="text" value="Aji" placeholder="First name" class="cm-input">
+              <input type="text" value="" placeholder="Middle name (optional)" class="cm-input">
+              <input type="text" value="Mahendra" placeholder="Last name" class="cm-input">
+            </div>
+            <div class="_list-edit">
+              <div class="_title">date of birth</div>
+              <div class="_date">
+                <input type="text" placeholder="MM/DD/YYYY" id="inputDate" class="cm-input"><i class="ci-calendar -s16"></i>
+              </div>
+              <div class="_title -margin">place of birth</div>
+              <input type="text" value="Lembang, Bandung" class="cm-input">
+            </div>
+            <div class="_list-edit">
+              <div class="_title">nationality</div>
+              <div class="_option">
+                <select>
+                  <option>Indonesia</option>
+                  <option>Malaysia</option>
+                  <option>Singapore</option>
+                </select><i class="ci-dropdown -s10"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-date-picker -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Date of Birth</div>
+        </div>
+        <div style="background:#f0f0f0" class="cm-panel-content">
+          <div id="asd"></div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-badge-achievement -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Add Badges & Achievements</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_content-wrp">
+            <div class="_title">badge collections</div>
+            <div class="_item-wrp">
+              <div class="_container -selected">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/badge.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+            </div>
+            <div class="_title">achievements</div>
+            <div class="_item-wrp">
+              <div class="_container -selected">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+              <div class="_container">
+                <div class="_add-item"><i class="ci-add-item -s20"></i>
+                </div>
+                <div class="_item"><img src="assets/img/profile/achv1.png"/>
+                  <div class="_delete"><i class="ci-trash -s16"></i>
+                  </div>
+                </div>
+                <div class="cm-button -primary -small _add"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-search-achievement -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Search Achievements</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_search-wrp">
+            <div class="_input">
+              <input type="text" placeholder="Search achievement..." class="cm-input"><i class="ci-search -s16"></i>
+            </div>
+          </div>
+          <div class="_result">
+            <div class="_item -selected"><img src="assets/img/profile/achv1.png"/>
+              <div class="_text">
+                 
+                Confidence<i class="ci-check-2 -s20"></i>
+              </div>
+            </div>
+            <div class="_item"><img src="assets/img/profile/achv2.png"/>
+              <div class="_text">
+                 
+                Bla Bla Bla Confidence<i class="ci-check-2 -s20"></i>
+              </div>
+            </div>
+            <div class="_item"><img src="assets/img/profile/achv3.png"/>
+              <div class="_text">
+                 
+                Bla Bla Bla Confidence Bla Bla<i class="ci-check-2 -s20"></i>
+              </div>
+            </div>
+            <div class="_item"><img src="assets/img/profile/achv4.png"/>
+              <div class="_text">
+                 
+                Bla Bla Bla Confidence<i class="ci-check-2 -s20"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-website">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Website</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_website">
+            <div class="_icon"></div>
+            <div class="_text">www.aji-arts.com</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+          </div>
+          <div class="_add"><i class="ci-add-item -s20"></i>Add a website / blog
+          </div>
+          <div class="_input">
+            <input type="text" placeholder="your website address" class="cm-input -small">
+            <div class="cm-button -primary -small _save">Save</div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-profile-social-media">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Add Social Media Accounts</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_social-media -added -add">
+            <div class="_icon -facebook"><i class="ci-facebook -s24"></i>
+            </div>
+            <div class="_text">Facebook</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+            <div class="_input">
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+          <div class="_social-media -added">
+            <div class="_icon -twitter"><i class="ci-twitter -s24"></i>
+            </div>
+            <div class="_text">Twitter</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+            <div class="_input">
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+          <div class="_social-media">
+            <div class="_icon -instagram"><i class="ci-instagram -s24"></i>
+            </div>
+            <div class="_text">Instagram</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+            <div class="_input">
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+          <div class="_social-media">
+            <div class="_icon -pinterest"><i class="ci-pinterest -s24"></i>
+            </div>
+            <div class="_text">Pinterest</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+            <div class="_input">
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+          <div class="_social-media">
+            <div class="_icon -path"><i class="ci-pinterest -s24"></i>
+            </div>
+            <div class="_text">Path</div>
+            <div class="_action"><i class="ci-edit -s16"></i><i class="ci-delete-2 -s16"></i>
+            </div>
+            <div class="_input">
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+          <div class="_add"><i class="ci-add-item -s20"></i>More social media...
+            <div class="_input">
+              <div class="_option">
+                <div class="_selected"><i class="ci-facebook -s24"></i><i class="ci-dropdown -s10"></i>
+                </div>
+                <select>
+                  <option>Facebook</option>
+                  <option>Twitter</option>
+                  <option>Instagram</option>
+                </select>
+              </div>
+              <input type="text" class="cm-input -small">
+              <div class="cm-button -primary -small _save">Save</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        // menu profile //
+        $(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+        	$(this).siblings().removeClass("-active")
+        	$(this).addClass("-active")
+        })
+        
+        // c button //
+        $(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+        	$(this).parent().addClass("-active")
+        })
+        $(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+        	$(this).parent().parent().removeClass("-active")
+        })
+        
+        // edit profile //
+        $("._profile-name-wrp ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile").addClass("-open")
+        })
+        $(".-edit-profile .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile").removeClass("-open")
+        })
+        
+        // edit about me //
+        $("._about-me ._title ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-aboutme").addClass("-open")
+        })
+        $(".-edit-profile-aboutme .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-aboutme").removeClass("-open")
+        })
+        $(".-edit-profile-aboutme .cm-panel-content ._content-wrp ._list-edit ._date").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-date-picker").addClass("-open")
+        })
+        $(".-edit-profile-date-picker .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-date-picker").removeClass("-open")
+        })
+        
+        // date picker //
+        var picker = new Pikaday(
+        {
+        	field: document.getElementById('inputDate'),
+        	firstDay: 1,
+        	minDate: new Date(),
+        	maxDate: new Date(2020, 12, 31),
+        	yearRange: [2000,2020],
+        	bound: false,
+        	container: document.getElementById('asd'),
+        	onSelect: function(){
+        		$(".cm").removeClass("-locked")
+        		$(".cm-panel").removeClass("-open")
+        	}
+        });
+        
+        // edit badge and achievement //
+        $("._badge ._title ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+        })
+        $(".-edit-profile-badge-achievement .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-badge-achievement").removeClass("-open")
+        })
+        $("._achievement ._title ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-badge-achievement").addClass("-open")
+        })
+        // search achievements //
+        $("._container .cm-button._add").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-search-achievement").addClass("-open")
+        })
+        $(".-edit-profile-search-achievement .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-search-achievement").removeClass("-open")
+        })
+        
+        // edit website //
+        $("._website ._title ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-website").addClass("-open")
+        })
+        $(".-edit-profile-website .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-website").removeClass("-open")
+        })
+        $(".-edit-profile-website .cm-panel-content ._add").on("click", function(){
+        	$(this).siblings("._input").addClass("-active")
+        })
+        
+        // edit social media //
+        $("._social-media ._title ._edit").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-edit-profile-social-media").addClass("-open")
+        })
+        $(".-edit-profile-social-media .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-edit-profile-social-media").removeClass("-open")
+        })
+        $(".-edit-profile-social-media .cm-panel-content ._social-media").on("click", function(){
+        	$(this).siblings().removeClass("-active")
+        	$(this).siblings().removeClass("-add")
+        	$(this).addClass("-add")
+        })
+        $(".-edit-profile-social-media .cm-panel-content ._add").on("click", function(){
+        	$(this).siblings().removeClass("-active")
+        	$(this).siblings().removeClass("-add")
+        	$(this).addClass("-active")
+        })
+      </script>
+    </div>
+  </body>
+</html>

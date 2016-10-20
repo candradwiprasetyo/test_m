@@ -1,0 +1,16 @@
+<div class="cm-topbar">
+<div class="cm-topbar-item-public -right" ng-click="vm.pr.login_public()">
+	<div class="button">Register</div>
+	<div class="button">Login</div>
+</div>
+</div>
+<div class="cm-timeline">
+	<c-card card="vm.detailPageFactory.card" type="timeline" index="0"/>
+	<script>
+	$(window).on("resize.card-tab", function () {
+		$(".cm-card").each(function () {
+			$(this).children("._tab").css("height", $(this).find("._tab-item").outerHeight() + $(this).children("._tab").find(".-active ._tab-pane").outerHeight())
+		})
+	});
+	</script>
+</div>

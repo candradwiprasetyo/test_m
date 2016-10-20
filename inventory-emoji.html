@@ -1,0 +1,30 @@
+
+<div class="cm-topbar">
+	<div class="cm-topbar-item -left" ui-sref="inventory.home">
+		<ciayo translate="$back">BACK</ciayo>
+	</div>
+	<div class="cm-topbar-item -right" ng-click="vm.disSortable()" ng-if="vm.isSortable">
+		<ciayo translate="$done">DONE</ciayo>
+	</div>
+	<div class="cm-topbar-title"><ciayo translate="$my.emoji">My Emoji</ciayo></div>
+</div>
+
+<div class="cm-inventory-label" ng-bind="('$my.emoji'|translate)+' ('+vm.emoji.length+')'">Stickers (23)</div>
+
+<div ng-if="!vm.emoji.length">
+	<div class="loader" ng-if="!vm.noData"></div>
+	<p ng-if="vm.noData" ng-bind="vm.noData"></p>
+</div>
+
+<div class="cm-inventory-item" ng-repeat="item in vm.emoji | orderBy:'order'" id="{{item.id}}" ng-if="item.type=='emoji'">
+	<img src="" class="_image" ng-src="{{item.image}}">
+	<div class="_control">
+		<button type="button" class="cm-button -primary -small">Remove</button>
+	</div>
+	<div class="_info">
+		<div class="_wrap">
+			<div class="_title" ng-bind="item.name">Chips on bed</div>
+			<div class="_date">expiry date: 17/05/2016</div>
+		</div>
+	</div>
+</div>

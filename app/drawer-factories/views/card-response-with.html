@@ -1,0 +1,22 @@
+<div class="cm-card">
+	<div class="_head">
+		<div class="_username" ng-bind="vm.drawer.data.from_name"></div>
+		<div class="_userstatus"><ciayo translate="$asking.with">asking you who with you on this activity?</ciayo></div>
+	</div>
+	<div class="_media">
+		<div class="_timestamp">
+			<div class="_time" ng-bind="vm.drawer.data.created_at*1000 |date:'HH:mm'"></div>
+			<div class="_date" ng-bind="vm.drawer.data.created_at*1000 |date:'d MMM yyyy'"></div>
+		</div><img src="{{vm.drawer.data.image_preview}}" style="display:block;width:100%">
+		<div class="_caption" ng-if="vm.drawer.data.caption">{{vm.drawer.data.caption}}</div>
+	</div>
+</div>
+<div class="_list">
+	<button type="button" open-with class="cm-button -primary -block" ng-click="vm.drawer.data.response(0)"><ciayo translate="$tag.people">Tag People</ciayo></button>
+</div>
+<div class="_list">
+	<button type="button" class="cm-button -primary -block" ng-click="vm.drawer.data.response(1)"><ciayo translate="$ssh.it's.secret">Ssh . . . It’s a secret</ciayo></button>
+</div>
+<div class="_list">
+	<button type="button" class="cm-button -primary -block" ng-click="vm.drawer.data.response(2)"><ciayo translate="$i'm.alone">I'm alone</ciayo></button>
+</div>

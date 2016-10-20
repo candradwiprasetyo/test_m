@@ -1,0 +1,82 @@
+
+<div class="cm-achievement">
+	<div class="cm-topbar">
+		<a ui-sref="achievement">
+		<div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div>
+		</a>
+		<div class="cm-topbar-title"><ciayo translate="$search.achievements">Search Achievement</ciayo></div>
+	</div>
+	<div class="_wrapper">
+		<div class="_form">
+			<div class="_wrapper"><i class="ci-search" ng-click="vm.search()"></i>
+				<input type="text" placeholder="{{'$search.achievements'|translate}}..." ng-model="vm.keyword">
+			</div>
+		</div>
+	</div>
+	<div class="_sort"><ciayo translate="$sort.by">Sort By</ciayo>
+		<div class="_select"><i class="ci-hi-lo"></i>
+			<select>
+				<option><ciayo translate="$highest.to.lowest">Highest to lowest</ciayo></option>
+				<option><ciayo translate="$lowest.to.high">Lowest to High</ciayo></option>
+			</select><i class="ci-dropdown _right"></i>
+		</div>
+	</div>
+	<div class="_wrapper">
+		<div class="_tabs">
+			<div class="_item -active"><ciayo translate="$all">All</ciayo></div>
+			<div class="_item"><ciayo translate="$ongoing">Ongoing</ciayo></div>
+			<div class="_item"><ciayo translate="$completed">Completed</ciayo></div>
+		</div>
+		<div class="_result">
+			<ul>
+				<li ng-repeat="a in vm.all" ng-click="vm.getDetail(a.id)">
+					<div class="_thumbnail"><img ng-src="{{a.image}}"></div>
+					<div class="_desc">
+						<div class="_name" ng-bind="a.name"><i class="ci-title"></i></div>
+						<div class="_progress">
+							<div class="_bar">
+								<div class="_percentage" style="width: {{a.percent}}% !important"></div><span><ciayo translate="$progress">Progress</ciayo> <span ng-bind="a.percent"></span>/100</span>
+							</div>
+						</div>
+					</div>
+					<div class="cm-clearfix"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="cm-panel cm-achievement -topbar">
+	<div class="cm-topbar">
+		<div class="cm-topbar-item -left" ng-click="vm.closeDetail()"><ciayo translate="$back">BACK</ciayo></div>
+		<div class="cm-topbar-title"><ciayo translate="$achievement.detail">Achievement Detail</ciayo></div>
+	</div>
+	<div class="_wrapper _full-height">
+		<div class="_container-achievement_detail">
+			<div class="_main-image"><img ng-src="{{vm.detail.image}}"></div>
+			<div class="_container-description">
+				<div class="_title-description">
+					<h2 class="_achievement-name" ng-bind="vm.detail.name"></h2>
+					<div class="_icon-used_as_title"><img src="assets/img/achievement/icon-used_as_title@2x.png"></div>
+					<div class="_button-action" ng-if="vm.detail.title"><ciayo translate="$use.as.title">Use as title</ciayo></div>
+					<div class="cm-clearfix"></div>
+				</div>
+				<div class="_paragraph-description">
+					<p ng-bind="vm.detail.description"></p>
+				</div>
+				<div class="_footer-description"><b><ciayo translate="$reward:">Reward:</ciayo></b>
+					<div class="_currency-info"> 
+						<div style="background-image: url('assets/img/achievement/currency-caps@2x.png');" class="_value" ng-bind="vm.detail.reward"></div>
+					</div>
+					<div class="_icon-share cm-hide"><img src="assets/img/achievement/icon-share@2x.png"></div>
+					<div class="cm-clearfix"></div>
+				</div>
+			</div>
+			<div class="_container-achievement_level">
+				<div class="_level" ng-repeat="item in vm.detail.treshold.data"> <img ng-src="{{item.image}}"></div>
+			</div>
+		</div>
+	</div>
+	<div class="cm-clearfix"></div>
+</div>

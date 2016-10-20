@@ -1,0 +1,98 @@
+<div class="cm-store-slide owl-carousel">
+	<div ng-repeat="item in vm.st.listBannerHome"><img ng-src="{{item.image.mobile}}"></div>
+</div>
+<div class="cm-store-legends">
+	<div class="_label">Legend :</div>
+	<div style="background-image: url('assets/img/store/legend-premium.png')" class="_legend">Premium sticker</div>
+	<div style="background-image: url('assets/img/store/legend-sticker.png')" class="_legend">Sticker</div>
+	<div style="background-image: url('assets/img/store/legend-emoji.png')" class="_legend">Emoji</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$most.popular'|translate),1)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$most.popular">Most Popular</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item -s120" ng-repeat="item in vm.st.listPopular" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+		</div>
+		<p ng-hide="vm.st.listPopular.length">No Data</p>
+	</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$premium.new'|translate),2)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$premium.new">Premium New</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listPremium" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+		</div>
+		<p ng-hide="vm.st.listPremium.length">No Data</p>
+	</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$contributor.new'|translate),3)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$contributor.new">Contributor New</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listContributor" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+		</div>
+		<p ng-hide="vm.st.listContributor.length">No Data</p>
+	</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$free.new'|translate),4)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$free.new">Free New</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listFree" ng-click="vm.st.viewDetail(item.product_id)">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+		</div>
+		<p ng-hide="vm.st.listFree.length">No Data</p>
+	</div>
+</div>
+
+<div class="cm-store-stack">
+	<div class="_head">
+		<div class="_action" ng-click="vm.st.showAll(('$emoji'|translate),6)">
+			<ciayo translate="$see.all">See all</ciayo>
+		</div>
+		<div class="_title">
+			<ciayo translate="$emoji">Emoji</ciayo>
+		</div>
+	</div>
+	<div class="_body -inline">
+		<div class="cm-store-item" ng-repeat="item in vm.st.listEmoji" ng-click="vm.st.viewDetail(item.product_id, 'emoji')">
+			<img ng-src="{{item.image}}" class="_image">
+			<span ng-bind="item.name" class="_name"></span>
+		</div>
+		<p ng-hide="vm.st.listEmoji.length">No Data</p>
+	</div>
+</div>

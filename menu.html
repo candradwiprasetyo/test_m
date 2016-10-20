@@ -1,0 +1,46 @@
+<c-navbar active="menu"></c-navbar>
+	<div class="cm-main-menu">
+		<div class="cm-wrapper -other-menu-content">
+			<a ui-sref="profile">
+			<div class="_icon-block" ng-class="vm.menu==1?'active':''" ng-click="vm.menu=1">
+				<div class="photo-profile" style="background: {{vm.menu.menu_background_avatar}}">
+					<img ng-src="{{vm.menu.menu_avatar}}">
+				</div>
+				<p><ciayo translate="$my.profile">My Profile</ciayo></p>
+			</div>
+			</a>
+			<a ui-sref="store.home">
+			<div class="_icon-block" ng-class="vm.menu==2?'active':''" ng-click="vm.menu=2"><img src="assets/img/other-menu/mobile-store.png">
+				<p><ciayo translate="$store">Store</ciayo></p>
+			</div>
+			</a>
+			<a ui-sref="achievement">
+			<div class="_icon-block" ng-class="vm.menu==3?'active':''" ng-click="vm.menu=3"><img src="assets/img/other-menu/mobile-achievement.png">
+				<p><ciayo translate="$achievements">Achievements</ciayo></p>
+			</div>
+			</a>
+			<a ui-sref="trending">
+			<div class="_icon-block" ng-class="vm.menu==4?'active':''" ng-click="vm.menu=4"><img src="assets/img/other-menu/mobile-trending.png">
+				<p><ciayo translate="$trending">Trending</ciayo></p>
+			</div>
+			</a>
+			<a ui-sref="about">
+			<div class="_icon-block"><img src="assets/img/other-menu/about-mascot.png">
+				<p><ciayo translate="$about.ciayo">About CIAYO</ciayo></p>
+			</div>
+			</a>
+			<a ui-sref="setting">
+			<div class="_icon-block" ng-class="vm.menu==5?'active':''" ng-click="vm.menu=5"><img src="assets/img/other-menu/mobile-setting.png">
+				<p><ciayo translate="$settings">Settings</ciayo></p>
+			</div>
+			</a>
+
+			<a ui-sref="update">
+			<div class="_icon-block" ng-class="vm.menu==6?'active':''" ng-click="vm.menu=6"><img src="assets/img/other-menu/mobile-update-fitur.png">
+				<i class="ci-notif-star"></i>
+				<p><ciayo translate="$updates">Updates</ciayo></p>
+			</div>
+			</a>
+
+		</div>
+	</div>

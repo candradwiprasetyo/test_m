@@ -1,0 +1,18 @@
+<div style="background:#f0f0f0" class="cm-panel-content">
+	<input type="text" ng-model="vm.drawer.data.date" id="inputDate" parameter="{{(vm.drawer.data.options);}}">
+	<div id="inputDateContainer"></div>
+</div>
+<script>
+	angular.element(document).ready(function(){
+	setTimeout(setDatePicker,1);
+		function setDatePicker(){
+			var options = JSON.parse(angular.element('#inputDate').attr('parameter'));
+			options.field= document.getElementById('inputDate');
+			options.container= document.getElementById('inputDateContainer');
+			
+			var picker = new Pikaday(options);
+		}
+
+	});
+	
+</script>

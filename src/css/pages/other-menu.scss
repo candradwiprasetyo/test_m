@@ -1,0 +1,62 @@
+.-other-menu-content {
+	padding: 0;
+}
+._icon-block {
+	width: 33.33%;
+	height: 108px;
+	position: relative;
+	background: white;
+	float: left;
+	border: 1px solid $border-color;
+}
+
+._icon-block .photo-profile {
+	width: 36px;
+	max-width: 100%;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	margin-top: 22px;
+	height: 36px;
+	border-radius: 4px;
+}
+
+._icon-block .photo-profile img {
+	margin-top: 0px;
+	width: 100%;
+}
+
+._icon-block img {
+	width: 36px;
+	max-width: 100%;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	margin-top: 22px;
+}
+._icon-block .ci-notif-star {
+	position: absolute;
+	top: 14px;
+	right: 27.67px;
+	color: #EE4481;
+	background: #fff;
+	line-height: 12px;
+	width: 12px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+._icon-block p{
+	text-align: center;
+	margin-top: 68px;
+	color: black;
+}
+._icon-block.active{
+	background: $blue;
+	border: none;
+}
+._icon-block.active p{
+	color: white;
+}

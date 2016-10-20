@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+    <script src="assets/libs/pikaday.jquery.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-sticky cm-wizzard -born">
+        <div class="cm-wrapper">
+          <div class="_head"><a href="_wizzard-hello.html" class="_back">BACK</a>
+            <div class="_title">WHEN WERE YOU BORN?</div><img src="assets/img/wizzard/born.png" class="_banner"/>
+          </div>
+          <div class="_date">
+            <div class="_label">Date of Birth</div>
+            <div class="_form">
+              <input type="text" placeholder="MM/DD/YYYY" id="inputDate" readonly class="cm-input"><i class="ci-calendar -s16"></i>
+            </div>
+          </div>
+        </div>
+        <div class="_sticky"><a href="_wizzard-gender.html" class="cm-button -block -primary">Next</a></div>
+      </div>
+      <div class="cm-panel -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Date of Birth</div>
+        </div>
+        <div style="background:#f0f0f0" class="cm-panel-content">
+          <div id="asd"></div>
+        </div>
+      </div>
+      <script>
+        $(".cm-input").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel").addClass("-open")
+        })
+        
+        $(".cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel").removeClass("-open")
+        })
+        
+        var picker = new Pikaday(
+        {
+        	field: document.getElementById('inputDate'),
+        	firstDay: 1,
+        	minDate: new Date(),
+        	maxDate: new Date(2020, 12, 31),
+        	yearRange: [2000,2020],
+        	bound: false,
+        	container: document.getElementById('asd'),
+        	onSelect: function(){
+        		$(".cm").removeClass("-locked")
+        		$(".cm-panel").removeClass("-open")
+        	}
+        });
+      </script>
+    </div>
+  </body>
+</html>

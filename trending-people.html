@@ -1,0 +1,70 @@
+ <div class="cm-trending">
+        <div class="cm-topbar"><a ui-sref="menu">
+            <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+          <div class="cm-topbar-title"><ciayo translate="$trending">Trending</ciayo></div>
+        </div>
+        <div class="cm-trending-tab"><a ui-sref="trending">
+            <div class="item">
+              <div class="icon post"></div>
+              <div class="name"><ciayo translate="$posts">Posts</ciayo></div>
+            </div></a><a ui-sref="trending-people">
+            <div class="item-active">
+              <div class="icon people"></div>
+              <div class="name"><ciayo translate="$people">People</ciayo></div>
+            </div></a><a ui-sref="trending-activity">
+            <div class="item"> 
+              <div class="icon activity"></div>
+              <div class="name"><ciayo translate="$activity">Activity</ciayo></div>
+            </div></a><a ui-sref="trending-place">
+            <div class="item"> 
+              <div class="icon place"></div>
+              <div class="name"><ciayo translate="$place">Place</ciayo></div>
+            </div></a></div>
+
+            <div class="trending-people">
+                <div class="empty" ng-if="vm.search.trending_people_list==0&&vm.search.trending_people_start==true">
+              <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+              <div class="desc"><ciayo translate="$trending.people.not">Trending people not found</ciayo></div>
+            </div>
+            <div class="empty" ng-if="vm.search.trending_people_list==0&&vm.search.trending_people_start==false">
+              <div class="loader"></div>
+            </div>
+            <c-friend-connection user = "user" ng-repeat="user in vm.search.trending_people_list" type="vm.search.type"></c-friend-connection>
+<!--
+             <div class="empty" ng-if="vm.trending_people.trending_people_list==0&&vm.trending_people.trending_people_start==true">
+              <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+              <div class="desc">Trending people not found</div>
+            </div>
+            <div class="empty" ng-if="vm.trending_people.trending_people_list==0&&vm.trending_people.trending_people_start==false">
+              <div class="loader"></div>
+            </div>
+
+              <div class="list" ng-repeat="trending in vm.trending_people.trending_people_list">
+                <div class="photo-profile" style="background: {{trending.user_avatar.background_avatar}}"><img ng-src="{{trending.user_avatar.avatar}}"></div>
+                <div class="name-profile">
+                  <div class="display-name">{{trending.user_display_name}}</div>
+                  <div class="full-name">{{trending.user_full_name}}<i class="ci-currency-cans -s6"></i>&nbsp; {{(trending.user_gender==1)?'Male':'Female'}}
+                  </div>
+                  <div class="follower"> 
+                    <div class="title">followers</div>
+                    <div class="value">{{trending.followers}}</div>
+                  </div>
+                  <div class="post"> 
+                    <div class="title">posts</div>
+                    <div class="value">{{trending.posts}}</div>
+                  </div>
+                </div>
+                <div class="config-profile">
+                  <div class="icon"><i class="ci-c-button -s30"></i>
+                  </div>
+                </div>
+                <div class="ribbon">{{trending.trending_people_number}}</div>
+              </div>-->
+
+
+              
+        </div>
+        
+
+      </div>
+   

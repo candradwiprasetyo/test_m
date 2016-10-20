@@ -1,0 +1,112 @@
+<div class="_content">
+	<div class="cm-card-comment -top -post">
+		<div style="background-color: {{vm.drawer.data.message.user.avatar.background}};background-image: url({{vm.drawer.data.message.user.avatar.cropped}})" class="cm-pp -s30"></div>
+		<div class="_comment">
+			<div class="_comment-username" ng-bind="vm.drawer.data.message.user.user_display_name"></div>
+			<div class="_comment-pubdate">{{vm.drawer.data.message.created_at*1000 |date:'d MMM yyyy'}} at {{vm.drawer.data.message.created_at*1000 |date:'HH:mm'}}</div>
+
+			<!--<div class="_comment-option -open">
+				<i class="ci-etc-fill -s12"></i>
+				<div class="_comment-option-dropdown">
+					<div class="_option">Edit</div>
+					<div class="_option">Delete</div>
+				</div>
+			</div>-->
+			<div class="_comment-content" ng-bind-html="vm.drawer.data.message.parse_message"></div>
+			<div class="_comment-action">
+				<div ng-if="vm.drawer.data.message.created_at!=vm.drawer.data.message.updated_at" class="_comment-action-button"><span class="_cancel-separator">•</span>&nbsp;edited</div>
+				<div class="_comment-action-button -like" ng-click="vm.drawer.data.message.like(1)" ng-class="{'cm-color-dark-blue':vm.drawer.data.message.action.value==1}">
+					<i class="ci-like -sundefined"></i>
+					<span ng-bind="vm.drawer.data.message.action.like_count"></span>
+				</div>
+				<div class="_comment-action-button -dislike" ng-click="vm.drawer.data.message.like(-1)" ng-class="{'cm-color-dark-blue':vm.drawer.data.message.action.value==-1}">
+					<i class="ci-dislike -sundefined"></i>
+					<span ng-bind="vm.drawer.data.message.action.dislike_count"></span>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="cm-card-comment -post" ng-repeat="list in vm.drawer.data.message.reply.list" ng-class="{'-edited':list.created_at!=list.updated_at}">
+		<div style="background-color: {{list.user.avatar.background}};background-image: url({{list.user.avatar.cropped}});" class="cm-pp -s30"></div>
+		<div class="_comment">
+			<div class="_comment-username" ng-bind="list.user.user_display_name"></div>
+			<div class="_comment-pubdate">{{list.updated_at*1000 |date:'d MMM yyyy'}} at {{list.updated_at*1000 |date:'HH:mm'}}</div>
+			<div class="_comment-option" ng-class="{'-open':list.isMenuOpen}" ng-click="list.toggleMenuOpen()">
+				<i class="ci-etc-fill -s12"></i>
+				<div class="_comment-option-dropdown">
+					<div class="_option" ng-click="vm.drawer.data.message.editReply(list,vm.drawer.data.card)"><ciayo translate="$edit">Edit</ciayo></div>
+					<div class="_option" ng-click="vm.drawer.data.message.deleteReply(list)"><ciayo translate="$delete">Delete</ciayo></div>
+				</div>
+			</div>
+			<div class="_comment-content" ng-bind-html="list.parse_message"></div>
+			<div class="_comment-action">
+				<div ng-if="list.created_at!=list.updated_at" class="_comment-action-button"><span class="_cancel-separator">•</span>&nbsp;edited</div>
+				<div class="_comment-action-button -like" ng-click="list.like(1)" ng-class="{'cm-color-dark-blue':list.action.value==1}">
+					<i class="ci-like -sundefined"></i>
+					<span ng-bind="list.action.like_count"></span>
+				</div>
+				<div class="_comment-action-button -dislike" ng-click="list.like(-1)" ng-class="{'cm-color-dark-blue':list.action.value==-1}">
+					<i class="ci-dislike -sundefined"></i>
+					<span ng-bind="list.action.dislike_count"></span>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="_sticky">
+	<div class="cm-card-comment -reply -down">
+		<div style="background-color: {{vm.drawer.data.card.login.avatar.background}};background-image: url({{vm.drawer.data.card.login.avatar.cropped}});" class="cm-pp -s30"></div>
+		<button type="button" class="cm-button -primary -small" ng-click="vm.drawer.data.message.createReply()"><ciayo translate="$send">Send</ciayo></button>
+		<div class="_comment">
+			<input type="text" placeholder="{{'$write.comment'|translate}}..." class="_input" ng-model="vm.drawer.data.message.reply.search">
+			<!--<div placeholder="Write a comment .." contenteditable="true" class="_input" ng-model="vm.drawer.data.message.reply.search"></div>-->
+			<i class="ci-sticker-button -s16" ng-click="vm.drawer.data.card.comment.sticker.setOpen(!vm.drawer.data.card.comment.sticker.isOpen)"></i>
+		</div>
+	</div>
+	<div class="cm-sticker" ng-if="vm.drawer.data.card.comment.sticker.isOpen">
+		<div class="cm-sticker-bar">
+			<div class="cm-sticker-bar-button" ng-class="{'-active':vm.drawer.data.card.comment.sticker.index==0}" ng-click="vm.drawer.data.card.comment.sticker.setIndex(0)"><ciayo translate="$sticker">Sticker</ciayo></div>
+			<div class="cm-sticker-bar-button" ng-class="{'-active':vm.drawer.data.card.comment.sticker.index==1}" ng-click="vm.drawer.data.card.comment.sticker.setIndex(1)"><ciayo translate="$emoji">Emoji</ciayo></div>
+			<div class="cm-sticker-bar-button -shop" ui-sref="store"> <i class="ci-mobile-store-default-36 -s16"></i><span><ciayo translate="$shop">Shop</ciayo></span>
+			</div>
+			<div class="cm-clearfix"></div>
+		</div>
+		<div class="cm-sticker-tab">
+			<div class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+			</div>
+			<div class="cm-sticker-tab-control -next "><i class="ci-next -s12"></i>
+			</div>
+			<div class="cm-sticker-tab-viewport">
+				<div
+					ng-if="vm.drawer.data.card.comment.sticker.index==0"
+					class="cm-sticker-tab-button"
+					ng-repeat="collection in vm.drawer.data.card.comment.sticker.stickerCollection"
+					ng-class="{'-active':vm.drawer.data.card.comment.sticker.collectionIndex==$index}"
+					ng-click="vm.drawer.data.card.comment.sticker.setCollectionIndex($index)"
+					title="{{collection.name}}"
+					style="background-image: url({{collection.image}})"
+				></div>
+				<div
+					ng-if="vm.drawer.data.card.comment.sticker.index==1"
+					class="cm-sticker-tab-button"
+					ng-repeat="collection in vm.drawer.data.card.comment.sticker.emojiCollection"
+					ng-class="{'-active':vm.drawer.data.card.comment.sticker.collectionIndex==$index}"
+					ng-click="vm.drawer.data.card.comment.sticker.setCollectionIndex($index)"
+					title="{{collection.name}}"
+					style="background-image: url({{collection.image}})"
+				></div>
+			</div>
+		</div>
+		<div class="cm-sticker-pane">
+			<div ng-if="vm.drawer.data.card.comment.sticker.index==0" class="cm-sticker-item -sticker" ng-repeat="detail in vm.drawer.data.card.comment.sticker.stickerCollection[vm.drawer.data.card.comment.sticker.collectionIndex].detail">
+				<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="vm.drawer.data.card.comment.sendSticker(detail,vm.drawer.data.message)"/>
+			</div>
+			<div ng-if="vm.drawer.data.card.comment.sticker.index==1" class="cm-sticker-item -emoji" ng-repeat="detail in vm.drawer.data.card.comment.sticker.emojiCollection[vm.drawer.data.card.comment.sticker.collectionIndex].detail">
+				<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="vm.drawer.data.card.comment.sendEmoji(detail,vm.drawer.data.message)"/>
+			</div>
+			<div class="cm-clearfix"></div>
+		</div>
+	</div>
+</div>

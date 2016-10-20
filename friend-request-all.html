@@ -1,0 +1,56 @@
+
+      <div class="cm-friend-request">
+        <div class="cm-topbar"><a ui-sref="friend-request">
+          <div class="cm-topbar-item -left"><ciayo translate="$back">BACK</ciayo></div></a>
+          <div class="cm-topbar-title"><ciayo translate="$friend.requests">Friend Requests</ciayo></div>
+        </div>
+        <div class="friend-request">
+          <div class="title"><ciayo translate="$response.to.your">Response to your friend requests</ciayo> ({{vm.fr.fr_list.length}})</div>
+              <div class="empty" ng-if="vm.fr.countFr==0&&vm.fr.fr_start==true">
+                <div class="img"><img src="assets/img/friend-request/empty.png"></div>
+                <div class="desc"><ciayo translate="$you.have.no.friend.request">You have no friend request</ciayo></div>
+              </div>
+               <div class="empty" ng-if="vm.fr.countFr==0&&vm.fr.fr_start==false">
+                 <div class="loader"></div>
+               </div>
+              <div class="list" ng-class="(friend.accept)?'accept':(friend.decline)?'decline':''" ng-repeat="friend in vm.fr.fr_list" lazy-load="vm.fr.getFrList()">
+                <div class="photo-profile" style="background: {{friend.list_user.user_avatar_thumbnail.background_avatar}}" ui-sref="profile({username: friend.list_user.username })"><img ng-src="{{friend.list_user.user_avatar_cropped.avatar}}"></div>
+                <div class="name-profile">
+                  <span class="display-name" ui-sref="profile({username: friend.list_user.username })">{{friend.list_user.user_display_name}}</span>
+                    <span ng-if="friend.accept==false&&friend.decline==false">
+                      <div class="full-name">{{friend.list_user.user_full_name.replace('-',' ')}}<span ng-show="friend.list_user.user_full_name.replace(' ','').length>1"><i class="ci-currency-cans -s6"></i>&nbsp;</span> {{friend.list_user.gender_name}}
+                      </div>
+                      <div class="mutual-friend">
+                        <span ng-if="friend.list_user.total_mutual_friend>0" ng-click="vm.fr.getMutualFriend(friend.list_user.user_id, friend.list_user.username
+                        )">{{friend.list_user.total_mutual_friend + ' mutual friends'}}</span>
+                        <span ng-if="friend.list_user.total_mutual_friend==0"><ciayo translate="$you.dont.have">You dont have mutual friend</ciayo></span>
+                      </div>
+                    </span>
+                    <span ng-if="friend.accept==true">
+                      <div class="full-name">{{friend.list_user.user_display_name}} <ciayo translate="$has.become.your">has become your friend</ciayo></div>
+                    </span>
+                    <span ng-if="friend.decline==true">
+                      <div class="full-name"><ciayo translate="$request.declined">Request declined</ciayo></div>
+                    </span>
+                </div>
+                <div class="config-profile">
+                  <div class="item" ng-if="friend.accept==false&&friend.decline==false">
+                    <i class="ci-delete -s20" ng-click="vm.fr.action_decline(friend)"></i>
+                    <i class="ci-accept -s20" ng-click="vm.fr.action_accept(friend)"></i>
+                  </div>
+                  <div class="item" ng-if="friend.accept==true">
+                    <div class="button-accept" ng-click="vm.fr.view_user(friend)"><ciayo translate="$view.profile">View Profile</ciayo></div>
+                  </div>
+                   <div class="item" ng-if="friend.decline==true">
+                    <div class="button-decline"><ciayo translate="$decline">Decline</ciayo></div>
+                  </div>
+                </div>
+              </div>
+              
+          <div class="view-more" ng-show="vm.fr.load_more">
+                  <div class="loader" ng-show="vm.fr.loading"></div>
+                  <div class="button" ng-click="vm.fr.getFrList()" ng-hide="vm.fr.loading"><ciayo translate="$view.more">View more</ciayo></div>
+              </div>
+        </div>
+      
+    

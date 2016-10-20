@@ -1,0 +1,47 @@
+<div class="cm-modal-backdrop" ng-click="mdl.modal.setState()"></div>
+<div class="cm-modal-content -pad">
+  <div toggle-close="" class="cm-modal-close" ng-click="mdl.modal.setState()"><i class="ci-delete-2 -s10"></i>
+  </div>
+  
+<div class="cm-achievement">
+  <div class="_container-achievement_detail">
+
+  		<div class="popup-title">Congratulations!</div>
+		<div class="popup-subtitle">You earn a achievement</div>
+
+			<div class="_main-image"><img ng-src="{{mdl.modal.detail.image}}">
+			<canvas data-pct-start="0" data-pct-end="{{mdl.modal.detail.percent}}" data-show-text="true" data-radius="70" width="140" height="140" achievement-item></canvas></div>
+			<div class="_container-description">
+				<div class="_title-description">
+					<h2 class="_achievement-name" ng-bind="mdl.modal.detail.name"></h2>
+					<div class="_icon-used_as_title" ng-if="mdl.modal.detail.title"><img src="assets/img/achievement/icon-used_as_title@2x.png"></div>
+					<div class="_button-action" ng-if="mdl.modal.detail.title&&mdl.modal.detail.percent==100" ng-click="vm.setTitle(mdl.modal.detail.name)"><ciayo translate="$use.as.title">Use as title</ciayo></div>
+					<div class="cm-clearfix"></div>
+				</div>
+				<div class="_paragraph-description">
+					<p ng-bind="mdl.modal.detail.description"></p>
+				</div>
+				<div class="_footer-description"><b><ciayo translate="$reward:">Reward:</ciayo></b>
+					<div class="_currency-info" ng-if="mdl.modal.detail.reward_type!='sticker'"> 
+						<div style="background-image: url('assets/img/achievement/currency-caps@2x.png');" class="_value" ng-bind="mdl.modal.detail.reward"></div>
+					</div>
+					<div class="_img-sticker" ng-if="mdl.modal.detail.reward_type=='sticker'">
+						<img ng-src="{{mdl.modal.detail.reward}}">
+					</div>
+					<div class="_name-sticker" ng-if="mdl.modal.detail.reward_type=='sticker'">
+						<ciayo translate="$sticker:">Sticker:</ciayo> <span ng-bind="mdl.modal.detail.name_sticker"></span>
+					</div>
+					<div class="cm-clearfix"></div>
+				</div>
+				<div class="_icon-share" ng-click="vm.openShare();" ng-if="mdl.modal.detail.percent===100"> 
+					<i class="ci-share"></i>
+					<ciayo translate="$share.this.achievement">Share this achievement</ciayo>
+				</div>
+			</div>
+			<div class="_container-achievement_level" ng-if="mdl.modal.detail.treshold.data.length>1">
+				<div class="_level" ng-repeat="item in mdl.modal.detail.treshold.data" ng-click="vm.getDetail(item.id)" ng-class="mdl.modal.detail.id==item.id?'-current':''"> <img ng-src="{{item.image}}"></div>
+			</div>
+		</div>
+</div>
+
+</div>

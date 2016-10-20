@@ -1,0 +1,29 @@
+<div class="cm-sticky cm-wizzard -gender">
+	<div class="cm-wrapper">
+		<div class="_head">
+			<div class="_title"><ciayo translate="$select.your.gender">SELECT YOUR GENDER</ciayo></div>
+		</div>
+		<div class="_gender">
+			<div class="_gender-option -male" ng-click="vm.gender=1">
+				<div class="_gender-option-image"></div>
+				<div class="_gender-option-label"><ciayo translate="$male">Male</ciayo></div>
+			</div>
+			<div class="_gender-option -female" ng-click="vm.gender=2">
+				<div class="_gender-option-image"></div>
+				<div class="_gender-option-label"><ciayo translate="$female">Female</ciayo></div>
+			</div>
+			<div class="cm-clearfix"></div>
+			<div class="cm-alert" ng-hide="!vm.errMsg"><i class="ci-warning -s16"></i>{{vm.errMsg}}
+			</div>
+		</div>
+	</div>
+	<div class="_sticky">
+		<button class="cm-button -block -primary" ng-click="vm.saveGender()" ng-disabled="vm.isLoading">{{vm.isLoading?'Loading...':('$next'|translate)}}</button>
+	</div>
+</div>
+<script>
+	$("._gender-option").click(function(){
+		$(this).siblings("._gender-option").removeClass("-active");
+		$(this).addClass("-active");
+	})
+</script>

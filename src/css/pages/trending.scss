@@ -1,0 +1,346 @@
+.cm-trending {
+
+	.cm-trending-tab{
+		width: 100%;
+		background: #fff;
+		display: table;
+
+		a{
+			.item{
+				width: 25%;
+				height: 64px;
+				color:#999;
+				font-size: 12px;
+				text-align: center;
+				padding-top: 12px;
+				float: left;
+
+				.icon{
+				    width: 20px;
+				    margin-left: auto;
+				    margin-right: auto;
+				    height: 20px;
+				}
+
+				.post{
+					background-color: #999;
+				    -webkit-mask-image: url("../svg/trend-posting-noactiv.svg");
+				    mask-image: url("../svg/trend-posting-noactiv.svg"); 	
+				}
+
+				.people{
+					background-color: #999;
+				    -webkit-mask-image: url("../svg/trend-people-noactiv.svg");
+				    mask-image: url("../svg/trend-people-noactiv.svg");
+				}
+
+				.activity{
+					background-color: #999;
+				    -webkit-mask-image: url("../svg/trend-activity-noactiv.svg");
+				    mask-image: url("../svg/trend-activity-noactiv.svg");
+				}
+
+				.place{
+					background-color: #999;
+				    -webkit-mask-image: url("../svg/trend-place-noactiv.svg");
+				    mask-image: url("../svg/trend-place-noactiv.svg");
+				}
+
+				.name{
+					margin-top: 5px;
+				}
+			}
+
+
+			.item-active{
+				width: 25%;
+				height: 64px;
+				color:#999;
+				font-size: 12px;
+				text-align: center;
+				padding-top: 12px;
+				float: left;
+				background: #F0F0F0;
+				border-bottom: 4px solid #59BAE7;
+				font-weight: bold;
+
+				.icon{
+				    width: 20px;
+				    margin-left: auto;
+				    margin-right: auto;
+				    height: 20px;
+				}
+
+				.post{
+				    background: url("../svg/trend-posting-activ.svg"); 	
+				}
+
+				.people{
+				    background: url("../svg/trend-people-activ.svg");
+				}
+				
+				.activity{
+				    background: url("../svg/trend-activity-activ.svg");
+				}
+
+				.place{
+				    background: url("../svg/trend-place-activ.svg");
+				}
+
+				.name{
+					margin-top: 5px;
+				}
+			}
+		}
+	}
+
+	.trending-post{
+
+		.list{
+			border-bottom: 1px solid #eee;
+			display:table;
+			width: 100%;
+			margin-top: 16px;
+
+			.cm-card-row{
+				margin-bottom: 16px;
+			}
+			.cm-card-row:last-child{
+				margin-bottom: 0px;
+			}
+		}
+
+		
+	}
+
+
+	.trending-people{
+
+		.list{
+			padding: 12px;
+			border-bottom: 1px solid #eee;
+			display:table;
+			width: 100%;
+			background: #fff;
+			margin-top: 16px;
+
+			.photo-profile{
+				width: 80px;
+				height: 80px;
+				border-radius:4px;
+				float: left;
+				position: relative;
+				overflow: hidden;	
+
+				img{
+					width: 300px;
+				    height: 214.2px;
+				    position: relative;
+				    top: -18px;
+				    left: -110px;
+				}
+			}
+
+			.name-profile{
+				width: 58%;
+				padding-left: 8px;
+				float: left;
+
+				.display-name{
+					color: #02679E;
+					font-weight: bold;
+				}
+
+				.full-name{
+					color:#666;
+					font-size: 12px;
+					padding-right: 5px;
+
+					.ci-currency-cans{
+						font-size: 4px;
+						padding-left: 5px;
+					}
+				}
+
+				.follower{
+					width: 40%;
+					color: #757575;
+					font-size: 12px;
+					display: inline-block;
+
+					.title{
+
+					}
+
+					.value{
+						font-size: 18px;
+						font-weight: bold;
+						color: #666;
+					}
+				}
+
+				.post{
+					width: 40%;
+					color: #757575;
+					font-size: 12px;
+					display: inline-block;
+
+					.title{
+
+					}
+
+					.value{
+						font-size: 18px;
+						font-weight: bold;
+						color: #666;
+					}
+				}
+			}
+
+			.config-profile{
+				width: 14%;
+				float: right;
+
+				.icon{
+					width: 30px;
+					height: 30px;
+					float: right;
+					margin-top: 50px;
+
+					.ci-c-button{
+						float: right;
+						color: #4CB1E4;
+						position: relative;
+
+					}
+				}
+			}	
+
+			.ribbon{ 
+				position: absolute;
+				height: 53px;
+				width: 40px;
+			    background-image: url("../img/trending/ribbon.png");
+			    background-size: 40px 53px;
+			    text-align: center;
+			    padding-top: 12px;
+			    color: #02679E;
+			    font-weight: bold;
+			    font-size: 20px;
+			    right: 8px;
+			    margin-top: -12px;
+			}	
+		}
+	}
+
+	.trending-activity{
+		.list{
+			margin-top: 16px;
+			background: #fff;
+
+			.activity-ribbon{
+				position: absolute;
+				height: 44px;
+				width: 61px;
+			    background-image: url("../img/trending/ribbon-landscape.png");
+			    background-size: 61px 44px;
+			    padding-left: 10px;
+			    padding-top: 12px;
+			    color: #02679E;
+			    font-weight: bold;
+			    font-size: 24px;
+			    margin-top: 60px;
+			    z-index: 1;
+			}
+
+			.activity-title{
+				padding: 15px 12px 15px 12px;
+				font-weight: bold;
+			}
+
+			.activity-img{
+				width: 100%;
+
+				img{
+					width: 100%;
+				}
+			}
+
+			.activity-desc{
+				padding: 18px 12px 18px 12px;
+				color: #666666;
+			}
+		}
+	}
+
+	.trending-place{
+		.list{
+			margin-top: 16px;
+			background: #fff;
+
+			.place-ribbon{
+				position: absolute;
+				height: 53px;
+				width: 40px;
+			    background-image: url("../img/trending/ribbon.png");
+			    background-size: 40px 53px;
+			    text-align: center;
+			    padding-top: 12px;
+			    color: #02679E;
+			    font-weight: bold;
+			    font-size: 20px;
+			    right: 8px;
+			}
+
+			.list-header{
+				padding: 12px;
+
+				.place-title{
+					font-weight: bold;
+				}
+				.place-location{
+
+				}
+
+				.place-img{
+					width: 60px;
+					height: 60px;
+					margin-bottom: 8px;
+
+					img{
+						width: 100%;
+					}
+				}
+			}
+
+			.place-location-img{
+				
+
+				img{
+					width: 100%;
+				}
+			}
+
+			.place-desc{
+				padding: 18px 12px 18px 12px;
+				color: #666666;
+			}
+		}
+	}
+
+	.view-more{
+		padding: 16px 12px 16px 12px;
+
+		.button{
+			height: 40px;
+			width: 100%;
+			border: 1px solid #E6E6E6;
+			text-align: center;
+			border-radius: 4px;
+			background: #fff;
+			color: #999999;
+			line-height: 36px;
+			font-size: 16px;
+		}
+	}
+}

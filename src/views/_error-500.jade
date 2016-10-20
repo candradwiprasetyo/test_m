@@ -1,0 +1,14 @@
+include _mixins
++layout()
+	.cm-error
+		.cm-wrapper
+			._logo
+				+img("logo.png")
+			._error-img
+				+img("error/500.png")
+			._error
+				|error 
+				span 500
+			._info internal server error
+			._paragraph The server encountered a syntax error, and could not complete your request
+			._submit: a(href='').cm-button.-primary Return to Homepage

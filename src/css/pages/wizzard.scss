@@ -1,0 +1,500 @@
+.cm-wizzard{
+	transition: transform .6s ease;
+	.cm-wrapper{
+		margin-bottom: 72px;
+	}
+	._head{
+		text-align: center;
+		position: relative;
+	}
+	._back,
+	._skip{
+		position: absolute;
+		top: 15px;
+		color: $dark-blue;
+		text-decoration: none;
+	}
+	._back{
+		left: 0;
+	}
+	._skip{
+		right: 0;
+	}
+	._title{
+		padding: 15px 50px;
+		font-size: 18px;
+		color: $blue;
+		font-weight: bold;
+		line-height: 20px;
+	}
+	._banner{
+		width: 180px;
+		display: block;
+		margin: 30px auto 24px;
+	}
+	._sticky{
+		padding: 16px 12px;
+	}
+	&.-hello{
+		.cm-wrapper{
+			padding-top: 20px;
+		}
+		._logo{
+			display: inline-block;
+			vertical-align: top;
+		}
+		._paragraph{
+			font-size: 18px;
+			margin-bottom: 16px;
+		}
+		._hi{
+			position: relative;
+			margin-left: 68px;
+			margin-right: 46px;
+
+			&:before{
+				content: "Hi..";
+				left: -65px;
+			}
+			&:after{
+				content: ".!!";
+				right: -42px;
+			}
+			&:before,
+			&:after{
+				position: absolute;
+				top: 0;
+				font-size: 40px;
+				line-height: 50px;
+				font-weight: bold;
+				color: $blue;
+			}
+			._input{
+				display: block;
+				width: 100%;
+				height: 40px;
+				padding: 8px 6px;
+				background: transparent;
+				border: none;
+				border-top: 2px solid transparent;
+				border-bottom: 2px solid $border-color;
+				outline: none;
+				border-radius: 0;
+
+				&:focus{
+					border-bottom-color: $blue;
+				}
+			}
+		}
+		.cm-alert{
+			margin-bottom: 10px;
+		}
+	}
+	
+	&.-born{
+		._date{
+			margin: 10px 0;
+		}
+		._label{
+			color: $blue;
+			margin-bottom: 6px;
+		}
+		._form{
+			position: relative;
+
+			i{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				color: $dark-blue;
+			}
+		}
+	}
+
+	&.-gender{
+		._gender{
+			margin: 0 -12px;
+		}
+		._gender-option-image{
+			width: 100%;
+			height: 100%;
+			background-color: #e5e5e5;
+			background-repeat: no-repeat;
+			background-position: center 14px;
+			background-size: 198px;
+			transition: background-image .5s ease;
+		}
+		._gender-option-label{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 20px;
+			text-align: center;
+			font-size: 16px;
+			color: #666;
+			font-weight: bold;
+		}
+		._gender-option{
+			position: relative;
+			float: left;
+			width: 50%;
+			height: 260px;
+			&.-male{
+				padding-right: 2px;
+				._gender-option-image{
+					background-image: url("../img/wizzard/male.png")
+				}
+			}
+			&.-female{
+				padding-left: 2px;
+				._gender-option-image{
+					background-image: url("../img/wizzard/female.png")
+				}
+			}
+			&.-active{
+				._gender-option-image{
+					background-color: #A9E0F6;
+				}
+				._gender-option-label{
+					color: #fff;
+				}
+				&.-male{
+					._gender-option-image{
+						background-image: url("../img/wizzard/male-active.png")
+					}
+				}
+				&.-female{
+					._gender-option-image{
+						background-image: url("../img/wizzard/female-active.png")
+					}
+				}
+			}
+		}
+		.cm-alert{
+			margin: 10px 0;
+		}
+	}
+
+	&.-your-avatar{
+		text-align: center;
+
+		._paragraph{
+			margin: 20px auto 16px;
+			max-width: 260px;
+			b{
+				font-size: 18px;
+				display: block;
+			}
+			p{
+				margin: 0;
+			}
+		}
+		._your-avatar{
+			display: block;
+			width: 204px;
+			max-width: 100%;
+			margin: 0 auto 16px;
+		}
+	}
+
+	&.-create-avatar{
+		._viewfinder{
+			position: relative;
+			overflow: hidden;
+			height: 173px;
+			margin: 0 -12px;
+			transition: background .6s ease;
+		}
+		._avatar{
+			position: relative;
+			height: 330px;
+			transition: transform .4s ease;
+			transform-origin: top;
+
+			&.-zoom-out{
+				transform: scale(0.53);
+
+				+ ._zoom > i:before{
+					content: '\e85d';
+				}
+			}
+		}
+		._layer{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-repeat: no-repeat;
+			background-position: center -15px;
+			background-size: 510px auto;
+		}
+		._zoom{
+			position: absolute;
+			bottom: 12px;
+			left: 12px;
+			width: 36px;
+			padding: 6px;
+			border-radius: 4px;
+			border: 1px solid $border-color;
+			text-align: center;
+			background: rgba(255, 255, 255, 0.7);
+		}
+		._color{
+			position: absolute;
+			top: 8px;
+			right: 12px;
+			bottom: 8px;
+			border: 1px solid $border-color;
+			border-radius: 4px;
+			background: rgba(255, 255, 255, 0.7);
+			padding: 26px 0;
+			width: 44px;
+		}
+		._color-control{
+			position: absolute;
+			right: 14px;
+			color: $dark-blue;
+			&[disabled]{
+				color: #e6e6e6;
+			}
+			&.-prev{
+				top: 3px;
+			}
+			&.-next{
+				bottom: 3px;
+			}
+		}
+		._color-viewport{
+			height: 100%;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		._color-item{
+			width: 20px;
+			height: 20px;
+			border: 1px solid $border-color;
+			border-radius: 50%;
+			margin: 0 11px;
+
+			+ ._color-item{
+				margin-top: 8px;
+			}
+
+			&.-active{
+				box-shadow: $blue 0 0 0 2px;
+			}
+		}
+		._element{
+			margin: 0 -12px;
+			overflow-y: hidden;
+			overflow-x: auto;
+			overflow-x: overlay;
+			white-space: nowrap;
+			background: #fff;
+			font-size: 0;
+			padding: 0 4px;
+		}
+		._element-tab{
+			display: inline-block;
+			vertical-align: top;
+			height: 40px;
+			width: 40px;
+			background-size: auto 40px;
+			background-position: 0 center;
+			margin: 5px 4px;
+
+			&.-active{
+				background-position: -80px center;
+			}
+		}
+		._type{
+			position: relative;
+			margin: 0 -12px;
+			background: #fff;
+			border-top: 1px solid $border-color;
+			border-bottom: 1px solid $border-color;
+			margin-bottom: -1px;
+		}
+		._type-control{
+			position: absolute;
+			top: 0;
+			padding: 9px 7px;
+			color: $dark-blue;
+
+			&[disabled]{
+				color: #E6E6E6;
+			}
+			&.-prev{
+				left: 0;
+				border-right: 1px solid $border-color;
+
+				&:active {
+					background: #e6e6e6;
+				}
+			}
+			&.-next{
+				right: 0;
+				border-left: 1px solid $border-color;
+
+				&:active {
+					background: #e6e6e6;
+				}
+			}
+		}
+		._type-viewport{
+			margin: 0 30px;
+			white-space: nowrap;
+			font-size: 0;
+			overflow-y: hidden;
+			overflow-x: auto;
+			overflow-x: overlay;
+		}
+		._type-tab{
+			display: inline-block;
+			font-size: 14px;
+			color: #999;
+			padding: 7px 20px;
+			border-top: 3px solid transparent;
+			border-bottom: 3px solid transparent;
+			
+			&.-active{
+				background: #F0F0F0;
+				border-bottom-color: $blue;
+			}
+			+ ._type-tab{
+				margin-left: 8px;
+			}
+		}
+		._variant{
+			background: #fff;
+			margin: 0 -17px 0 -12px;
+			border-bottom: 1px solid $border-color;
+		}
+		._variant-column{
+			float: left;
+			width: 25%;
+			border: 1px solid $border-color;
+			margin-bottom: -1px;
+			margin-left: -1px;
+			position: relative;
+			&:before{
+				content: "";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+			}
+			&.-active{
+				box-shadow: inset $blue 0 0 0 3px;
+			}
+		}
+		._variant-item{
+			background-size: 50px 50px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			width: 50px;
+			height: 50px;
+			margin: 14px auto;
+		}
+	}
+
+	&.-mascot{
+		._paragraph{
+			margin: 3px 18px 16px;
+			font-size: 12px;
+			line-height: 15px;
+			text-align: center;
+			color: #666;
+		}
+		._mascot{
+			padding: 14px 24px 16px 170px;
+			background: #E7E8E8;
+			border-radius: 6px;
+			min-height: 150px;
+			background-repeat: no-repeat;
+			background-position: 16px bottom;
+			background-size: 126px auto;
+
+			+ ._mascot{
+				margin-top: 10px;
+			}
+
+			&.-active{
+				background-color: #A9E0F5;
+			}
+			&.-chips{
+				background-image: url('../img/wizzard/avatar-maskot-chips.png');
+				&.-active{
+					background-image: url('../img/wizzard/avatar-maskot-chips-selected.png')
+				}
+			}
+			&.-coco{
+				background-image: url('../img/wizzard/avatar-maskot-coco.png');
+				&.-active{
+					background-image: url('../img/wizzard/avatar-maskot-coco-selected.png')
+				}
+			}
+			&.-crocket{
+				background-image: url('../img/wizzard/avatar-maskot-crocket.png');
+				&.-active{
+					background-image: url('../img/wizzard/avatar-maskot-crocket-selected.png')
+				}
+			}
+		}
+		._mascot-name{
+			color: #4A4A4A;
+			font-size: 18px;
+			line-height: 23px;
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+		._mascot-label{
+			font-size: 12px;
+			line-height: 15px;
+			margin-bottom: 4px;
+			color: #666;
+		}
+		._mascot-bar{
+			position: relative;
+			margin-right: 28px;
+			&.-yellow{
+				color: #F89B1F;
+				._mascot-bar-meter-line{
+					background: #F89B1F;
+				}
+			}
+			&.-pink{
+				color: $pink;
+				._mascot-bar-meter-line{
+					background: $pink;
+				}
+			}
+			&.-blue{
+				color: $blue;
+				._mascot-bar-meter-line{
+					background: $blue;
+				}
+			}
+		}
+		._mascot-bar-meter{
+			height: 5px;
+			overflow: hidden;
+			border-radius: 2.5px;
+			background: #fff;
+			margin-bottom: 7px;
+		}
+		._mascot-bar-meter-line{
+			height: 100%;
+		}
+		._mascot-bar-digit{
+			position: absolute;
+			top: -8px;
+			right: -28px;
+			font-weight: bold;
+			font-size: 11px;
+		}
+	}
+}

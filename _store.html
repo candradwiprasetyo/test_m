@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="theme-color" content="#59BAE7">
+    <meta name="msapplication-navbutton-color" content="#59BAE7">
+    <meta name="apple-mobile-web-app-capable" content="#59BAE7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59BAE7">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/owl.carousel.min.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-store">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-title">Store</div>
+        </div>
+        <div class="cm-store-coin">
+          <div class="_label">My coin :</div>
+          <div class="_coin -caps">50</div>
+          <div class="_coin -cans">100</div>
+        </div>
+        <div class="cm-store-search"><i class="ci-search -s20"></i>
+          <input type="text" placeholder="Search sticker or emoji .." class="cm-input">
+        </div>
+        <div class="cm-store-goto">
+          <p>Open your inventory and manage your knick-knacks!</p>
+          <button type="button" class="cm-button -primary -small">Go to inventory</button>
+        </div>
+        <div class="cm-store-nav">
+          <div class="_link">Home</div>
+          <div class="_link -active">Premium</div>
+          <div class="_link">Contributor</div>
+          <div class="_link">Free</div>
+          <div class="_link">All Sticker</div>
+        </div>
+        <div class="cm-store-slide owl-carousel">
+          <div><img src="assets/img/store/slide-1.png"></div>
+          <div><img src="assets/img/store/slide-2.png"></div>
+        </div>
+        <div class="cm-store-legends">
+          <div class="_label">Legend :</div>
+          <div style="background-image: url('assets/img/store/legend-premium.png')" class="_legend">Premium sticker</div>
+          <div style="background-image: url('assets/img/store/legend-sticker.png')" class="_legend">Sticker</div>
+          <div style="background-image: url('assets/img/store/legend-emoji.png')" class="_legend">Emoji</div>
+        </div>
+        <div class="cm-store-stack">
+          <div class="_head">
+            <div class="_action">See All</div>
+            <div class="_title">Premium New</div>
+          </div>
+          <div class="_body">
+            <div class="cm-store-item"><img></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $(document).ready(function(){
+        	$(".cm-store-slide").owlCarousel({
+        		items: 1,
+        		nav: true,
+        		navText: ["<i class='ci-prev'></i>","<i class='ci-next'></i>"]
+        	});
+        });
+      </script>
+    </div>
+  </body>
+</html>

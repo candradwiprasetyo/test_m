@@ -1,0 +1,53 @@
+<div class="cm-sticky cm-wizzard -create-avatar">
+	<div class="cm-wrapper">
+		<div class="_head"><a ui-sref="create-avatar.dob" class="_back"><ciayo translate="$back">BACK</ciayo></a><a ui-sref="create-avatar.mascot" class="_skip"><ciayo translate="$skip">SKIP</ciayo></a>
+			<div class="_title"><ciayo translate="$create.your.avatar">CREATE YOUR AVATAR</ciayo></div>
+		</div>
+		<div style="background: {{vm.avatarBgColor}}" class="_viewfinder">
+			<div class="_avatar">
+				<div class="_layer" style="background-image: url({{vm.avatarBackHair}})" class="_layer"></div>
+				<div class="_layer" ng-repeat="layer in vm.avatarDefault" style="background-image: url({{layer.image}})" id="layer_{{layer.filter_id}}" filter-id="{{layer.filter_id}}" filter-value="{{layer.asset_id}}" element-id="{{layer.element_type_id}}" variant-id="{{layer.variant_id}}"></div>
+			</div>
+			<div class="_zoom" data-name="avatar-zoom"><i class="ci-zoom-in -s16"></i>
+			</div>
+			<div class="_color" data-name="select-variant-color"  ng-hide="vm.element.element_id==0 || (vm.getFilterValue(vm.element.element_id) == '')">
+				<div style="transform: rotate(-180deg)" class="_color-control -prev"><i class="ci-down-loginpage -s16"></i>
+				</div>
+				<div class="_color-control -next"><i class="ci-down-loginpage -s16"></i>
+				</div>
+				<div class="_color-viewport">
+					<div ng-repeat="color in vm.element.color_variant" style="background-color: {{color.color_code}}" class="_color-item" ng-click="vm.changeElementColor(color.color_id, $index)" ng-class="vm.defaultElementColor['element_'+vm.element.element_id]==$index?'-active':''"></div>
+				</div>
+			</div>
+		</div>
+		<div class="_element" data-name="select-element">
+			<div ng-repeat="element in vm.avatarInit" ng-if="element.element_id != 16" style="background-image: url({{'assets/img/wizzard/'+element.element_id+'.png'}})" title="{{element.element_name}}" class="_element-tab" ng-class="element.element_id==vm.element.element_id?'-active':''" ng-click="vm.selectElement(element)"></div>
+			<div class="_element-tab" ng-class="vm.element.element_id==0?'-active':''" ng-click="vm.selectElement(vm.avatarBackground)" style="background-image: url('assets/img/wizzard/0.png')"></div>
+		</div>
+		<div class="_type" data-name="select-element-type">
+			<div class="_type-control -prev"><i class="ci-prev -s16"></i>
+			</div>
+			<div class="_type-control -next"><i class="ci-next -s16"></i>
+			</div>
+			<div class="_type-viewport">
+				<div class="_type-tab" ng-repeat="type in vm.element.element_type" ng-if="type.element_variation.length" ng-class="vm.selectedElementId==type.element_type_id?'-active':''" ng-click="vm.selectElementVariation(type)">{{type.element_type_name}}</div>
+			</div>
+		</div>
+		<div class="_variant">
+			<div class="_variant-column" ng-if="!vm.element.required" ng-click="vm.removeElement(vm.element.element_id)">
+				<div class="_variant-item" style="background-image: url(assets/img/icon/no-avatar.png); background-size: cover;"></div>
+			</div>
+			<div class="_variant-column" ng-repeat="variant in vm.elementVariation" ng-if="variant.variant_thumb_url || vm.element.element_id==0"	ng-class="variant.variant_id==vm.getVariantId()?'-active':''">
+				<div style="background-image: url('{{variant.variant_thumb_url}}');background-color: {{vm.element.color_variant[vm.defaultElementColor['element_'+vm.element.element_id]].color_code}}" class="_variant-item" ng-click="vm.changeElement(variant, vm.element.element_id)" ng-hide="vm.element.element_id==0"></div>
+				<div class="_variant-item" style="background: {{variant}}" ng-click="vm.changeBackground(variant)" ng-hide="vm.element.element_id!=0"></div>
+			</div>
+			<div class="cm-clearfix"></div>
+		</div>
+	</div>
+	<div class="_sticky"><button class="cm-button -block -primary" ng-click="vm.saveAvatar()" ng-disabled="vm.isLoading">{{vm.isLoading?'Loading...':('$next'|translate)}}</button></div>
+</div>
+<script>
+	$("._zoom").click(function(){
+		$("._avatar").toggleClass("-zoom-out")
+	})
+</script>

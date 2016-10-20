@@ -1,0 +1,40 @@
+<div class="_tab">
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==0}" ng-click="vm.drawer.data.reaction.setIndex(0)">ALL <span ng-bind="vm.drawer.data.reaction.count"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==1}" ng-click="vm.drawer.data.reaction.setIndex(1)"><img src="../assets/img/card/cimotion_ciayo_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[1].user_list.length"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==2}" ng-click="vm.drawer.data.reaction.setIndex(2)"><img src="../assets/img/card/cimotion_chips_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[2].user_list.length"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==3}" ng-click="vm.drawer.data.reaction.setIndex(3)"><img src="../assets/img/card/cimotion_crocket_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[3].user_list.length"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==4}" ng-click="vm.drawer.data.reaction.setIndex(4)"><img src="../assets/img/card/cimotion_coco_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[4].user_list.length"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==5}" ng-click="vm.drawer.data.reaction.setIndex(5)"><img src="../assets/img/card/cimotion_carla_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[5].user_list.length"></span></div>
+	<div class="_tab-item" ng-class="{'-active':vm.drawer.data.reaction.index==6}" ng-click="vm.drawer.data.reaction.setIndex(6)"><img src="../assets/img/card/cimotion_chuck_80px.png"/><span ng-bind="vm.drawer.data.reaction.list[6].user_list.length"></span></div>
+	<div class="cm-clearfix"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==1" ng-repeat="list in vm.drawer.data.reaction.list[1].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_ciayo_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==2" ng-repeat="list in vm.drawer.data.reaction.list[2].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_chips_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==3" ng-repeat="list in vm.drawer.data.reaction.list[3].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_crocket_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==4" ng-repeat="list in vm.drawer.data.reaction.list[4].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_coco_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==5" ng-repeat="list in vm.drawer.data.reaction.list[5].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_carla_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>
+<div class="_list" ng-if="vm.drawer.data.reaction.index==0 || vm.drawer.data.reaction.index==6" ng-repeat="list in vm.drawer.data.reaction.list[6].user_list" ui-sref="profile({'username':list.username})" ng-click="vm.drawer.setState()">
+	<div style="background-color: {{list.avatar.background}};background-image: url({{list.avatar.cropped}});" class="cm-pp -s30"></div>
+	<img src="../assets/img/card/cimotion_chuck_80px.png" class="_reaction"/>
+	<div class="_username" ng-bind="list.user_display_name"></div>
+</div>

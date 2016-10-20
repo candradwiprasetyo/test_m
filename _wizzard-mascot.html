@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+    <script src="assets/libs/pikaday.jquery.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-sticky cm-wizzard -mascot">
+        <div class="cm-wrapper">
+          <div class="_head">
+            <div class="_title">SELECT YOUR MASCOT </div>
+          </div>
+          <div class="_paragraph">The Navajo Indians have their spirit animals, but here in the CIAYO World, we have our mascots. Pick one to accompany you along the way!</div>
+          <div class="_mascot -crocket">
+            <div class="_mascot-name">Crocket</div>
+            <div class="_mascot-label">Naivety</div>
+            <div class="_mascot-bar -yellow">
+              <div class="_mascot-bar-meter">
+                <div style="width: 70%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">70%</div>
+            </div>
+            <div class="_mascot-label">Playfulness</div>
+            <div class="_mascot-bar -pink">
+              <div class="_mascot-bar-meter">
+                <div style="width: 45%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">45%</div>
+            </div>
+            <div class="_mascot-label">Creativity</div>
+            <div class="_mascot-bar -blue">
+              <div class="_mascot-bar-meter">
+                <div style="width: 85%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">85%</div>
+            </div>
+          </div>
+          <div class="_mascot -coco">
+            <div class="_mascot-name">Coco</div>
+            <div class="_mascot-label">Confidence</div>
+            <div class="_mascot-bar -blue">
+              <div class="_mascot-bar-meter">
+                <div style="width: 85%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">85%</div>
+            </div>
+            <div class="_mascot-label">Cheerfulness</div>
+            <div class="_mascot-bar -yellow">
+              <div class="_mascot-bar-meter">
+                <div style="width: 70%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">70%</div>
+            </div>
+            <div class="_mascot-label">Kindness</div>
+            <div class="_mascot-bar -pink">
+              <div class="_mascot-bar-meter">
+                <div style="width: 45%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">45%</div>
+            </div>
+          </div>
+          <div class="_mascot -chips">
+            <div class="_mascot-name">Chips</div>
+            <div class="_mascot-label">Prank Skills</div>
+            <div class="_mascot-bar -yellow">
+              <div class="_mascot-bar-meter">
+                <div style="width: 70%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">70%</div>
+            </div>
+            <div class="_mascot-label">Intelligence</div>
+            <div class="_mascot-bar -blue">
+              <div class="_mascot-bar-meter">
+                <div style="width: 85%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">85%</div>
+            </div>
+            <div class="_mascot-label">Prank Skills</div>
+            <div class="_mascot-bar -pink">
+              <div class="_mascot-bar-meter">
+                <div style="width: 45%" class="_mascot-bar-meter-line"></div>
+              </div>
+              <div class="_mascot-bar-digit">45%</div>
+            </div>
+          </div>
+        </div>
+        <div class="_sticky"><a href="_timeline.html" class="cm-button -block -primary">Next</a></div>
+      </div>
+      <script>
+        $("._mascot").on("click", function(){
+        	$(this).addClass("-active").siblings("._mascot").removeClass("-active")
+        })
+      </script>
+    </div>
+  </body>
+</html>

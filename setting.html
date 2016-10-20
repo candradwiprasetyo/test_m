@@ -1,0 +1,565 @@
+    <div class="cm-setting -account-verification-success" style="display:none">
+      <div class="cm-wrapper">
+        <div class="_head"><img src="assets/img/logo.png" class="_head-logo"/><img src="assets/img/wellcome/success.png" class="_success"/>
+          <div class="_head-text"><ciayo translate="$congratulations!">Congratulations!</ciayo></div>
+          <div class="_paragraph"><ciayo translate="$your.account.has">Your account has been verified. Lets play CIAYO!</ciayo></div>
+          <div class="_submit"><a ui-sref="timeline" class="cm-button -primary"><ciayo translate="$go.to.timeline">Go to Timeline</ciayo></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="cm-setting-wrp">
+      <div class="cm-setting">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left" ui-sref="menu"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title"><ciayo translate="$settings">Settings</ciayo></div>
+        </div>
+        <div class="cm-setting-menu">
+          <div class="_list-menu -edit-account" ng-click="vm.st.load_setting || vm.st.generalSettings()"><i class="ci-setting-edit-account -s20"></i><ciayo translate="$edit.account">Edit Account</ciayo>
+          </div>
+          <div class="_list-menu -change-password"><i class="ci-setting-change-password -s20"></i><ciayo translate="$change.password">Change Password</ciayo>
+          </div>
+          <!-- <div class="_list-menu -privacy-settings"><i class="ci-setting-privacy-setting -s20"></i>Privacy Settings
+          </div> -->
+          <div class="_list-menu -general-settings" ng-click="vm.st.load_setting || vm.st.generalSettings()"><i class="ci-setting-general-setting -s20"></i><ciayo translate="$general.settings">General Settings</ciayo>
+          </div>
+          <div class="_list-menu -logout"><i class="ci-setting-logout -s20"></i><ciayo translate="$logout">Logout</ciayo>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -edit-account -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left -setting -hide"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title"><ciayo translate="$edit.account">Edit Account</ciayo></div>
+        </div>
+        <div class="loader-wrp">
+          <div class="loader"></div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_email">
+            <div class="_email-label"><ciayo translate="$email.address">Email Address</ciayo></div>
+            <input type="text" ng-model="vm.st.email_address" class="cm-input _email-input" ng-disabled="vm.st.verify_status">
+            <span><input type="checkbox" ng-model="vm.st.show_email" ng-change="vm.st.showEmail()"> Show on Profile</span>
+            <div class="_email-verify" ng-show="!vm.st.verify_status&&vm.st.email_address"><a ng-click="vm.st.verify='email'"><ciayo translate="$verify.your.email">Verify your email account</ciayo></a></div>
+          </div>
+          <div class="_phone">
+            <div class="_phone-label"><ciayo translate="$phone.number">Phone Number</ciayo></div>
+            <div class="_phone-number">
+              <div class="_phone-code"><span ng-if="vm.st.prefix_phone">+</span><span ng-bind="vm.st.prefix_phone.replace('+','')"></span><i class="ci-dropdown -s10"></i>
+                <select name="prefix" ng-model="vm.st.prefix_phone">
+                  <option ng-repeat="list in vm.st.prefix.list | orderBy:'country_name'" ng-bind="list.country_name+' (+'+list.phone_code+')'" ng-show="list.phone_code!=null" ng-value="'+'+list.phone_code.replace('+','')" ng-selected="vm.st.prefix_phone=='+'+list.phone_code.replace('+','')"></option>
+                </select>
+              </div>
+              <input type="number" ng-model="vm.st.phone_number" class="cm-input _phone-input">
+              <div class="cm-clearfix"></div>
+            </div>
+            <span><input type="checkbox" ng-model="vm.st.show_phone" ng-change="vm.st.showPhone()"> Show on Profile</span>
+            <div class="_phone-verify" ng-show="!vm.st.verify_status&&vm.st.phone_number"><a ng-click="vm.st.verify='phone';vm.st.resendCodePhone(false)"><ciayo translate="$verify.your.phone">Verify your phone number</ciayo></a></div>
+          </div>
+          <div class="_login-notif">
+            <div class="_login-notif-label">Login Notifications</div>
+            <div class="_login-notif-text"><ciayo translate="$notify.me.through">Notify me through email or phone when someone is trying to log in into my account</ciayo></div>
+            <div class="_login-notif-radio">
+              <label class="cm-switch">
+                <input type="checkbox" ng-model="vm.st.login_notification" ng-change="vm.st.changePreference('login_notification',vm.st.login_notification)"><span></span>
+              </label>
+            </div>
+          </div>
+          <div class="_deactive-account">
+            <div class="_deactive-account-label"><ciayo translate="$deactive.account">Deactive Account</ciayo></div>
+            <div class="_deactive-account-text"><ciayo translate="$when.your.account">When your account is deactivated, people can't search, tag, and see your CIAYO profile</ciayo></div>
+            <div class="_deactive-account-button">
+              <button class="cm-button -primary"><ciayo translate="$deactive.account">Deactive Account</ciayo></button>
+            </div>
+          </div>
+          <div class="_delete-account">
+            <div class="_delete-account-label"><ciayo translate="$delete.account">Delete Account</ciayo></div>
+            <div class="_delete-account-text"><ciayo translate="$if.you.delete">If you delete your account, all your credentials and acoount information will be lost and you have to make a new account to enter CIAYO World</ciayo></div>
+            <div class="_delete-account-button">
+              <button class="cm-button -primary"><ciayo translate="$delete.account">Delete Account</ciayo></button>
+            </div>
+          </div>
+          <div class="_save-account">
+            <div class="_save-account-button">
+              <button class="cm-button -primary" ng-click="vm.st.saveEditAccount()"><ciayo translate="$save">Save</ciayo></button>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+      <div class="cm-modal -setting-account-deactivate">
+        <div toggle-close class="cm-modal-backdrop"></div>
+        <div class="cm-modal-content -pad">
+          <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+          </div>
+          <div class="_paragraph"><ciayo translate="$are.you.sure.deactive">Are you sure you want to deactivate your account?</ciayo></div>
+          <div class="_horizontal-line"></div>
+          <div toggle-close class="cm-button -primary -small"><ciayo translate="$cancel">Cancel</ciayo></div>
+          <div toggle-close class="cm-button -primary -small" ng-click="vm.st.userDeactive()"><ciayo translate="$yes">Yes</ciayo></div>
+        </div>
+      </div>
+      <div class="cm-modal -setting-account-logout">
+        <div toggle-close class="cm-modal-backdrop"></div>
+        <div class="cm-modal-content -pad">
+          <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+          </div>
+          <div class="_paragraph"><ciayo translate="$are.you.sure.logout">Are you sure you want to logout?</ciayo></div>
+          <div class="_horizontal-line"></div>
+          <div toggle-close class="cm-button -primary -small"><ciayo translate="$cancel">Cancel</ciayo></div>
+          <div toggle-close class="cm-button -primary -small" ng-click="vm.st.logout()"><ciayo translate="$yes">Yes</ciayo></div>
+        </div>
+      </div>
+      <div class="cm-modal -setting-account-delete">
+        <div toggle-close class="cm-modal-backdrop"></div>
+        <div class="cm-modal-content -pad">
+          <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+          </div>
+          <div class="_paragraph"><ciayo translate="$are.you.sure.delete">Are you sure you want to delete your account?</ciayo></div>
+          <div class="_horizontal-line"></div>
+          <div toggle-close class="cm-button -primary -small"><ciayo translate="$cancel">Cancel</ciayo></div>
+          <div toggle-close class="cm-button -primary -small" ng-click="vm.st.deleteConfirm()"><ciayo translate="$yes">Yes</ciayo></div>
+        </div>
+      </div>
+      <div class="cm-panel -change-password -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left -pass -hide"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title"><ciayo translate="$change.password">Change Password</ciayo></div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_old-password">
+            <div class="_label"><ciayo translate="$old.password">Old Password</ciayo></div>
+            <div class="_input-wrp">
+              <input type="{{vm.show_password?'text':'password'}}" ng-model="vm.st.old_password" class="cm-input _input old_password" ng-focus="vm.st.showTooltip('old_password',true)" ng-blur="vm.st.showTooltip('old_password',false)" ng-change="vm.st.validatePass('old_password')">
+              <i class="ci-eye -s16" ng-class="vm.show_password?'active':''" ng-click="vm.show_password=!vm.show_password"></i>
+            </div>
+            <div class="_tooltip-password" id="tooltip_old_password">
+              <div class="_title"><ciayo translate="$your.password.needs">Your password needs to : </ciayo> </div>
+              <div class="_list" ng-class="vm.st.old_password.length>=8?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.be.at">Must be at least 8 characters</ciayo>
+              </div>
+              <div class="_list" ng-class="vm.st.old_password_valid?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.not.contain">Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )</ciayo>
+              </div>
+            </div>
+          </div>
+          <div class="_new-password">
+            <div class="_label"><ciayo translate="$new.password">New Password</ciayo></div>
+            <div class="_input-wrp">
+              <input type="{{vm.show_new_password?'text':'password'}}" ng-model="vm.st.new_password" class="cm-input _input new_password" ng-focus="vm.st.showTooltip('new_password',true)" ng-blur="vm.st.showTooltip('new_password',false)" ng-change="vm.st.validatePass('new_password')">
+              <i class="ci-eye -s16" ng-class="vm.show_password?'active':''" ng-click="vm.show_new_password=!vm.show_new_password"></i>
+            </div>
+            <div class="_tooltip-password" id="tooltip_new_password">
+              <div class="_title"><ciayo translate="$your.password.needs">Your password needs to : </ciayo></div>
+              <div class="_list" ng-class="vm.st.new_password.length>=8?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.be.at">Must be at least 8 characters</ciayo>
+              </div>
+              <div class="_list" ng-class="vm.st.new_password_valid?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.not.contain">Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )</ciayo>
+              </div>
+            </div>
+          </div>
+          <div class="_new-password-confirm">
+            <div class="_label"><ciayo translate="$new.password.confirmation">New Password Confirmation</ciayo></div>
+            <div class="_input-wrp">
+              <input type="{{vm.show_confirm_new_password?'text':'password'}}" ng-model="vm.st.confirm_new_password" class="cm-input _input confirm_new_password" ng-class="vm.st.password_not_match?'error':''" ng-focus="vm.st.showTooltip('confirm_new_password',true)" ng-blur="vm.st.showTooltip('confirm_new_password',false)" ng-change="vm.st.validatePass('confirm_new_password')">
+              <i class="ci-eye -s16" ng-class="vm.show_confirm_new_password?'active':''" ng-click="vm.show_confirm_new_password=!vm.show_confirm_new_password"></i>
+            </div>
+            <div class="_tooltip-password" id="tooltip_confirm_new_password">
+              <div class="_title"><ciayo translate="$your.password.needs">Your password needs to : </ciayo></div>
+              <div class="_list" ng-class="vm.st.confirm_new_password.length>=8?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.be.at">Must be at least 8 characters</ciayo>
+              </div>
+              <div class="_list" ng-class="vm.st.confirm_new_password_valid?'active':''"><span></span><i class="ci-check-1 -s10"></i><ciayo translate="$must.not.contain">Must not contain disallowed characters ( “, ‘, _, &, (, ), <, >, space, /, ¥ )</ciayo>
+              </div>
+            </div>
+            <div class="_error active" ng-if="vm.st.password_not_match"><ciayo translate="$your.password.do">Your password do not match with each other</ciayo></div>
+          </div>
+          <div class="_button">
+            <button class="cm-button -primary" ng-disabled="!vm.st.old_password||!vm.st.new_password||!vm.st.confirm_new_password||!vm.st.old_password_valid||!vm.st.new_password_valid||!vm.st.confirm_new_password_valid" ng-click="vm.st.changePassword()"><ciayo translate="$save">Save</ciayo></button>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -privacy-settings -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left -setting -hide"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title"><ciayo translate="$privacy.setting">Privacy Setting</ciayo></div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="_list-privacy">
+            <div class="_label"><ciayo translate="$timeline.access">Timeline Access</ciayo></div>
+            <div class="_option -active"><i class="ci-public -s16"></i>
+            <span ng-bind="vm.st.timeline_privacy">Public</span>
+              <select ng-model="vm.st.timeline_privacy">
+                <option>Public</option>
+                <option>Friends</option>
+                <option>Only Me</option>
+              </select><i class="ci-dropdown -s10"></i>
+            </div>
+          </div>
+          <div class="_list-privacy">
+            <div class="_label"><ciayo translate="$default.post.setting">Default Post Setting</ciayo></div>
+            <div class="_option"><i class="ci-public -s16"></i>
+            <span ng-bind="vm.st.default_post_privacy">Public</span>
+              <select ng-model="vm.st.default_post_privacy">
+                <option>Public</option>
+                <option>Friends</option>
+                <option>Only Me</option>
+              </select><i class="ci-dropdown -s10"></i>
+            </div>
+          </div>
+          <div class="_list-privacy">
+            <div class="_label"><ciayo translate="$who.can.find">Who can find me</ciayo></div>
+            <div class="_option"><i class="ci-public -s16"></i>
+            <span ng-bind="vm.st.who_can_find_privacy">Public</span>
+              <select ng-model="vm.st.who_can_find_privacy">
+                <option>Public</option>
+                <option>Friends</option>
+                <option>Only Me</option>
+              </select><i class="ci-dropdown -s10"></i>
+            </div>
+          </div>
+          <div class="_list-privacy">
+            <div class="_label"><ciayo translate="$who.can.add">Who can add me</ciayo></div>
+            <div class="_option"><i class="ci-public -s16"></i>
+            <span ng-bind="vm.st.who_can_add_me_privacy">Public</span>
+              <select ng-model="vm.st.who_can_add_me_privacy">
+                <option>Public</option>
+                <option>Friends</option>
+                <option>Only Me</option>
+              </select><i class="ci-dropdown -s10"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-panel -general-settings -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left -setting -hide"><ciayo translate="$back">BACK</ciayo></div>
+          <div class="cm-topbar-title"><ciayo translate="$general.settings">General Settings</ciayo></div>
+        </div>
+        <div class="loader-wrp">
+          <div class="loader"></div>
+        </div>
+        <div class="cm-panel-content">
+          <!--<div class="_card-settings">
+            <div class="_label"><ciayo translate="$card.settings">Card Settings</ciayo></div>
+            <div class="_text"><ciayo translate="$parallax.timeline.view">Parallax Timeline View</ciayo>
+              <div class="_option">
+                <label class="cm-switch">
+                  <input type="checkbox" ng-model="vm.st.parallax_view_timeline" ng-change="vm.st.changePreference('parallax',vm.st.parallax_view_timeline)"><span></span>
+                </label>
+              </div>
+            </div>
+            <div class="_text-additional"><ciayo translate="$parallax.allows.you">Parallax allows you to see activity images in a 3D-like prespective. If you have motion sickness, turn this off.</ciayo></div>
+          </div>-->
+          <div class="_notification-settings">
+            <div class="_label"><ciayo translate="$notification.settings">Notification Settings</ciayo></div>
+            <!-- <div class="_text">
+               
+              Notification Tones
+              <div class="_option">
+                <label class="cm-switch">
+                  <input type="checkbox"><span></span>
+                </label>
+              </div>
+            </div>
+            <div class="_text">Ringtone
+              <div class="_option _select"><i class="ci-dropdown -s10"></i>
+                <select>
+                  <option ng-repeat="list in vm.st.notification_tone"></option>
+                </select>
+              </div>
+            </div> -->
+            <div class="_text"><ciayo translate="$connection.request">Connection Request</ciayo>
+              <div class="_option">
+                <label class="cm-switch">
+                  <input type="checkbox" ng-model="vm.st.connection_request" ng-change="vm.st.changePreference('connection_request',vm.st.connection_request)"><span></span>
+                </label>
+              </div>
+            </div>
+            <div class="_text"><ciayo translate="$comments">Comments</ciayo>
+              <div class="_option">
+                <label class="cm-switch">
+                  <input type="checkbox" ng-model="vm.st.comment" ng-change="vm.st.changePreference('comment',vm.st.comment)"><span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="_language-settings">
+            <div class="_label"><ciayo translate="$language.setting">Language Setting</ciayo></div>
+            <div class="_text"><ciayo translate="$language.use.in.ciayo">What language do you want to use in CIAYO?</ciayo>
+              <div class="_option _select">
+                
+                <div class="_loader-language" ng-hide="vm.st.language">
+                  <div class="loader"></div>
+                </div>
+                <select ng-hide="!vm.st.language" ng-model="vm.st.language" ng-change="vm.st.changeLanguage()"> 
+                  <option value="1">English (US)</option>
+                  <option value="2">Bahasa Indonesia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="_email-notifications">
+            <div class="_label"><ciayo translate="$email.notifications">Email Notifications</ciayo></div>
+            <div class="_text"><ciayo translate="$new.features">New Features</ciayo>
+              <div class="_option">
+                <label class="cm-switch">
+                  <input type="checkbox" ng-model="vm.st.new_features" ng-change="vm.st.changePreference('new_features',vm.st.new_features)"><span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cm-panel cm-setting -account-verification" style="background:#f0f0f0">
+      <div class="cm-wrapper">
+        <div class="_verify-later"><a class="cm-link"><ciayo translate="$verify.later">Verify later</ciayo> </a><i class="ci-skip -s10"></i>
+        </div>
+        <section ng-if="vm.st.verify=='email'">
+          <div class="_paragraph"><ciayo translate="$to.verify.your.email">To verify your account, please enter the One-Time PIN received via email on your registered email: </ciayo><span ng-bind="vm.st.email_address"></span></div>
+        </section>
+        <section ng-if="vm.st.verify=='phone'">
+          <div class="_paragraph"><ciayo translate="$to.verify.your.phone">To verify your account, please enter the One-Time PIN received via SMS on your registered mobile number : </ciayo><span ng-show="vm.st.phone_number" ng-bind="'+'+vm.st.prefix_phone.replace('+','')+'-'+vm.st.phone_number"></span></div>
+        </section>
+        <div class="_code">
+          <input type="text" placeholder="-" id="code_1" maxlength="1" limit-to="1" ng-model="vm.st.code_1" ng-paste="vm.st.pasteCode($event.originalEvent)">
+          <input type="text" placeholder="-" id="code_2" maxlength="1" limit-to="1" ng-model="vm.st.code_2">
+          <input type="text" placeholder="-" id="code_3" maxlength="1" limit-to="1" ng-model="vm.st.code_3">
+          <input type="text" placeholder="-" id="code_4" maxlength="1" limit-to="1" ng-model="vm.st.code_4" ng-change="vm.st.sendCode()">
+        </div>
+        <section ng-if="vm.st.verify=='email'">
+          <div class="_resend"><button class="cm-button -primary -small" ng-click="vm.st.resendCodeEmail()" ng-disabled="vm.st.resend_email_proccess"><ciayo translate="$resend">Resend</ciayo> (<span ng-bind="vm.st.resend_count_email"></span>)</button></div>
+          <div class="_change"><a ng-click="vm.st.changeEmailShow()" class="cm-link"><ciayo translate="$change.email">change email</ciayo></a></div>
+          <div class="_change-content">
+            <div class="_text"><ciayo translate="$change.email">Change Email</ciayo></div>
+            <div class="_content-wrp">
+              <div class="_input-wrp -email">
+                <input type="text" ng-model="vm.st.edit_email_address"><i class="ci-delete-2 -s10" ng-click="vm.st.edit_email_address=''"></i>
+              </div>
+              <button class="cm-button -primary -small" ng-click="vm.st.editEmail()" ng-disabled="vm.st.change_email_proccess||!vm.st.edit_email_address"><ciayo translate="$save">Save</ciayo></button>
+            </div>
+          </div>
+        </section>
+        <section ng-if="vm.st.verify=='phone'">
+          <div class="_resend"><button class="cm-button -primary -small" ng-click="vm.st.resendCodePhone(true)" ng-disabled="vm.st.resend_phone_proccess"><ciayo translate="$resend">Resend</ciayo> (<span ng-bind="vm.st.resend_count_phone"></span>)</button></div>
+          <div class="_change"><a ng-click="vm.st.changeEmailShow()" class="cm-link"><ciayo translate="$change.mobile.number">change mobile number</ciayo></a></div>
+          <div class="_change-content">
+            <div class="_text"><ciayo translate="$change.phone.number">Change Phone Number</ciayo></div>
+            <div class="_content-wrp">
+              <div class="_select-wrp">
+                <span ng-if="vm.st.edit_prefix">+</span><span ng-bind="vm.st.edit_prefix.replace('+','')" style="text-align:left"></span>&nbsp;
+                <i class="ci-dropdown -s10"></i>
+                <select ng-model="vm.st.edit_prefix">
+                  <option ng-repeat="list in vm.st.prefix.list | orderBy:'country_name'" ng-bind="list.country_name+' (+'+list.phone_code+')'" ng-if="list.phone_code!=null" ng-value="list.phone_code" ng-selected="vm.st.edit_prefix.replace('+','')==list.phone_code.replace('+','')"></option>
+                </select>
+              </div>
+              <div class="_input-wrp">
+                <input type="number" ng-model="vm.st.edit_phone"><i class="ci-delete-2 -s10" ng-click="vm.st.edit_phone=''"></i>
+              </div>
+              <button class="cm-button -primary -small" ng-click="vm.st.editPhone()" ng-disabled="!vm.st.edit_phone||!vm.st.edit_prefix||vm.st.change_phone_proccess"><ciayo translate="$save">Save</ciayo></button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="cm-modal -setting-mobile-number-changed">
+      <div toggle-close class="cm-modal-backdrop"></div>
+      <div class="cm-modal-content -pad">
+        <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+        </div>
+        <section ng-if="vm.st.verify=='email'">
+          <div class="_paragraph" ng-if="vm.st.change_email_succsess">
+            <ciayo translate="$your.email.has">Your email has been changed from</ciayo> <b><span ng-bind="vm.st.old_email_address"></span></b> <ciayo translate="$to">to</ciayo> <b><span ng-bind="vm.st.edit_email_address"></span></b>
+          </div>
+          <div class="_paragraph" ng-if="!vm.st.change_email_succsess">
+            <span ng-bind="vm.st.change_email_failed"></span></b>
+          </div>
+        </section>
+        <section ng-if="vm.st.verify=='phone'">
+          <div class="_paragraph" ng-if="vm.st.change_phone_succsess">
+            <ciayo translate="$your.mobile.number">Your mobile number has been changed from</ciayo> <b><span ng-bind="'+'+vm.st.old_prefix.replace('+','')+'-'+vm.st.old_phone"></span></b> <ciayo translate="$to">to</ciayo> <b><span ng-bind="'+'+vm.st.new_prefix+'-'+vm.st.edit_phone"></span></b>
+          </div>
+          <div class="_paragraph" ng-if="!vm.st.change_phone_succsess">
+            <span ng-bind="vm.st.change_phone_failed"></span></b>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="cm-modal -info">
+      <div toggle-close class="cm-modal-backdrop"></div>
+      <div class="cm-modal-content -pad">
+        <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+        </div>
+        <div class="_paragraph"><span ng-bind="vm.st.modal_info"></span></div>
+        <!-- <div class="_horizontal-line"></div>
+        <div toggle-close class="cm-button -primary -small">Close</div> -->
+      </div>
+    </div>
+
+      <script>
+        $(".cm-link").on("click", function(){
+          $("._change-content-email").addClass("-active");
+        })
+        // $(".-account-verification ._content-wrp .cm-button").on("click", function(){
+        //  $(".-setting-mobile-number-changed").addClass("-open");
+        // })
+        // close setting-deactive-account
+        $(".-setting-mobile-number-changed [toggle-close]").on("click", function(){
+          $(".-setting-mobile-number-changed").removeClass("-open");
+        })
+      </script>
+      <script>
+        $("._list-menu.-edit-account").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-edit-account").addClass("-open")
+          setTimeout(function(){
+            $('.-setting').css('margin-left','20px')
+            $('.-setting').show().animate({'margin-left':'0','opacity':'1'})
+          },500)
+        })
+        $(".-edit-account .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-edit-account").removeClass("-open")
+          $('.-setting').animate({'opacity':'0'}, function() {
+            $('.-setting').css('margin-left','20px')
+          })
+        })
+        $("._list-menu.-change-password").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-change-password").addClass("-open")
+          setTimeout(function(){
+            $('.-pass').css('margin-left','20px')
+            $('.-pass').show().animate({'margin-left':'0','opacity':'1'})
+          },500)
+        })
+        $(".-change-password .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-change-password").removeClass("-open")
+          $('.-pass').animate({'opacity':'0'}, function() {
+            $('.-pass').css('margin-left','20px')
+          })
+        })
+        $("._list-menu.-privacy-settings").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-privacy-settings").addClass("-open")
+          setTimeout(function(){
+            $('.-setting').css('margin-left','20px')
+            $('.-setting').show().animate({'margin-left':'0','opacity':'1'})
+          },500)
+        })
+        $(".-privacy-settings .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-privacy-settings").removeClass("-open")
+          $('.-setting').animate({'opacity':'0'}, function() {
+            $('.-setting').css('margin-left','20px')
+          })
+        })
+        $("._list-menu.-general-settings").on("click", function(){
+          $(".cm").addClass("-locked")
+          $(".cm-panel.-general-settings").addClass("-open")
+          setTimeout(function(){
+            $('.-setting').css('margin-left','20px')
+            $('.-setting').show().animate({'margin-left':'0','opacity':'1'})
+          },500)
+        })
+        $(".-general-settings .cm-topbar-item").on("click", function(){
+          $(".cm").removeClass("-locked")
+          $(".cm-panel.-general-settings").removeClass("-open")
+          $('.-setting').animate({'opacity':'0'}, function() {
+            $('.-setting').css('margin-left','20px')
+          })
+        })
+        
+        // open setting-deactive-account
+        $(".-edit-account ._deactive-account ._deactive-account-button").on("click", function(){
+          $(".-setting-account-deactivate").addClass("-open");
+        })
+        // close setting-deactive-account
+        $(".-setting-account-deactivate [toggle-close]").on("click", function(){
+          $(".-setting-account-deactivate").removeClass("-open");
+        })
+        // open logout modal
+        $("._list-menu.-logout").on("click", function(){
+          $(".-setting-account-logout").addClass("-open");
+        })
+        // close logout modal
+        $(".-setting-account-logout [toggle-close]").on("click", function(){
+          $(".-setting-account-logout").removeClass("-open");
+        })
+
+        $(".-info [toggle-close]").on("click", function(){
+          $(".-info").removeClass("-open");
+        })
+
+        // open setting-delete-account
+        $(".-edit-account ._delete-account ._delete-account-button").on("click", function(){
+          $(".-setting-account-delete").addClass("-open");
+        })
+        // close setting-delete-account
+        $(".-setting-account-delete [toggle-close]").on("click", function(){
+          $(".-setting-account-delete").removeClass("-open");
+        })
+
+        //verify
+        $("._email-verify, ._phone-verify").on("click", function(){
+          $(".-account-verification").addClass("-open");
+        })
+        //close verify
+        $("._verify-later").on("click", function(){
+          $(".-account-verification").removeClass("-open");
+        })
+
+        $("p").on("tap",function(){
+          $(this).hide();
+        });
+
+        var $input1 = $('#code_1');
+        var $input2 = $('#code_2');
+        var $input3 = $('#code_3');
+        var $input4 = $('#code_4');
+
+        $input1.keyup(function(e) {
+          if ($input1.val().length > 1) {
+              $input1.val($input1.val().substr(0, 1));
+          }
+          if($input1.val()!=''){
+            $input2.focus();
+            $input2.val('');
+            $input2.select();
+          }
+        });
+
+        $input2.keyup(function(e) {
+          if ($input2.val().length > 1) {
+              $input2.val($input2.val().substr(0, 1));
+          }
+          if($input2.val()==''){
+            $input1.focus();
+            $input1.select();
+          } else {
+            $input3.focus();
+            $input3.val('');
+            $input3.select();
+          }
+        });
+
+        $input3.keyup(function(e) {
+          if ($input3.val().length > 1) {
+              $input3.val($input3.val().substr(0, 1));
+          }
+          if($input3.val()==''){
+            $input2.focus();
+            $input2.select();
+          } else {
+            $input4.focus();
+            $input4.val('');
+            $input4.select();
+          }
+        });
+
+        $input4.keyup(function(e) {
+          if ($input4.val().length > 1) {
+              $input4.val($input4.val().substr(0, 1));
+          }
+          if($input4.val()==''){
+            $input3.focus();
+            $input3.select();
+          }
+        });
+      </script>

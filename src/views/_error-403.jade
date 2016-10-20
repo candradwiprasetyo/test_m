@@ -1,0 +1,14 @@
+include _mixins
++layout()
+	.cm-error
+		.cm-wrapper
+			._logo
+				+img("logo.png")
+			._error-img
+				+img("error/403.png")
+			._error
+				|error 
+				span 403
+			._info hold up!
+			._paragraph The page is forbidden
+			._submit: a(href='').cm-button.-primary Return to Homepage

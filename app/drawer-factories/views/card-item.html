@@ -1,0 +1,78 @@
+<div class="cm-sticky" ng-style="{'background-color':vm.drawer.data.items[vm.drawer.data.index]==undefined?'#FFFFFF':'#ECEFF1'}">
+	<div class="cm-wrapper">
+		<div 
+			class="_pane"
+			ng-repeat="item in vm.drawer.data.items track by $index"
+			ng-class="{'-open':vm.drawer.data.index==$index,'-filled':item!=undefined}"
+			>
+			
+				<img ng-src="{{item.item_image_detail}}" class="_image" ng-if="vm.drawer.data.isSearch($index)==false" onload="resize()"/>
+				<div class="_title" ng-bind="item.item_name" ng-if="vm.drawer.data.isSearch($index)==false"></div>
+				<div class="_paragraph" ng-bind="item.item_description" ng-if="vm.drawer.data.isSearch($index)==false"></div>
+				<div class="_controls" ng-if="vm.drawer.data.isSearch($index)==false">
+					<button type="button" class="cm-button -primary -small" ng-click="vm.drawer.data.setEdit(true)"><i class="ci-edit -sundefined"></i><ciayo translate="$replace">Replace</ciayo>
+					</button>
+					<button type="button" class="cm-button -primary -small" ng-click="vm.drawer.data.deleteItem()"><i class="ci-trash -sundefined"></i><ciayo translate="$delete">Delete</ciayo>
+					</button>
+				</div>
+				<!--search-->
+				<div class="_search" ng-if="vm.drawer.data.isSearch($index)==true">
+					<div class="_search-input"><i class="ci-search -s16"></i>
+						<input
+							type="text"
+							placeholder="{{'$add.an.item'|translate}} .."
+							ng-model="vm.drawer.data.search"
+							ng-model-options="{debounce: 150}"
+							ng-change="vm.drawer.data.searchItem()"
+						>
+						<i class="ci-delete-2 -s10" ng-click="vm.drawer.data.deleteSearch()"></i>
+					</div>
+				</div>
+				<div class="_list-item" ng-if="vm.drawer.data.isSearch($index)==true">
+					<div class="_list" ng-repeat="item in vm.drawer.data.list" ng-click="vm.drawer.data.selectItem(item);" ng-class="{_new:item.item_new==true}">
+						<img ng-src="{{item.item_image_thumbnail}}">
+						<span ng-bind="item.item_name"></span>
+						<div class="_label-new">New</div>
+						</div>
+				</div>
+				<div class="cm-messages" ng-if="vm.drawer.data.isSearch($index)==true && vm.drawer.data.isEmpty">
+					<i class="ci-warning -s40"></i>
+					<p><ciayo translate="$not.found"></ciayo></p>
+				</div>
+		</div>
+	</div>
+	<div class="_sticky">
+		<div class="_label"><ciayo translate="$max">Max</ciayo>. <span ng-bind="vm.drawer.data.max_item"></span> <ciayo translate="$items">items</ciayo></div>
+		<div class="_clear" ng-click="vm.drawer.data.resetItem()"><i class="ci-trash -s16"></i><span><ciayo translate="$clear.all">Clear all</ciayo></span>
+		</div>
+		<div class="_item">
+			<div class="_item-tab" ng-repeat="item in vm.drawer.data.items track by $index" 
+				ng-class="{'-active':vm.drawer.data.index==$index,'-filled':(item!=null),'-empty':item==undefined}"
+				ng-click="vm.drawer.data.selectIndex($index)">
+				<img src="assets/img/timeline/column.png" />
+				<div class="_item-tab-button" ng-style="(item!=undefined)?{'background-image': 'url('+item.item_image_thumbnail+')'}:{}">
+					<i class="ci-add-item -s16" ng-if="item==undefined"></i>
+				</div>
+			</div>
+			<div class="cm-clearfix"></div>
+		</div>
+	</div>
+</div>
+<script>
+	angular.element(document).ready(function () {
+		$(".cm-wrapper").css('min-height',$('.cm-panel').outerHeight()-$('.cm-topbar').outerHeight()-$('._sticky').outerHeight());
+		var $drawerPostItem = $(".-timeline-post-item");
+		$(window).on("resize.post_item", function(){
+			$drawerPostItem.find(".cm-wrapper").css({
+				"margin-bottom": ($drawerPostItem.find("._sticky").outerHeight() -1)
+			});
+		}).trigger("resize.post_item")
+		// $(window).trigger("resize.post_item")
+		
+	});
+	function resize(){
+			setTimeout(function(){
+					$('.cm-panel-global .cm-wrapper').css('min-height',$('.cm-panel-global .cm-wrapper ._pane.-open').outerHeight()+20)
+				,1});
+		}
+</script>

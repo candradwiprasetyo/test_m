@@ -1,0 +1,250 @@
+include _mixins
++layout({
+})
+	.cm-profile
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Aji's Profile
+		.cm-profile-content
+			._profile-wrp
+				+img("profile/ava.png", {class: "_avatar"})
+				+img("profile/banner-profile.png", {class: "_banner"})
+			._profile-name-wrp
+				._username aji_mahendra_gabisa_moveon
+				._title the vampire slayer
+				._cme
+					+icon("c-button", 30)
+				._c-button
+					._button
+						+img("profile/check.png")
+						span check me
+					._button
+						+img("profile/add.png")
+						span add friend
+					._button
+						+img("profile/follow.png")
+						span follow
+					._close
+						+icon("delete-2", 10)
+				._edit
+					+icon("edit", 16)
+			._profile-menu
+				._menu
+					._wrapper
+						+img("profile/profile-overview-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-overview-activ.png", {class: "_active"})
+						span overview
+				._menu
+					._wrapper
+						+img("profile/profile-timeline-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-timeline-activ.png", {class: "_active"})
+						span timeline
+				._menu.-active
+					._wrapper
+						+img("profile/profile-connection-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-connection-activ.png", {class: "_active"})
+						span connection
+				._menu
+					._wrapper
+						+img("profile/profile-achievement-noactiv.png", {class: "_noactive"})
+						+img("profile/profile-achievement-activ.png", {class: "_active"})
+						span achievement
+			._connection
+				._tab
+					._menu.-active all friends (1022)
+					._menu mutual (14)
+					._search
+						+icon("search", 16)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+	.cm-panel.-search-friend.-topbar
+		.cm-topbar
+			.cm-topbar-item.-left BACK
+			.cm-topbar-title Aji's Friends
+		.cm-panel-content
+			._connection
+				._search-wrp
+					._input
+						input(type="text" placeholder="Search friend...").cm-input
+						+icon("search", 16)
+				._tab
+					._menu.-active all friends (1022)
+					._menu mutual (14)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+				._list
+					._avatar
+						+img("friend-request/user.png")
+					._name
+						._user-name anandamikola
+						._full-name
+							|Ananda Mikola
+							+icon("currency-cans")
+							|Male
+						._mutual-friend
+							a.cm-link 7 Mutual friends
+					._cme
+						+icon("c-button", 30)
+					._c-button
+						._button
+							+img("profile/check.png")
+							span check me
+						._button
+							+img("profile/add.png")
+							span add friend
+						._button
+							+img("profile/follow.png")
+							span follow
+						._close
+							+icon("delete-2", 10)
+	script.
+		// menu profile //
+		$(".cm-profile-content ._profile-menu ._menu").on("click", function(){
+			$(this).siblings().removeClass("-active")
+			$(this).addClass("-active")
+		})
+
+		// c button //
+		$(".cm-profile-content ._profile-name-wrp ._cme").on("click", function(){
+			$(this).parent().addClass("-active")
+		})
+		$(".cm-profile-content ._profile-name-wrp ._c-button ._close").on("click", function(){
+			$(this).parent().parent().removeClass("-active")
+		})
+		$(".cm-profile-content ._connection ._cme").on("click", function(){
+			$(this).parent().addClass("-active")
+		})
+		$(".cm-profile-content ._connection ._c-button ._close").on("click", function(){
+			$(this).parent().parent().removeClass("-active")
+		})
+
+		// search friend //
+		$("._connection ._tab ._search").on("click", function(){
+			$(".cm").addClass("-locked")
+			$(".cm-panel.-search-friend").addClass("-open")
+		})
+		$(".-search-friend .cm-topbar-item").on("click", function(){
+			$(".cm").removeClass("-locked")
+			$(".cm-panel.-search-friend").removeClass("-open")
+		})

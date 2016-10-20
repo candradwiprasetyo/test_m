@@ -1,0 +1,27 @@
+<c-card card="vm.drawer.data.card" type="detail" index="0"/>
+<script>
+angular.element(document).ready(function () {
+				$(window).on("resize.card-tab", function () {
+					$(".cm-card").each(function () {
+						$(this).children("._tab").css("height", $(this).find("._tab-item").outerHeight() + $(this).children("._tab").find(".-active ._tab-pane").outerHeight())
+					})
+				});
+				setTimeout(function () {
+					$(window).trigger("resize.card-tab")
+					$(".cm-card-comment ._input").on({
+						"focus": function () {
+							$(this).parent().addClass("-focus")
+						},
+						"blur": function () {
+							$(this).parent().removeClass("-focus")
+						}
+					})
+				}, 1);
+			});
+
+			function test(id){
+				var objDiv = document.getElementById("cm-sticker-pane_"+id);
+				alert(objDiv);
+				//objDiv.scrollTop = objDiv.scrollHeight;
+			}
+</script>

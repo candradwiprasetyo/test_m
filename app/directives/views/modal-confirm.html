@@ -1,0 +1,10 @@
+<div class="cm-modal-backdrop" ng-click="mdl.modal.setState()"></div>
+<div class="cm-modal-content -pad">
+	<div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10" ng-click="mdl.modal.setState()"></i>
+	</div>
+	<div class="_dialog-paragraph" ng-bind="mdl.modal.data.message"></div>
+	<div class="_dialog-buttons">
+		<div toggle-close class="cm-button -primary -small" ng-click="mdl.modal.fFnc();mdl.modal.setState();"><ciayo translate="$cancel" style="text-transform:uppercase">CANCEL</ciayo></div>
+		<div toggle-close open-ask-with class="cm-button -primary -small" ng-click="mdl.modal.tFnc();mdl.modal.setState();"><ciayo translate="$yes">YES</ciayo></div>
+	</div>
+</div>

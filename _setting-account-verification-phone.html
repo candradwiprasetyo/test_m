@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="theme-color" content="#59BAE7">
+    <meta name="msapplication-navbutton-color" content="#59BAE7">
+    <meta name="apple-mobile-web-app-capable" content="#59BAE7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59BAE7">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-setting -account-verification">
+        <div class="cm-wrapper">
+          <div class="_verify-later"><a href="" class="cm-link">Verify later </a><i class="ci-skip -s10"></i>
+          </div>
+          <div class="_paragraph">To verify your account, please enter the One-Time PIN received via SMS on your registered mobile number : XXXXXXXX0966</div>
+          <div class="_code">
+            <input type="text" maxlength="1" placeholder="-">
+            <input type="text" maxlength="1" placeholder="-">
+            <input type="text" maxlength="1" placeholder="-">
+            <input type="text" maxlength="1" placeholder="-">
+          </div>
+          <div class="_resend"><a href="" class="cm-button -primary -small">Resend (3)</a></div>
+          <div class="_change"><a href="#" class="cm-link">change mobile number</a></div>
+          <div class="_change-content">
+            <div class="_text">Change Phone Number</div>
+            <div class="_content-wrp">
+              <div class="_select-wrp">
+                <select>
+                  <option>ID +62</option>
+                  <option>ID +63</option>
+                  <option>ID +64</option>
+                </select><i class="ci-dropdown -s10"></i>
+              </div>
+              <div class="_input-wrp">
+                <input type="number" value="81791776279"><i class="ci-delete-2 -s10"></i>
+              </div>
+              <button class="cm-button -primary -small">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-modal -setting-mobile-number-changed">
+        <div toggle-close class="cm-modal-backdrop"></div>
+        <div class="cm-modal-content -pad">
+          <div toggle-close class="cm-modal-close"><i class="ci-delete-2 -s10"></i>
+          </div>
+          <div class="_paragraph">Your mobile number has been changed from <b>+62 8179170966</b> to <b>+62 81791776279</b></div>
+        </div>
+      </div>
+      <script>
+        $(".-account-verification ._change").on("click", function(){
+        	$(".-account-verification ._change-content").addClass("-active");
+        })
+        $(".-account-verification ._content-wrp .cm-button").on("click", function(){
+        	$(".-setting-mobile-number-changed").addClass("-open");
+        })
+        // close setting-deactive-account
+        $(".-setting-mobile-number-changed [toggle-close]").on("click", function(){
+        	$(".-setting-mobile-number-changed").removeClass("-open");
+        })
+      </script>
+    </div>
+  </body>
+</html>

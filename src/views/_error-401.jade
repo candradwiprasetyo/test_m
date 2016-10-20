@@ -1,0 +1,14 @@
+include _mixins
++layout()
+	.cm-error
+		.cm-wrapper
+			._logo
+				+img("logo.png")
+			._error-img
+				+img("error/401.png")
+			._error
+				|error 
+				span 401
+			._info unauthorized access
+			._paragraph Sorry, but you’re not authorized to access the requested page
+			._submit: a(href='').cm-button.-primary Return to Homepage

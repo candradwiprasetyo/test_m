@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/pikaday.js"></script>
+    <script src="assets/libs/pikaday.jquery.js"></script>
+  </head>
+  <body class="cm">
+    <div ui-view>
+      <div class="cm-navbar"><a href="_timeline.html" class="cm-navbar-item -timeline -active"></a><a href="_friend-request.html" class="cm-navbar-item -friend-request"></a><a href="_notification.html" class="cm-navbar-item -notification"></a><a href="_search.html" class="cm-navbar-item -search"></a><a href="_menu.html" class="cm-navbar-item -menu"></a>
+        <div class="cm-clearfix"></div>
+      </div>
+      <div class="cm-timeline">
+        <div class="cm-timeline-post">
+          <div class="_button"><i class="ci-add-item -s30"></i>
+            <div class="_label">What are you doing?</div>
+          </div>
+        </div>
+      </div>
+      <!-- drawer post-->
+      <div class="cm-panel -timeline-post -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-item -right">POST</div>
+          <div class="cm-topbar-title">Date of Birth</div>
+        </div>
+        <div style="background:#f0f0f0" class="cm-panel-content">
+          <div class="_show-to">
+            <div class="_show-to-label">Show to:</div>
+            <div class="_show-to-button"><i class="ci-public -s16"></i>Public
+              <select>
+                <option>Public</option>
+                <option>Friends</option>
+                <option>Only Me</option>
+              </select><i class="ci-dropdown -s10"></i>
+            </div>
+          </div>
+          <div class="_activity-input"><i class="ci-edit -s16"></i>
+            <input type="text" placeholder="What are you doing?">
+            <div class="_activity-input-list cm-hide">
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+              <div class="_list"><img><span>Eat cake while take a break at work</span></div>
+            </div><i class="ci-delete-2 -s10"></i>
+          </div>
+          <div class="_feeling">
+            <div class="_feeling-option"><i class="ci-mood-happy -s16"></i><span>Happy</span>
+            </div>
+            <div class="_feeling-option -active"><i class="ci-mood-normal -s16"></i><span>Normal</span>
+            </div>
+            <div class="_feeling-option"><i class="ci-mood-sad -s16"></i><span>Sad</span>
+            </div>
+            <div class="cm-clearfix"></div>
+          </div>
+          <div class="_media"><img src="assets/img/timeline/_activity.png" style="width:100%;display:block">
+            <div class="_bubble">
+              <div class="_bubble-button">
+                <button><i class="ci-add-item -s16"></i><span>Caption</span>
+                </button>
+              </div>
+              <input type="text" class="_bubble-caption cm-hide">
+            </div>
+          </div>
+          <div class="_column">
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div style="background-image: url('assets/img/timeline/_item-1.png')" class="_button -item -filled"></div>
+            </div>
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div style="background-image: url('assets/img/timeline/_item-2.png')" class="_button -item -filled"></div>
+            </div>
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div class="_button -item -empty">
+                <div class="_empty"><i class="ci-add-item -s16"></i><span>Item 3</span>
+                </div>
+              </div>
+            </div>
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div class="_button -item -empty">
+                <div class="_empty"><i class="ci-add-item -s16"></i><span>Item 4</span>
+                </div>
+              </div>
+            </div>
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div class="_button -with -empty">
+                <div class="_empty"><i class="ci-add-with-people -s16"></i><span>With</span>
+                </div>
+              </div>
+            </div>
+            <div class="_column-button"><img src="assets/img/timeline/column.png" class="_holder"/>
+              <div class="_button -place -empty">
+                <div class="_empty"><i class="ci-add-with-people -s16"></i><span>Place</span>
+                </div>
+              </div>
+            </div>
+            <div class="cm-clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!-- drawer post_item-->
+      <div class="cm-panel -timeline-post-item -topbar">
+        <div class="cm-topbar">
+          <div class="cm-topbar-item -left">BACK</div>
+          <div class="cm-topbar-item -right">SAVE</div>
+          <div class="cm-topbar-title">Add Items</div>
+        </div>
+        <div class="cm-panel-content">
+          <div class="cm-sticky">
+            <div class="cm-wrapper">
+              <div class="_search">
+                <div class="_search-input"><i class="ci-search -s16"></i>
+                  <input type="text" placeholder="Add an item .."><i class="ci-delete-2 -s10"></i>
+                </div>
+                <div class="_search-list">
+                  <div class="_list"><img><span>Converse Shoes</span></div>
+                  <div class="_list"><img><span>Nike Shoes</span></div>
+                  <div class="_list"><img><span>Asics Run Shoes</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $(".cm-timeline-post").on("click", function(){
+        	$(".cm").addClass("-locked")
+        	$(".cm-panel.-timeline-post").addClass("-open")
+        })
+        
+        $(".-timeline-post .cm-topbar-item").on("click", function(){
+        	$(".cm").removeClass("-locked")
+        	$(".cm-panel.-timeline-post").removeClass("-open")
+        })
+        
+        $("._feeling-option").on("click", function(){
+        	$(this).addClass("-active").siblings("._feeling-option").removeClass("-active");
+        })
+        
+        $("._bubble-button").on("click", function(){
+        	$(this).addClass("cm-hide");
+        	$(this).siblings("._bubble-caption").removeClass("cm-hide").focus();
+        })
+        
+        $("._column-button ._button.-item.-empty").on("click", function(){
+        	$(".-timeline-post-item").addClass("-open")
+        })
+        
+        $(".-timeline-post-item .cm-topbar-item").on("click", function(){
+        	$(".-timeline-post-item").removeClass("-open")
+        })
+      </script>
+    </div>
+  </body>
+</html>

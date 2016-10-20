@@ -1,0 +1,52 @@
+<div class="cm-sticky">
+	<div class="cm-card-comment -edit -up">
+		<div style="background-color: {{vm.drawer.data.card.login.avatar.background}};background-image: url('{{vm.drawer.data.card.login.avatar.cropped}}')" class="cm-pp -s30"></div>
+		<div class="_comment">
+			<input type="text" placeholder="{{'$write.comment'|translate}}..." class="_input" ng-model="vm.drawer.data.message">
+			<!--<div placeholder="Write a comment .." contenteditable="true" class="_input" ng-model="vm.drawer.data.message"></div>-->
+			<i class="ci-sticker-button -s16" ng-click="vm.drawer.data.card.comment.sticker.setOpen(!card.comment.sticker.isOpen,-1)"></i>
+		</div>
+	</div>
+	<div class="_sticky">
+		<div class="cm-sticker" ng-if="vm.drawer.data.card.comment.sticker.isOpen && type!='detail'">
+			<div class="cm-sticker-bar">
+				<div class="cm-sticker-bar-button" ng-class="{'-active':vm.drawer.data.card.comment.sticker.index==0}" ng-click="vm.drawer.data.card.comment.sticker.setIndex(0, $index)" id="tab_sticker_{{$index}}"><ciayo translate="$sticker">Sticker</ciayo></div>
+				<div class="cm-sticker-bar-button" ng-class="{'-active':vm.drawer.data.card.comment.sticker.index==1}" ng-click="vm.drawer.data.card.comment.sticker.setIndex(1, $index)" id="tab_emoji_{{$index}}"><ciayo translate="$emoji">Emoji</ciayo></div>
+				<div class="cm-sticker-bar-button -shop" ng-click="vm.drawer.data.card.drawer.setState()" ui-sref="store"> <i class="ci-mobile-store-default-36 -s16"></i><span><ciayo translate="$shop">Shop</ciayo></span>
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+			<div class="cm-sticker-tab">
+				<div class="cm-sticker-tab-control -prev"><i class="ci-prev -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-control -next "><i class="ci-next -s12"></i>
+				</div>
+				<div class="cm-sticker-tab-viewport">
+					<div ng-if="vm.drawer.data.card.comment.sticker.index==0" class="cm-sticker-tab-button" ng-repeat="collection in vm.drawer.data.card.comment.sticker.stickerCollection" ng-class="{'-active':vm.drawer.data.card.comment.sticker.collectionIndex==$index}" ng-click="vm.drawer.data.card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+					<div ng-if="vm.drawer.data.card.comment.sticker.index==1" class="cm-sticker-tab-button" ng-repeat="collection in vm.drawer.data.card.comment.sticker.emojiCollection" ng-class="{'-active':vm.drawer.data.card.comment.sticker.collectionIndex==$index}" ng-click="vm.drawer.data.card.comment.sticker.setCollectionIndex($index)" title="{{collection.name}}" style="background-image: url({{collection.image}})"></div>
+				</div>
+			</div>
+
+			<div class="cm-sticker-pane">
+				<div ng-if="vm.drawer.data.card.comment.sticker.index==0" class="cm-sticker-item -sticker" ng-repeat="detail in vm.drawer.data.card.comment.sticker.stickerCollection[vm.drawer.data.card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="vm.drawer.data.message=vm.drawer.data.message+detail.shortcode_format" />
+				</div>
+				<div ng-if="vm.drawer.data.card.comment.sticker.index==1" class="cm-sticker-item -emoji" ng-repeat="detail in vm.drawer.data.card.comment.sticker.emojiCollection[vm.drawer.data.card.comment.sticker.collectionIndex].detail">
+					<img ng-src="{{detail.image}}" title="{{detail.name}}" ng-click="vm.drawer.data.message=vm.drawer.data.message+detail.shortcode_format" />
+				</div>
+				<div class="cm-clearfix"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<script>
+	$(".cm-card-comment ._input").on({
+		"focus": function(){
+			$(this).parent().addClass("-focus")
+		},
+		"blur": function(){
+			$(this).parent().removeClass("-focus")
+		}
+	})
+</script>

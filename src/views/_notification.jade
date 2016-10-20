@@ -1,0 +1,49 @@
+include _mixins
++layout({
+	navbar: "notification"
+})
+	.cm-notification
+		.notification
+			.title
+				| Notifications
+			mixin list(name, activity, type)
+				if type == 1
+					.list.active
+						.photo-profile
+							img(src="assets/img/friend-request/user.png")
+						.name-profile
+							.display-name 
+								= name
+								span.activity-name= activity
+							.date 
+								+icon("notif-like", 12)
+								| 3 minutes ago
+						.config-profile
+							.item
+								img(src="assets/img/notification/activity.png")
+				else
+					.list
+						.photo-profile
+							img(src="assets/img/friend-request/user.png")
+						.name-profile
+							.display-name 
+								= name
+								span.activity-name= activity
+							.date 
+								+icon("notif-like", 12)
+								| 3 minutes ago
+						.config-profile
+							.item
+								img(src="assets/img/notification/activity.png")
+			+list('Crystal Maiden', ' reacted to your post', 1)
+			+list('Juggernaut', ' liked your comment on activity “Watching movies”', 1)
+			+list('Broodmother', ' shared your post', 1)
+			+list('Alchemist', ' disliked your comment on the post “Watching movies”',  0)
+			+list('Phantom Asassin', ' reacted to your post', 0)
+			+list('Abadon', ' liked your comment “Jauh banget yak, kalo gini mah kaki w bisa gempor haha.. Ngak ngak! Susah emang, mau liburan ', 0)
+			+list('Earthsaker', ' reacted to your post', 0)
+			+list('nature Prophet', ' reacted to your post', 0)
+			+list('Earthsaker', ' reacted to your post', 0)
+			+list('nature Prophet', ' reacted to your post', 0)
+
+		

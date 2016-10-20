@@ -1,0 +1,13 @@
+include _mixins
++layout()
+	.cm-error
+		.cm-wrapper
+			._logo
+				+img("logo.png")
+			._error-img
+				+img("error/404.png")
+			._error
+				|error 
+				span 404
+			._paragraph The requested URL/orkout not found on this server
+			._submit: a(href='').cm-button.-primary Return to Homepage

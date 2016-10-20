@@ -1,0 +1,50 @@
+<c-navbar active="search"></c-navbar>
+<div class="cm-search" lazy-load ="vm.search.getUserList()">
+    <div class="cm-search-input"> <i class="ci-search -s20"></i>
+    <i class="ci-delete-2 -s10" ng-click="vm.search.clearSearch()" ng-show="vm.search.user_list.length>0"></i>
+        <input type="text" name="i_search" placeholder="{{'$search.ciayo.friends'|translate}} . . ." ng-model="vm.search.search_text" ng-change="vm.search.getUserList(true)" ng-model-options="{debounce: 150}">
+    </div>
+	<!--messages for states-->
+	<div class="cm-messages" ng-if="vm.search.isEmpty">
+		<i class="ci-warning -s40"></i>
+		<p><ciayo translate="$not.found"></ciayo></p>
+	</div>
+	<div class="cm-loader" ng-if="vm.search.isloading"></div>
+	<c-friend-connection user = "user" ng-repeat="user in vm.search.user_list" type="vm.search.type"></c-friend-connection>
+    <!-- <div class="list" ng-repeat="user in vm.search.user_list" ng-class="user.frame==true?'open':''">
+	    <div class="photo-profile" style="background: {{user.user_avatar_detail.background_avatar}}"><img ng-src="{{user.user_avatar_detail.avatar}}"></div>
+		    <div class="name-profile">
+		      <div class="display-name" ng-click="user.del()">{{user.user_display_name}}</div>
+		      <div class="full-name">{{user.user_full_name}}<i class="ci-currency-cans -s6"></i>&nbsp; {{user.gender_name}}
+		      </div>
+		      <div class="mutual-friend">{{(user.total_mutual_friend>0) ?  'Have ' + user.total_mutual_friend + ' mutual friends with you' : 'You dont have mutual friend'}}</div>
+		    </div>
+	    <div class="config-profile">
+	      <div class="icon"><i class="ci-c-button -s30" ng-click="vm.search.showFrame(user)"></i>
+	      </div>
+	    </div>
+	    <div class="action"> 
+			<div class="icon-group-frame">
+				<div class="icon-group">
+				  	<div class="icon" ui-sref="profile/{{user.username}}"><img src="assets/img/search/i_check_me.png"></div>
+				  	<div class="name" ui-sref="profile/{{user.username}}">view profile</div>
+				</div>
+				<div class="icon-group">
+				  	<div class="icon"><img src="assets/img/search/i_add_friend.png"></div>
+				  	<div class="name">add friend</div>
+				</div>
+				<div class="icon-group">
+				  	<div class="icon"><img src="assets/img/search/i_follow.png"></div>
+				  	<div class="name">follow</div>
+				</div>
+				<div class="close-button" ng-click="vm.search.closeFrame(user)"><i class="ci-delete-2 -s10" ></i>
+				</div>
+			</div>
+	    </div>
+	</div> -->
+	
+	<div class="view-more" ng-show="vm.search.load_more">
+		<div class="loader" ng-show="vm.search.loading"></div>
+        <div class="button" ng-click="vm.search.getUserList()" ng-hide="vm.search.loading"><ciayo translate="$view.more">View more</ciayo>
+    </div>
+</div>
